@@ -53,7 +53,7 @@ export const PersistentDrawerLeft = ({ children }: PropsWithChildren) => {
               }}
             >
               <Typography variant="h6" noWrap component="div">
-                UI Lab MUI V5
+                MovieDB App
               </Typography>
             </RouterLink>
             <Box sx={{ flexGrow: 1 }} />

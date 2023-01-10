@@ -11,7 +11,7 @@ import { useNonInitialEffect } from '@/hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { themeSelector } from '@/store/ui/selectors';
 import { setThemeAC } from '@/store/ui/slice';
-import { ThemeOptionInterface } from '@/types';
+import { BaseOptionInterface } from '@/types';
 
 import { themeOptions } from './ThemeMenu.options';
 
@@ -25,7 +25,7 @@ export const ThemeMenu = () => {
 
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLElement>,
-    value: ThemeOptionInterface['value'],
+    value: BaseOptionInterface['value'],
   ) => {
     dispatch(setThemeAC(value));
     setAnchorEl(null);
@@ -71,7 +71,8 @@ export const ThemeMenu = () => {
           {option.value === currentTheme ? (
             <RadioButtonCheckedIcon
               fontSize="small"
-              style={{ marginRight: '8px', color: option.iconColor }}
+              color="primary"
+              style={{ marginRight: '8px' }}
             />
           ) : (
             <RadioButtonUncheckedIcon
