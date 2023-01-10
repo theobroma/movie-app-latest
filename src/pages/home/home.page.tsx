@@ -1,11 +1,11 @@
 import { Container, Box } from '@mui/material';
 
-import { DropdownShareButton } from '@/components/DropdownShareButton/DropdownShareButton';
+import { HomeTrendingMovies } from './home-trending-movies/home-trending-movies';
 
 const HomePage = () => (
   <Container maxWidth="lg">
     <Box>HomePage</Box>
-    <DropdownShareButton />
+    <HomeTrendingMovies />
   </Container>
 );
 
