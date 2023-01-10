@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { ThemeColorsEnum } from '@/types';
 
-const uiInitialState = {
+export const uiInitialState = {
   theme: ThemeColorsEnum.LIGHT,
+  language: 'uk' as any,
 };
 
 export const uiSlice = createSlice({
@@ -13,7 +14,10 @@ export const uiSlice = createSlice({
     setThemeAC(state, action) {
       state.theme = action.payload;
     },
+    setLanguageAC(state, action) {
+      state.language = action.payload;
+    },
   },
 });
 
-export const { setThemeAC } = uiSlice.actions;
+export const { setThemeAC, setLanguageAC } = uiSlice.actions;
