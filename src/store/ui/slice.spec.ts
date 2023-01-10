@@ -1,3 +1,4 @@
+import { LanguageEnum } from '@/enums/language.enum';
 import { ThemeColorsEnum } from '@/types';
 
 import { setThemeAC, setLanguageAC, uiSlice, uiInitialState } from './slice';
@@ -16,7 +17,7 @@ describe('counter reducer sync actions', () => {
   });
 
   it('should handle setLanguage', () => {
-    const newLanguage = 'en' as any;
+    const newLanguage = 'en' as LanguageEnum;
     const actual = uiReducer(uiInitialState, setLanguageAC(newLanguage));
     expect(actual.language).toEqual(newLanguage);
   });
