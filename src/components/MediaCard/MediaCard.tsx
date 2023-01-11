@@ -1,5 +1,7 @@
+import { MovieEntityType } from '@/types';
+
 interface Props {
-  media: any;
+  media: MovieEntityType; // TODO: add TV
   // isFetching?: boolean;
   //   error: any;
   //   isError: boolean;
@@ -11,6 +13,7 @@ export const MediaCard = ({ media }: Props) => {
   return (
     <div>
       <span>MediaCard</span>
+      <span>{media.title}</span>
     </div>
   );
 };
