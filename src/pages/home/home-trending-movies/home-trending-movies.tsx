@@ -25,11 +25,11 @@ export const HomeTrendingMovies = () => {
   console.log('trendingMovies', trendingMovies);
 
   return (
-    <>
+    <Grid container spacing={2}>
       {!isError &&
         trendingMovies.length > 0 &&
         trendingMovies.map((movie: any, idx: number) => (
-          <Grid item xs={12} md={6} lg={4} key={nanoid()}>
+          <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
             {isLoading ? (
               <MediaCardSkeleton />
             ) : (
@@ -51,6 +51,6 @@ export const HomeTrendingMovies = () => {
             )} */}
           </Grid>
         ))}
-    </>
+    </Grid>
   );
 };

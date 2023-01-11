@@ -3,6 +3,7 @@ import { AxiosError, AxiosRequestConfig } from 'axios';
 
 import { axiosInstance } from '@/api/connection';
 import type { RootState } from '@/store/configureStore';
+import { MoviesResponseSchema } from '@/types';
 import { alpha2iso } from '@/utils/alpha2iso';
 import { waitForMe } from '@/utils/waitforme';
 
@@ -41,17 +42,16 @@ export const moviedbBaseQuery =
         data,
       });
       // ZOD validation
-      //   try {
-      //     PicturesDataResponseSchema.parse(res.data);
-      //   } catch (error) {
-      //     // TODO:
-      //     // Log & alert error <-- very important!
-      //     console.log(error);
-      //   }
+      try {
+        MoviesResponseSchema.parse(res.data);
+      } catch (error) {
+        console.log(error);
+      }
 
       return { data: res.data };
     } catch (axiosError) {
       const err = axiosError as AxiosError;
+
       return {
         error: { status: err.response?.status, data: err.response?.data },
       };
