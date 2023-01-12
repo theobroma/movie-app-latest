@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
 
-import { MediaCard } from '@/components/MediaCard/MediaCard';
+import { MediaCardMovie } from '@/components/MediaCard/MediaCardMovie/MediaCardMovie';
 import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingMoviesQuery } from '@/store/trending/api';
@@ -30,10 +30,14 @@ export const HomeTrendingMovies = () => {
         trendingMovies.length > 0 &&
         trendingMovies.map((movie: any, idx: number) => (
           <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
-            {isLoading ? <MediaCardSkeleton /> : <MediaCard media={movie} />}
+            {isLoading ? (
+              <MediaCardSkeleton />
+            ) : (
+              <MediaCardMovie movie={movie} />
+            )}
             {/* DON'T delete. usefull for skeleton debug */}
             {/* {idx % 2 === 0 ? (
-               <MediaCard media={movie} />
+              <MediaCardMovie movie={movie} />
             ) : (
               <MediaCardSkeleton />
             )} */}

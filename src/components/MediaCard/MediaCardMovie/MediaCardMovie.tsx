@@ -13,7 +13,7 @@ export const MediaCardMovie = ({ movie, parentMediaType }: Props) => {
     title,
     originalTitle,
     originalLanguage,
-    releaseDate,
+    releaseDate = '',
     voteAverage,
     posterPath,
   } = movie;

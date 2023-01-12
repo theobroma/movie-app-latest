@@ -30,7 +30,7 @@ export const MediaCardBase = ({
   posterPath,
   releaseYear,
   title,
-  voteAverage,
+  voteAverage = 0,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
