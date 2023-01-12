@@ -1,5 +1,6 @@
 // https://stackoverflow.com/questions/59339321/how-to-change-visibility-of-another-class-when-hovering-using-jss
 // https://docs.tss-react.dev/nested-selectors
+
 import { makeStyles } from 'tss-react/mui';
 
 export const useStyles = makeStyles<void, 'mask'>()(
@@ -7,18 +8,10 @@ export const useStyles = makeStyles<void, 'mask'>()(
     media: {
       display: 'flex',
       flexDirection: 'column',
-      /* width: 200px; */
       padding: 5,
       margin: '5px 0',
-      // backgroundColor: 'white',
       color: 'black',
-      // borderRadius: 10,
       position: 'relative',
-      // fontFamily: 'Montserrat", sans-serif',
-      // '&:hover': {
-      //   backgroundColor: '#282c34',
-      //   color: 'white',
-      // },
     },
     poster: {
       width: '100%',
@@ -51,10 +44,6 @@ export const useStyles = makeStyles<void, 'mask'>()(
       },
     },
     subTitle: {
-      // display: 'flex',
-      // justifyContent: 'space-between',
-      // padding: '0 2px 3px',
-      // color: '#8f95a3',
       // color: `${theme.palette.text.secondary}`,
       color: '#8f95a3',
       margin: '0 0 5px',
@@ -75,7 +64,6 @@ export const useStyles = makeStyles<void, 'mask'>()(
       textAlign: 'center',
       padding: 10,
       borderRadius: 10,
-      // background: '#151617b8',
       background: 'linear-gradient(to bottom,#151617b8,#151617b8)',
       opacity: 0,
       zIndex: 5,
