@@ -1,10 +1,9 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { Link as RouterLink } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
 
-import { MediaCard } from '@/components/MediaCard/MediaCard';
 import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
+import { MediaCardTV } from '@/components/MediaCard/MediaCardTV/MediaCardTV';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingTVQuery } from '@/store/trending/api';
 import { languageISOSelector } from '@/store/ui/selectors';
@@ -28,19 +27,16 @@ export const HomeTrendingTVShows = () => {
     <Grid container spacing={2}>
       {!isError &&
         trendingTVShows.length > 0 &&
-        trendingTVShows.map((movie: any, idx: number) => (
+        trendingTVShows.map((tvshow: any, idx: number) => (
           <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
             {isLoading ? (
               <MediaCardSkeleton />
             ) : (
-              <>
-                {/* <MediaCard media={movie} /> */}
-                MediaCard
-              </>
+              <MediaCardTV tvshow={tvshow} />
             )}
             {/* DON'T delete. usefull for skeleton debug */}
             {/* {idx % 2 === 0 ? (
-               <MediaCard media={movie} />
+              <MediaCardTV tvshow={tvshow} />
             ) : (
               <MediaCardSkeleton />
             )} */}
