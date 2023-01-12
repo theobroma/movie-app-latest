@@ -4,41 +4,37 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
-// import { MovieEntityType, TVEntityType } from '@/types';
 
-import { StyledBadge, useStyles } from './MediaCardBase/MediaCardBase.styles';
+import { StyledBadge, useStyles } from './MediaCardBase.styles';
 
 const posterBase = 'https://image.tmdb.org/t/p/w300';
 const posterUnavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
-  media: any;
-  parentMediaType?: string; // crutch for similar movies
+  id: any;
+  mediaType: any;
+  originalLanguage: any;
+  originalTitle: any;
+  posterPath: any;
+  releaseYear: any;
+  title: any;
+  voteAverage: any;
 }
 
-export const MediaCard = ({ media, parentMediaType }: Props) => {
+export const MediaCardBase = ({
+  id,
+  mediaType,
+  originalLanguage,
+  originalTitle,
+  posterPath,
+  releaseYear,
+  title,
+  voteAverage,
+}: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
-
-  const {
-    id,
-    mediaType: movieMediaType,
-    title,
-    originalTitle,
-    originalLanguage,
-    releaseDate,
-    voteAverage,
-    posterPath,
-  } = media;
-
-  const mediaType = movieMediaType || parentMediaType;
-  // DIFFERENT FIELDS FOR MOVIE AND TV
-  const mediaTitle = title || originalTitle || 'title';
-  const mediaOriginalTitle = originalTitle || 'title';
-  const mediaReleaseYear = releaseDate.split('-')[0];
-  // 2 digits after comma
-  const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10;
+  const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10; // 2 digits after comma
   const mediaPoster = posterPath
     ? `${posterBase}${posterPath}`
     : posterUnavailable;
@@ -72,14 +68,14 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
         }}
         className={classes.title}
       >
-        <b>{mediaTitle}</b>
+        <b>{title}</b>
       </Link>
       <div className={classes.subTitle}>
-        <span>{mediaReleaseYear}</span>
+        <span>{releaseYear}</span>
         {shouldRenderOriginalTitle && (
           <>
             &nbsp;•&nbsp;
-            <span>{mediaOriginalTitle}</span>
+            <span>{originalTitle}</span>
           </>
         )}
       </div>
