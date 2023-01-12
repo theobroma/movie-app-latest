@@ -15,11 +15,6 @@ const posterUnavailable =
 interface Props {
   media: any;
   parentMediaType?: string; // crutch for similar movies
-  // isFetching?: boolean;
-  //   error: any;
-  //   isError: boolean;
-  //   isLoading: boolean;
-  //   isSuccess: boolean;
 }
 
 export const MediaCard = ({ media, parentMediaType }: Props) => {
@@ -40,10 +35,14 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
   const mediaType = movieMediaType || parentMediaType;
   // DIFFERENT FIELDS FOR MOVIE AND TV
   const mediaTitle = title || originalTitle || 'title';
-  const mediaTitleOriginal = originalTitle || 'title';
-  const mediaReleaseDate = releaseDate;
+  const mediaOriginalTitle = originalTitle || 'title';
+  const mediaReleaseYear = releaseDate.split('-')[0];
   // 2 digits after comma
   const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10;
+  const mediaPoster = posterPath
+    ? `${posterBase}${posterPath}`
+    : posterUnavailable;
+  const shouldRenderOriginalTitle = originalLanguage !== currentLanguage;
 
   return (
     <div className={classes.media} color="inherit">
@@ -59,11 +58,7 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
         }}
         className={classes.posterLink}
       >
-        <img
-          className={classes.poster}
-          src={posterPath ? `${posterBase}${posterPath}` : posterUnavailable}
-          alt={title}
-        />
+        <img className={classes.poster} src={mediaPoster} alt={title} />
         <div className={classes.mask}>
           <div>
             <PlayArrowIcon fontSize="inherit" />
@@ -80,11 +75,11 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
         <b>{mediaTitle}</b>
       </Link>
       <div className={classes.subTitle}>
-        <span>{mediaReleaseDate.split('-')[0]}</span>
-        {originalLanguage !== currentLanguage && (
+        <span>{mediaReleaseYear}</span>
+        {shouldRenderOriginalTitle && (
           <>
             &nbsp;•&nbsp;
-            <span>{mediaTitleOriginal}</span>
+            <span>{mediaOriginalTitle}</span>
           </>
         )}
       </div>
