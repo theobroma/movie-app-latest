@@ -3,7 +3,7 @@ import { AxiosError, AxiosRequestConfig } from 'axios';
 
 import { axiosInstance } from '@/api/connection';
 import type { RootState } from '@/store/configureStore';
-import { MoviesResponseSchema } from '@/types';
+import { MoviesResponseSchema, TVResponseSchema } from '@/types';
 import { alpha2iso } from '@/utils/alpha2iso';
 import { waitForMe } from '@/utils/waitforme';
 
@@ -43,7 +43,8 @@ export const moviedbBaseQuery =
       });
       // ZOD validation
       try {
-        MoviesResponseSchema.parse(res.data);
+        TVResponseSchema.parse(res.data);
+        // MoviesResponseSchema.parse(res.data);
       } catch (error) {
         console.log(error);
       }
