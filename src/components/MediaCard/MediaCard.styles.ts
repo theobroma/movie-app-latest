@@ -1,7 +1,9 @@
 // https://stackoverflow.com/questions/59339321/how-to-change-visibility-of-another-class-when-hovering-using-jss
 // https://docs.tss-react.dev/nested-selectors
 
-import { makeStyles } from 'tss-react/mui';
+import { makeStyles, withStyles } from 'tss-react/mui';
+
+import { Badge } from '@mui/material';
 
 export const useStyles = makeStyles<void, 'mask'>()(
   (_theme, _params, classes) => ({
@@ -83,14 +85,12 @@ export const useStyles = makeStyles<void, 'mask'>()(
   }),
 );
 
-// export const StyledBadge = withStyles((theme: Theme) =>
-//   createStyles({
-//     badge: {
-//       right: 30,
-//       top: 24,
-//       border: `2px solid ${theme.palette.background.paper}`,
-//       padding: '0 4px',
-//       minWidth: '35px',
-//     },
-//   }),
-// )(Badge);
+export const StyledBadge = withStyles(Badge, (theme, props) => ({
+  badge: {
+    right: 30,
+    top: 24,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+    minWidth: '35px',
+  },
+}));

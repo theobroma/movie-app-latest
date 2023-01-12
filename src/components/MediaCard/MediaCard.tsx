@@ -6,7 +6,7 @@ import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 // import { MovieEntityType, TVEntityType } from '@/types';
 
-import { useStyles } from './MediaCard.styles';
+import { StyledBadge, useStyles } from './MediaCard.styles';
 
 const posterBase = 'https://image.tmdb.org/t/p/w300';
 const posterUnavailable =
@@ -47,11 +47,11 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
 
   return (
     <div className={classes.media} color="inherit">
-      {/* <StyledBadge
+      <StyledBadge
         badgeContent={mediaVote}
         color={mediaVote > 6 ? 'primary' : 'secondary'}
         overlap="rectangular"
-      /> */}
+      />
       {/* poster */}
       <Link
         to={{
