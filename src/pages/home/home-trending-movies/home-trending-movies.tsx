@@ -30,19 +30,7 @@ export const HomeTrendingMovies = () => {
         trendingMovies.length > 0 &&
         trendingMovies.map((movie: any, idx: number) => (
           <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
-            {isLoading ? (
-              <MediaCardSkeleton />
-            ) : (
-              <RouterLink
-                key={movie.uuid}
-                to={`/cryptocurrencies/${movie.uuid}`}
-                style={{
-                  textDecoration: 'none',
-                }}
-              >
-                <MediaCard media={movie} />
-              </RouterLink>
-            )}
+            {isLoading ? <MediaCardSkeleton /> : <MediaCard media={movie} />}
             {/* DON'T delete. usefull for skeleton debug */}
             {/* {idx % 2 === 0 ? (
                <MediaCard media={movie} />

@@ -33,16 +33,10 @@ export const HomeTrendingTVShows = () => {
             {isLoading ? (
               <MediaCardSkeleton />
             ) : (
-              <RouterLink
-                key={movie.uuid}
-                to={`/cryptocurrencies/${movie.uuid}`}
-                style={{
-                  textDecoration: 'none',
-                }}
-              >
+              <>
                 {/* <MediaCard media={movie} /> */}
                 MediaCard
-              </RouterLink>
+              </>
             )}
             {/* DON'T delete. usefull for skeleton debug */}
             {/* {idx % 2 === 0 ? (

@@ -4,7 +4,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
-import { MovieEntityType } from '@/types';
+// import { MovieEntityType, TVEntityType } from '@/types';
 
 import { useStyles } from './MediaCard.styles';
 
@@ -13,7 +13,7 @@ const posterUnavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
-  media: MovieEntityType; // TODO: add TV
+  media: any;
   parentMediaType?: string; // crutch for similar movies
   // isFetching?: boolean;
   //   error: any;
