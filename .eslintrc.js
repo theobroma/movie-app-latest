@@ -30,7 +30,7 @@ module.exports = {
       'error',
       {
         selector: 'variable',
-        format: ['camelCase', 'PascalCase', 'UPPER_CASE', 'snake_case'],
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
       },
       {
         selector: 'variable',

@@ -8,8 +8,9 @@ import { MovieEntityType } from '@/types';
 
 import { useStyles } from './MediaCard.styles';
 
-const img_300 = 'https://image.tmdb.org/t/p/w300';
-const unavailable = 'https://www.movienewz.com/img/films/poster-holder.jpg';
+const posterBase = 'https://image.tmdb.org/t/p/w300';
+const posterUnavailable =
+  'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
   media: MovieEntityType; // TODO: add TV
@@ -27,22 +28,22 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
 
   const {
     id,
-    media_type,
+    mediaType: movieMediaType,
     title,
-    original_title,
-    original_language,
-    release_date,
-    vote_average,
-    poster_path,
+    originalTitle,
+    originalLanguage,
+    releaseDate,
+    voteAverage,
+    posterPath,
   } = media;
 
-  const mediaType = media_type || parentMediaType;
+  const mediaType = movieMediaType || parentMediaType;
   // DIFFERENT FIELDS FOR MOVIE AND TV
-  const mediaTitle = title || original_title || 'title';
-  const mediaTitleOriginal = original_title || 'title';
-  const mediaReleaseDate = release_date;
+  const mediaTitle = title || originalTitle || 'title';
+  const mediaTitleOriginal = originalTitle || 'title';
+  const mediaReleaseDate = releaseDate;
   // 2 digits after comma
-  const mediaVote = Math.round((vote_average + Number.EPSILON) * 10) / 10;
+  const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10;
 
   return (
     <div className={classes.media} color="inherit">
@@ -60,7 +61,7 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
       >
         <img
           className={classes.poster}
-          src={poster_path ? `${img_300}${poster_path}` : unavailable}
+          src={posterPath ? `${posterBase}${posterPath}` : posterUnavailable}
           alt={title}
         />
         <div className={classes.mask}>
@@ -80,7 +81,7 @@ export const MediaCard = ({ media, parentMediaType }: Props) => {
       </Link>
       <div className={classes.subTitle}>
         <span>{mediaReleaseDate.split('-')[0]}</span>
-        {original_language !== currentLanguage && (
+        {originalLanguage !== currentLanguage && (
           <>
             &nbsp;•&nbsp;
             <span>{mediaTitleOriginal}</span>
