@@ -18,7 +18,7 @@ export const MediaCardTV = ({ tvshow, parentMediaType }: Props) => {
     posterPath,
   } = tvshow;
 
-  const mediaType = tvMediaType || parentMediaType;
+  const mediaType = tvMediaType || parentMediaType || '';
   const tvTitle = name || originalName || 'title';
   const tvOriginalTitle = originalName || 'title';
   const tvReleaseYear = firstAirDate.split('-')[0];

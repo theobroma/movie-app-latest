@@ -4,6 +4,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
+import { MovieEntityType } from '@/types';
 
 import { StyledBadge, useStyles } from './MediaCardBase.styles';
 
@@ -12,14 +13,14 @@ const posterUnavailable =
   'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
-  id: any;
-  mediaType: any;
-  originalLanguage: any;
-  originalTitle: any;
-  posterPath: any;
-  releaseYear: any;
-  title: any;
-  voteAverage: any;
+  id: MovieEntityType['id'];
+  mediaType: MovieEntityType['mediaType'];
+  originalLanguage: MovieEntityType['originalLanguage'];
+  originalTitle: MovieEntityType['originalTitle'];
+  posterPath: MovieEntityType['posterPath'];
+  releaseYear: string;
+  title: MovieEntityType['title'];
+  voteAverage: MovieEntityType['voteAverage'];
 }
 
 export const MediaCardBase = ({

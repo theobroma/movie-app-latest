@@ -18,7 +18,7 @@ export const MediaCardMovie = ({ movie, parentMediaType }: Props) => {
     posterPath,
   } = movie;
 
-  const mediaType = movieMediaType || parentMediaType;
+  const mediaType = movieMediaType || parentMediaType || '';
   const movieTitle = title || originalTitle || 'title';
   const movieOriginalTitle = originalTitle || 'title';
   const movieReleaseYear = releaseDate.split('-')[0];
