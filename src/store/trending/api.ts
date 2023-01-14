@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_URL, API_KEY } from '@/api/connection';
 import { TimeWindowsEnum } from '@/enums/time-windows.enum';
 
-import { moviedbBaseQuery } from './ axiosBaseQuery';
+import { moviedbBaseQuery } from './axiosBaseQuery';
 
 export const trendingAPI = createApi({
   baseQuery: moviedbBaseQuery({
