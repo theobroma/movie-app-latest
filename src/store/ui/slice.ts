@@ -5,7 +5,7 @@ import { ThemeColorsEnum } from '@/types';
 
 export const uiInitialState = {
   theme: ThemeColorsEnum.LIGHT,
-  language: 'uk' as LanguageEnum,
+  language: LanguageEnum.UK,
 };
 
 export const uiSlice = createSlice({

@@ -1,14 +1,18 @@
-import { useState } from 'react';
-
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
+import { TimeWindowsEnum } from '@/enums/time-windows.enum';
+import { useAppDispatch, useAppSelector } from '@/store/configureStore';
+import { timeWindowsSelector } from '@/store/trending/selectors';
+import { setTimeWindowsAC } from '@/store/trending/slice';
+
 export const HomeTrendingTabs = () => {
-  const [value, setValue] = useState(0);
+  const dispatch = useAppDispatch();
+  const timeWindows = useAppSelector(timeWindowsSelector);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    dispatch(setTimeWindowsAC(newValue));
   };
 
   return (
@@ -16,12 +20,12 @@ export const HomeTrendingTabs = () => {
       sx={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}
     >
       <Tabs
-        value={value}
+        value={timeWindows}
         onChange={handleChange}
         aria-label="time windows tabs"
       >
-        <Tab label="Day" />
-        <Tab label="Week" />
+        <Tab label="Day" value={TimeWindowsEnum.Day} />
+        <Tab label="Week" value={TimeWindowsEnum.Week} />
       </Tabs>
     </Box>
   );
