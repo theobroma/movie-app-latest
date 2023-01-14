@@ -22,6 +22,9 @@ const TrendingTvshowsPage = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
+const MediaDetailsPage = lazy(() =>
+  pMinDelay(import('@/pages/media-details/media-details.page'), MIN_LAZY_DELAY),
+);
 
 export const AppContainer = () => (
   <Suspense fallback={<PageLoader />}>
@@ -29,6 +32,10 @@ export const AppContainer = () => (
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
+          <Route
+            path="/details/:mediaType/:mediaId"
+            element={<MediaDetailsPage />}
+          />
           {/* Trending */}
           <Route path="trending" element={<Outlet />}>
             <Route path="movies" element={<TrendingMoviesPage />} />
