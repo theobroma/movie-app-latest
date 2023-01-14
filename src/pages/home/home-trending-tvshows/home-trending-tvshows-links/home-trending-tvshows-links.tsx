@@ -5,7 +5,7 @@ import { Box, Button, Grid } from '@mui/material';
 
 import { PageEnum } from '@/enums/page.enum';
 
-export const HomeTrendingMoviesLinks = () => (
+export const HomeTrendingTvshowsLinks = () => (
   <Grid item xs={12}>
     <Box
       sx={{
@@ -15,18 +15,18 @@ export const HomeTrendingMoviesLinks = () => (
       }}
     >
       <RouterLink
-        to={PageEnum.TrendingMovies}
+        to={PageEnum.TrendingTV}
         style={{
           textDecoration: 'none',
         }}
       >
         <Button variant="contained" color="primary">
-          Movies
+          TV Shows
           {/* <Trans i18nKey="Movies" /> */}
         </Button>
       </RouterLink>
       <RouterLink
-        to={PageEnum.TrendingMovies}
+        to={PageEnum.TrendingTV}
         style={{
           textDecoration: 'none',
         }}

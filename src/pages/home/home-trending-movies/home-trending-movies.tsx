@@ -28,7 +28,7 @@ export const HomeTrendingMovies = () => {
   console.log('trendingMovies', trendingMovies);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ mt: '16px' }}>
       <HomeTrendingMoviesLinks />
       {!isError &&
         trendingMovies.length > 0 &&

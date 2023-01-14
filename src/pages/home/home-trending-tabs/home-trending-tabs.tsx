@@ -16,9 +16,7 @@ export const HomeTrendingTabs = () => {
   };
 
   return (
-    <Box
-      sx={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}
-    >
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <Tabs
         value={timeWindows}
         onChange={handleChange}

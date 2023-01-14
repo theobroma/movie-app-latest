@@ -9,6 +9,8 @@ import { useTrendingTVQuery } from '@/store/trending/api';
 import { timeWindowsSelector } from '@/store/trending/selectors';
 import { languageISOSelector } from '@/store/ui/selectors';
 
+import { HomeTrendingTvshowsLinks } from './home-trending-tvshows-links/home-trending-tvshows-links';
+
 export const HomeTrendingTVShows = () => {
   const timeWindows = useAppSelector(timeWindowsSelector);
   const langISOCode = useAppSelector(languageISOSelector);
@@ -30,7 +32,8 @@ export const HomeTrendingTVShows = () => {
   console.log('trendingTVShows', trendingTVShows);
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ mt: '16px' }}>
+      <HomeTrendingTvshowsLinks />
       {!isError &&
         trendingTVShows.length > 0 &&
         trendingTVShows.map((tvshow: any, idx: number) => (
