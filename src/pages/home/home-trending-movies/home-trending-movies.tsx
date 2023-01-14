@@ -9,6 +9,8 @@ import { useTrendingMoviesQuery } from '@/store/trending/api';
 import { timeWindowsSelector } from '@/store/trending/selectors';
 import { languageISOSelector } from '@/store/ui/selectors';
 
+import { HomeTrendingMoviesLinks } from './home-trending-movies-links/home-trending-movies-links';
+
 export const HomeTrendingMovies = () => {
   const timeWindows = useAppSelector(timeWindowsSelector);
   const langISOCode = useAppSelector(languageISOSelector);
@@ -27,6 +29,7 @@ export const HomeTrendingMovies = () => {
 
   return (
     <Grid container spacing={2}>
+      <HomeTrendingMoviesLinks />
       {!isError &&
         trendingMovies.length > 0 &&
         trendingMovies.map((movie: any, idx: number) => (

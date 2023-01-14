@@ -1,6 +1,6 @@
 import pMinDelay from 'p-min-delay';
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 import { PageLoader } from '@/atoms/page-loader/page-loader';
 
@@ -17,6 +17,12 @@ export const AppContainer = () => (
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
+          {/* Trending */}
+          <Route path="trending" element={<Outlet />}>
+            <Route path="movies" element={<>trending movies</>} />
+            <Route path="tv" element={<>trending tv</>} />
+            {/* <Route index element={<div>Click any tab.</div>} /> */}
+          </Route>
           <Route path="*" element={<div>Not Found</div>} />
         </Route>
       </Routes>
