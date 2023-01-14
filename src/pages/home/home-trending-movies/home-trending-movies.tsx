@@ -1,5 +1,4 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { Link as RouterLink } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
 
@@ -7,9 +6,11 @@ import { MediaCardMovie } from '@/components/MediaCard/MediaCardMovie/MediaCardM
 import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingMoviesQuery } from '@/store/trending/api';
+import { timeWindowsSelector } from '@/store/trending/selectors';
 import { languageISOSelector } from '@/store/ui/selectors';
 
 export const HomeTrendingMovies = () => {
+  const timeWindows = useAppSelector(timeWindowsSelector);
   const langISOCode = useAppSelector(languageISOSelector);
   const {
     data: moviesData,
@@ -17,7 +18,7 @@ export const HomeTrendingMovies = () => {
     isError,
     isLoading,
     // isFetching,
-  } = useTrendingMoviesQuery({ page: 1, isoCode: langISOCode });
+  } = useTrendingMoviesQuery({ page: 1, isoCode: langISOCode, timeWindows });
   // Slice just first 6
   const trendingMovies =
     moviesData?.results.slice(0, 6) || Array(6).fill('none');

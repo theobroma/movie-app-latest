@@ -6,9 +6,11 @@ import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/Medi
 import { MediaCardTV } from '@/components/MediaCard/MediaCardTV/MediaCardTV';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingTVQuery } from '@/store/trending/api';
+import { timeWindowsSelector } from '@/store/trending/selectors';
 import { languageISOSelector } from '@/store/ui/selectors';
 
 export const HomeTrendingTVShows = () => {
+  const timeWindows = useAppSelector(timeWindowsSelector);
   const langISOCode = useAppSelector(languageISOSelector);
   const {
     data: moviesData,
@@ -16,7 +18,11 @@ export const HomeTrendingTVShows = () => {
     isError,
     isLoading,
     // isFetching,
-  } = useTrendingTVQuery({ page: 1, isoCode: langISOCode });
+  } = useTrendingTVQuery({
+    page: 1,
+    isoCode: langISOCode,
+    timeWindows,
+  });
   // Slice just first 6
   const trendingTVShows =
     moviesData?.results.slice(0, 6) || Array(6).fill('none');
