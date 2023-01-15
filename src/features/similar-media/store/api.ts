@@ -5,14 +5,14 @@ import { MediaTypeEnum } from '@/enums/media-type.enum';
 
 import { baseQuery } from './baseQuery';
 
-export const similarAPI = createApi({
+const similarAPI = createApi({
   baseQuery: baseQuery({
     baseUrl: `${API_URL}`,
   }),
   endpoints: (builder) => ({
     similarMedia: builder.query<
       any,
-      { page: number | void; mediaType: MediaTypeEnum; mediaId: string }
+      { page?: number | void; mediaType: MediaTypeEnum; mediaId: string }
     >({
       query: ({ page = 1, mediaType, mediaId }) => ({
         url: `${mediaType}/${mediaId}/similar?page=${page}`,

@@ -11,7 +11,7 @@ export const MediaDetailsSimilar = () => {
   return (
     <>
       <span>Similar</span>
-      <SimilarMedia />
+      <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
       <br />
       mediaId:{mediaId}
       <br />
