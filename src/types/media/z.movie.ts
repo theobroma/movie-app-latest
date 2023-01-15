@@ -29,21 +29,19 @@ export const MoviesResponseSchema = z.object({
 export type MoviesResponseType = z.infer<typeof MoviesResponseSchema>;
 
 // SIMILAR
-// export const MovieEntityOmitMediaTypeSchema = MovieEntitySchema.omit({
-//   media_type: true,
-// });
+export const SimilarMovieEntitySchema = MovieEntitySchema.omit({
+  mediaType: true,
+});
 
-// export type MovieEntityOmitMediaType = z.infer<
-//   typeof MovieEntityOmitMediaTypeSchema
-// >;
+export type SimilarMovieEntityType = z.infer<typeof SimilarMovieEntitySchema>;
 
-// export const SimilarMoviesResponseSchema = z.object({
-//   page: z.number(),
-//   results: z.array(MovieEntityOmitMediaTypeSchema),
-//   total_pages: z.number(),
-//   total_results: z.number(),
-// });
+export const SimilarMoviesResponseSchema = z.object({
+  page: z.number(),
+  results: z.array(SimilarMovieEntitySchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
 
-// export type SimilarMoviesResponseType = z.infer<
-//   typeof SimilarMoviesResponseSchema
-// >;
+export type SimilarMoviesResponseType = z.infer<
+  typeof SimilarMoviesResponseSchema
+>;

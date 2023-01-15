@@ -29,17 +29,17 @@ export const TVResponseSchema = z.object({
 export type TVResponseType = z.infer<typeof TVResponseSchema>;
 
 // SIMILAR
-// export const TVEntityOmitMediaTypeSchema = TVEntitySchema.omit({
-//   media_type: true,
-// });
+export const SimilarTVEntitySchema = TVEntitySchema.omit({
+  mediaType: true,
+});
 
-// export type TVEntityOmitMediaType = z.infer<typeof TVEntityOmitMediaTypeSchema>;
+export type SimilarTVEntityType = z.infer<typeof SimilarTVEntitySchema>;
 
-// export const SimilarTVResponseSchema = z.object({
-//   page: z.number(),
-//   results: z.array(TVEntityOmitMediaTypeSchema),
-//   total_pages: z.number(),
-//   total_results: z.number(),
-// });
+export const SimilarTVResponseSchema = z.object({
+  page: z.number(),
+  results: z.array(SimilarTVEntitySchema),
+  total_pages: z.number(),
+  total_results: z.number(),
+});
 
-// export type SimilarTVResponseType = z.infer<typeof SimilarTVResponseSchema>;
+export type SimilarTVResponseType = z.infer<typeof SimilarTVResponseSchema>;
