@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { LanguageEnum } from '@/enums/language.enum';
-import { ThemeColorsEnum } from '@/types';
+import { ThemeEnum } from '@/enums/theme.enum';
 
 export const uiInitialState = {
-  theme: ThemeColorsEnum.LIGHT,
+  theme: ThemeEnum.Light,
   language: LanguageEnum.UK,
 };
 
