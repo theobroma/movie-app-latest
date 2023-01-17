@@ -10,7 +10,7 @@ import { moviesAPI } from '@/api/media.api';
 import { waitForMe } from '@/utils/waitforme';
 
 const similarInitialState = {
-  data: Array(0) as any,
+  data: [] as any,
   // utils
   isLoading: false,
   isSuccess: false,
@@ -24,7 +24,7 @@ export const getSimilarMediaTC = createAsyncThunk<
   { rejectValue: any }
 >('similar/getSimilarMedia', async (param, thunkAPI) => {
   try {
-    await waitForMe(500);
+    await waitForMe(1000);
     const res = await moviesAPI.getSimilar(param.mediaId, param.mediaType);
 
     // ZOD validation
@@ -52,7 +52,7 @@ export const similarSlice = createSlice({
       .addCase(getSimilarMediaTC.pending, (state) => {
         state.isLoading = true;
         //   clear data
-        state.data = Array(20).fill('none') as any; // for skeletons;
+        state.data = [] as any;
         state.isSuccess = false;
         state.isError = false;
         state.error = '';

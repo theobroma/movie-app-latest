@@ -11,11 +11,11 @@ export const MediaDetailsSimilar = () => {
   return (
     <>
       <span>Similar</span>
-      <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
       <br />
       mediaId:{mediaId}
       <br />
       mediaType :{mediaType}
+      <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
     </>
   );
 };

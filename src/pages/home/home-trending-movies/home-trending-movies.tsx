@@ -23,7 +23,7 @@ export const HomeTrendingMovies = () => {
   } = useTrendingMoviesQuery({ page: 1, isoCode: langISOCode, timeWindows });
   // Slice just first 6
   const trendingMovies =
-    moviesData?.results.slice(0, 6) || Array(6).fill('none');
+    moviesData?.results.slice(0, 6) || Array(6).fill('none'); // for skeletons;
 
   console.log('trendingMovies', trendingMovies);
 

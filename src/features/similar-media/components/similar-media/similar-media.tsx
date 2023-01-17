@@ -29,7 +29,7 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   // console.log('data :>> ', data);
   const dispatch = useAppDispatch();
   const {
-    data: { results = [] },
+    data: { results },
     // error,
     isError,
     isLoading,
@@ -44,7 +44,8 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
     }
   }, [dispatch, mediaId, mediaType, langISOCode]);
 
-  console.log('results :>> ', results);
+  // Slice just first 6
+  const similarMedia = results?.slice(0, 6) || Array(6).fill('none'); // for skeletons;
 
   return (
     <Container maxWidth="lg">
@@ -53,14 +54,10 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
           Similar
           {/* <Trans i18nKey="Heading.Similar" /> */}
         </Typography>
-        <Grid
-          container
-          //  spacing={3}
-          // style={{ padding: 3 }}
-        >
+        <Grid container spacing={2}>
           {/* results */}
           {!isError &&
-            results.map((media: any) => (
+            similarMedia.map((media: any) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                 {isLoading ? (
                   <MediaCardSkeleton />
