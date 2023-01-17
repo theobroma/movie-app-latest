@@ -3,7 +3,9 @@ import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
-import { similarAPI } from '@/features/similar-media/store/api';
+// import { similarAPI } from '@/features/similar-media/store/api';
+
+import { similarSlice } from '@/features/similar-media/store/slice';
 
 import { trendingAPI } from './trending/api';
 import { trendingSlice } from './trending/slice';
@@ -16,10 +18,11 @@ const logger = createLogger({
 
 const reducers = {
   // Slices
+  [similarSlice.name]: similarSlice.reducer,
   [trendingSlice.name]: trendingSlice.reducer,
   [uiSlice.name]: uiSlice.reducer,
   // API
-  [similarAPI.reducerPath]: similarAPI.reducer,
+  // [similarAPI.reducerPath]: similarAPI.reducer,
   [trendingAPI.reducerPath]: trendingAPI.reducer,
 };
 
