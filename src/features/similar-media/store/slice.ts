@@ -10,7 +10,7 @@ import { moviesAPI } from '@/api/media.api';
 import { waitForMe } from '@/utils/waitforme';
 
 const similarInitialState = {
-  data: {} as any,
+  data: [] as any,
   // utils
   isFetching: false,
   isSuccess: false,
@@ -59,7 +59,7 @@ export const similarSlice = createSlice({
       .addCase(getSimilarMediaTC.pending, (state) => {
         state.isFetching = true;
         //   clear data
-        state.data = {} as any;
+        state.data = [] as any;
         state.isSuccess = false;
         state.isError = false;
         state.error = '';
