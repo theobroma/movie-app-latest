@@ -3,6 +3,8 @@ import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
+import { similarAPI } from '@/features/similar-media/store/api';
+
 import { trendingAPI } from './trending/api';
 import { trendingSlice } from './trending/slice';
 import { uiSlice } from './ui/slice';
@@ -17,6 +19,7 @@ const reducers = {
   [trendingSlice.name]: trendingSlice.reducer,
   [uiSlice.name]: uiSlice.reducer,
   // API
+  [similarAPI.reducerPath]: similarAPI.reducer,
   [trendingAPI.reducerPath]: trendingAPI.reducer,
 };
 
@@ -33,7 +36,11 @@ export const rootReducer: Reducer<RootState> = (state, action) => {
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([logger, trendingAPI.middleware]),
+    getDefaultMiddleware().concat([
+      logger,
+      // similarAPI.middleware,
+      trendingAPI.middleware,
+    ]),
   // devTools: process.env.NODE_ENV === 'development',
   devTools: true,
 });
