@@ -10,9 +10,9 @@ import { moviesAPI } from '@/api/media.api';
 import { waitForMe } from '@/utils/waitforme';
 
 const similarInitialState = {
-  data: [] as any,
+  data: Array(0) as any,
   // utils
-  isFetching: false,
+  isLoading: false,
   isSuccess: false,
   isError: false,
   error: '' as string | null,
@@ -21,7 +21,7 @@ const similarInitialState = {
 export const getSimilarMediaTC = createAsyncThunk<
   any,
   { mediaId: string; mediaType: string },
-  { rejectValue: string }
+  { rejectValue: any }
 >('similar/getSimilarMedia', async (param, thunkAPI) => {
   try {
     await waitForMe(500);
@@ -37,16 +37,9 @@ export const getSimilarMediaTC = createAsyncThunk<
 
     return res.data;
   } catch (err: any) {
-    // return thunkAPI.rejectWithValue(err.response.data);
-    return thunkAPI.rejectWithValue(
-      `Server Error fetching similar media.Error: ${JSON.stringify(
-        err.response.data,
-      )}`,
-    );
+    return thunkAPI.rejectWithValue(err.response.data);
   }
 });
-
-// export type SimilarInitialStateType = typeof similarInitialState;
 
 export const similarSlice = createSlice({
   name: 'similar',
@@ -57,9 +50,9 @@ export const similarSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getSimilarMediaTC.pending, (state) => {
-        state.isFetching = true;
+        state.isLoading = true;
         //   clear data
-        state.data = [] as any;
+        state.data = Array(20).fill('none') as any; // for skeletons;
         state.isSuccess = false;
         state.isError = false;
         state.error = '';
@@ -70,7 +63,7 @@ export const similarSlice = createSlice({
           // simulate empty results
           // state.data.results = [];
         }
-        state.isFetching = false;
+        state.isLoading = false;
         state.isSuccess = true;
       })
       // .addCase(getSimilarMediaTC.rejected, (state, action) => {
@@ -83,7 +76,7 @@ export const similarSlice = createSlice({
       .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
         state.isError = true;
-        state.isFetching = false;
+        state.isLoading = false;
       });
   },
 });
@@ -92,5 +85,4 @@ function isError(action: AnyAction) {
   return action.type.endsWith('rejected');
 }
 
-// export const similarReducer = similarSlice.reducer;
 // export const { resetStateAC } = similarSlice.actions;

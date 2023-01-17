@@ -30,10 +30,10 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   const dispatch = useAppDispatch();
   const {
     data: { results = [] },
-    error,
+    // error,
     isError,
-    isFetching,
-    isSuccess,
+    isLoading,
+    // isSuccess,
   } = useAppSelector(similarMediaSelector);
   // just for useEffect refetch if changed
   const langISOCode = useAppSelector(languageISOSelector);
@@ -62,7 +62,7 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
           {!isError &&
             results.map((media: any) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                {isFetching ? (
+                {isLoading ? (
                   <MediaCardSkeleton />
                 ) : (
                   <MediaCardMovie movie={media} parentMediaType={mediaType} />
