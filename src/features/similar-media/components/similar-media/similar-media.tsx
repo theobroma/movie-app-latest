@@ -1,11 +1,10 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { useEffect } from 'react';
 
-import { Container, Box, Typography, Grid } from '@mui/material';
+import { Container, Box, Typography, Grid, Alert, Stack } from '@mui/material';
 
+import { AppError } from '@/atoms/AppError/AppError';
 import { MediaCard } from '@/components/MediaCard/MediaCard';
-import { MediaCardMovie } from '@/components/MediaCard/MediaCardMovie/MediaCardMovie';
-import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { similarMediaSelector } from '@/features/similar-media/store/selectors';
 import { getSimilarMediaTC } from '@/features/similar-media/store/slice';
@@ -31,10 +30,10 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   const dispatch = useAppDispatch();
   const {
     data: { results },
-    // error,
+    error,
     isError,
     isLoading,
-    // isSuccess,
+    isSuccess,
   } = useAppSelector(similarMediaSelector);
   // just for useEffect refetch if changed
   const langISOCode = useAppSelector(languageISOSelector);
@@ -58,6 +57,7 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
         <Grid container spacing={2}>
           {/* results */}
           {!isError &&
+            similarMedia.length > 0 &&
             similarMedia.map((media: any, idx: number) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                 <MediaCard
@@ -69,19 +69,19 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
               </Grid>
             ))}
           {/* no results */}
-          {/* {!!isSuccess && resultsToShow.length === 0 && (
+          {isSuccess && similarMedia.length === 0 && (
             <Grid item xs={12}>
-              <EmptyBlock>There is no data</EmptyBlock>
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert severity="warning">There is no data</Alert>
+              </Stack>
             </Grid>
-          )} */}
+          )}
           {/* error */}
-          {/* {!!isError && (
+          {isError && (
             <Grid item xs={12}>
-              <AppAlert variant="standard" severity="error">
-                {error}
-              </AppAlert>
+              <AppError error={error} />
             </Grid>
-          )} */}
+          )}
         </Grid>
       </Box>
     </Container>
