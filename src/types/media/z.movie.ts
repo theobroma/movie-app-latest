@@ -38,8 +38,8 @@ export type SimilarMovieEntityType = z.infer<typeof SimilarMovieEntitySchema>;
 export const SimilarMoviesResponseSchema = z.object({
   page: z.number(),
   results: z.array(SimilarMovieEntitySchema),
-  total_pages: z.number(),
-  total_results: z.number(),
+  totalPages: z.number(),
+  totalResults: z.number(),
 });
 
 export type SimilarMoviesResponseType = z.infer<

@@ -38,8 +38,8 @@ export type SimilarTVEntityType = z.infer<typeof SimilarTVEntitySchema>;
 export const SimilarTVResponseSchema = z.object({
   page: z.number(),
   results: z.array(SimilarTVEntitySchema),
-  total_pages: z.number(),
-  total_results: z.number(),
+  totalPages: z.number(),
+  totalResults: z.number(),
 });
 
 export type SimilarTVResponseType = z.infer<typeof SimilarTVResponseSchema>;
