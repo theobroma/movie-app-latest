@@ -12,7 +12,7 @@ interface Props {
   media: any;
   isLoading: boolean;
   parentMediaType: string; // crutch for similar movies
-  idx?: number;
+  idx?: number; // for skeleton debug
 }
 
 export const MediaCard = ({
@@ -20,18 +20,16 @@ export const MediaCard = ({
   isLoading,
   parentMediaType,
   idx,
-}: Props) => {
-  return (
-    <>
-      {isLoading ? (
-        <MediaCardSkeleton />
-      ) : parentMediaType === MediaTypeEnum.MOVIE ? (
-        <MediaCardMovie movie={media} parentMediaType={parentMediaType} />
-      ) : (
-        <MediaCardTV tvshow={media} parentMediaType={parentMediaType} />
-      )}
-      {/* usefull for skeleton debug */}
-      {/* {idx % 2 === 0 ? <MediaCardMovie movie={movie} /> : <MediaCardSkeleton />} */}
-    </>
-  );
-};
+}: Props) => (
+  <>
+    {isLoading ? (
+      <MediaCardSkeleton />
+    ) : parentMediaType === MediaTypeEnum.MOVIE ? (
+      <MediaCardMovie movie={media} parentMediaType={parentMediaType} />
+    ) : (
+      <MediaCardTV tvshow={media} parentMediaType={parentMediaType} />
+    )}
+    {/* for skeleton debug */}
+    {/* {idx % 2 === 0 ? <MediaCardMovie movie={movie} /> : <MediaCardSkeleton />} */}
+  </>
+);

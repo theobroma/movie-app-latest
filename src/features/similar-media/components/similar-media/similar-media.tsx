@@ -58,12 +58,13 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
         <Grid container spacing={2}>
           {/* results */}
           {!isError &&
-            similarMedia.map((media: any) => (
+            similarMedia.map((media: any, idx: number) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                 <MediaCard
                   media={media}
                   isLoading={isLoading}
                   parentMediaType={mediaType}
+                  // idx={idx}
                 />
               </Grid>
             ))}
