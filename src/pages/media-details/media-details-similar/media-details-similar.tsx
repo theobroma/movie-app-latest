@@ -8,14 +8,5 @@ export const MediaDetailsSimilar = () => {
     keyof MediaDetailsRouteParams
   >() as MediaDetailsRouteParams;
 
-  return (
-    <>
-      <span>Similar</span>
-      <br />
-      mediaId:{mediaId}
-      <br />
-      mediaType :{mediaType}
-      <SimilarMedia mediaId={mediaId} mediaType={mediaType} />
-    </>
-  );
+  return <SimilarMedia mediaId={mediaId} mediaType={mediaType} />;
 };
