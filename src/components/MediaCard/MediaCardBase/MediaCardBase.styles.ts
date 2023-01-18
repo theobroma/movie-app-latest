@@ -1,4 +1,3 @@
-// https://stackoverflow.com/questions/59339321/how-to-change-visibility-of-another-class-when-hovering-using-jss
 // https://docs.tss-react.dev/nested-selectors
 
 import { makeStyles, withStyles } from 'tss-react/mui';
