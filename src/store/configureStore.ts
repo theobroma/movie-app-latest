@@ -7,6 +7,7 @@ import { createLogger } from 'redux-logger';
 
 import { similarSlice } from '@/features/similar-media/store/slice';
 
+import { detailsSlice } from './details/slice';
 import { trendingAPI } from './trending/api';
 import { trendingSlice } from './trending/slice';
 import { uiSlice } from './ui/slice';
@@ -18,6 +19,7 @@ const logger = createLogger({
 
 const reducers = {
   // Slices
+  [detailsSlice.name]: detailsSlice.reducer,
   [similarSlice.name]: similarSlice.reducer,
   [trendingSlice.name]: trendingSlice.reducer,
   [uiSlice.name]: uiSlice.reducer,
