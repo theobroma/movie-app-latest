@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { Container, Box, Typography, Grid } from '@mui/material';
 
+import { MediaCard } from '@/components/MediaCard/MediaCard';
 import { MediaCardMovie } from '@/components/MediaCard/MediaCardMovie/MediaCardMovie';
 import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
@@ -59,11 +60,11 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
           {!isError &&
             similarMedia.map((media: any) => (
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
-                {isLoading ? (
-                  <MediaCardSkeleton />
-                ) : (
-                  <MediaCardMovie movie={media} parentMediaType={mediaType} />
-                )}
+                <MediaCard
+                  media={media}
+                  isLoading={isLoading}
+                  parentMediaType={mediaType}
+                />
               </Grid>
             ))}
           {/* no results */}
