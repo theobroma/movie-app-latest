@@ -24,7 +24,7 @@ export const MediaCard = ({
   <>
     {isLoading ? (
       <MediaCardSkeleton />
-    ) : parentMediaType === MediaTypeEnum.MOVIE ? (
+    ) : parentMediaType === MediaTypeEnum.Movie ? (
       <MediaCardMovie movie={media} parentMediaType={parentMediaType} />
     ) : (
       <MediaCardTV tvshow={media} parentMediaType={parentMediaType} />

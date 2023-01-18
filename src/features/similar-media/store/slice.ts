@@ -6,7 +6,8 @@ import {
 } from '@reduxjs/toolkit';
 
 import { moviesAPI } from '@/api/media.api';
-// import { SimilarTVResponseSchema, SimilarMoviesResponseSchema } from '@/types';
+import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { SimilarTVResponseSchema, SimilarMoviesResponseSchema } from '@/types';
 import { waitForMe } from '@/utils/waitforme';
 
 const similarInitialState = {
@@ -29,8 +30,12 @@ export const getSimilarMediaTC = createAsyncThunk<
 
     // ZOD validation
     try {
-      //   SimilarTVResponseSchema.parse(res.data);
-      //   SimilarMoviesResponseSchema.parse(res.data);
+      if (param.mediaType === MediaTypeEnum.TV) {
+        SimilarTVResponseSchema.parse(res.data);
+      }
+      if (param.mediaType === MediaTypeEnum.Movie) {
+        SimilarMoviesResponseSchema.parse(res.data);
+      }
     } catch (error) {
       console.log(error);
     }

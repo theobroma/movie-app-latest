@@ -1,4 +1,4 @@
 export enum MediaTypeEnum {
-  MOVIE = 'movie',
+  Movie = 'movie',
   TV = 'tv',
 }
