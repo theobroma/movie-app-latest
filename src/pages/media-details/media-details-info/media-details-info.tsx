@@ -59,7 +59,7 @@ export const MediaDetailsInfo = () => {
       </div>
       <Container maxWidth="lg">
         <Box py={3}>
-          {!isLoading ? (
+          {isLoading ? (
             <MediaDetailsInfoData
               media={mediaDetailsData}
               // trailerKey={trailerKey}
