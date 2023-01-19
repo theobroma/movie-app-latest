@@ -9,6 +9,8 @@ import { mediaDetailsSelector } from '@/store/details/selectors';
 import { getMediaDetailsTC } from '@/store/details/slice';
 import { languageISOSelector } from '@/store/ui/selectors';
 
+import { MediaDetailsInfoDataSkeleton } from './media-details-info-data-skeleton/media-details-info-data-skeleton';
+import { MediaDetailsInfoData } from './media-details-info-data/media-details-info-data';
 import { useStyles } from './media-details-info.styles';
 
 const backdropBase = 'https://image.tmdb.org/t/p/original';
@@ -57,6 +59,17 @@ export const MediaDetailsInfo = () => {
       </div>
       <Container maxWidth="lg">
         <Box py={3}>
+          {!isLoading ? (
+            <MediaDetailsInfoData
+              media={mediaDetailsData}
+              // trailerKey={trailerKey}
+              // credits={credits}
+              // onFavourite={handleOnFavourite}
+              // isFavorite={isFavorite}
+            />
+          ) : (
+            <MediaDetailsInfoDataSkeleton />
+          )}
           {/* {!isLoading ? (
             <MovieInfo
               movie={movieDetailsData}
