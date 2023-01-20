@@ -2,7 +2,7 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { useParams } from 'react-router-dom';
 
-import { Box, Grid } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useVideosQuery } from '@/store/videos/api';
@@ -23,7 +23,7 @@ export const MediaDetailsVideo = () => {
   const trailerKey = data?.results[0].key;
 
   return (
-    <div>
+    <Container maxWidth="lg">
       {/* no trailer test : http://localhost:3000/details/movie/112160 */}
       {!isLoading && !!trailerKey && (
         <Grid container spacing={3}>
@@ -40,6 +40,6 @@ export const MediaDetailsVideo = () => {
           </Grid>
         </Grid>
       )}
-    </div>
+    </Container>
   );
 };
