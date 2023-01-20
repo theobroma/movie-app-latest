@@ -1,7 +1,8 @@
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import { useParams } from 'react-router-dom';
 
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import { Button } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useVideosQuery } from '@/store/videos/api';
@@ -14,30 +15,31 @@ export const MediaDetailsVideo = () => {
   const {
     data,
     // error,
-    isError,
+    // isError,
     isLoading,
     // isFetching,
   } = useVideosQuery({ mediaId, mediaType });
-
-  console.log('data :>> ', data);
 
   const trailerKey = data?.results[0].key;
 
   return (
     <div>
-      <span>MediaDetailsVideo</span>
-      <span>{trailerKey}</span>
-      <Button
-        // className={classes.trailer}
-        variant="contained"
-        startIcon={<YouTubeIcon />}
-        color="secondary"
-        target="__blank"
-        href={`https://www.youtube.com/watch?v=${trailerKey}`}
-      >
-        Watch the Trailer
-        {/* <Trans i18nKey="Btn.WatchTrailer" /> */}
-      </Button>
+      {/* no trailer test : http://localhost:3000/details/movie/112160 */}
+      {!isLoading && !!trailerKey && (
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={3}>
+            {/* offset */}
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box py={3}>
+              <LiteYouTubeEmbed id={trailerKey} title="Trailer" webp />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            {/* TODO: add link to more videos */}
+          </Grid>
+        </Grid>
+      )}
     </div>
   );
 };
