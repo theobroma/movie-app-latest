@@ -11,6 +11,7 @@ import { detailsSlice } from './details/slice';
 import { trendingAPI } from './trending/api';
 import { trendingSlice } from './trending/slice';
 import { uiSlice } from './ui/slice';
+import { videosAPI } from './videos/api';
 // import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 
 const logger = createLogger({
@@ -26,6 +27,7 @@ const reducers = {
   // API
   // [similarAPI.reducerPath]: similarAPI.reducer,
   [trendingAPI.reducerPath]: trendingAPI.reducer,
+  [videosAPI.reducerPath]: videosAPI.reducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);
@@ -44,7 +46,8 @@ export const store = configureStore({
     getDefaultMiddleware().concat([
       logger,
       // similarAPI.middleware,
-      trendingAPI.middleware,
+      // trendingAPI.middleware,
+      videosAPI.middleware,
     ]),
   // devTools: process.env.NODE_ENV === 'development',
   devTools: true,
