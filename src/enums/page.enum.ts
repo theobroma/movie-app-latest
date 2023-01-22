@@ -1,4 +1,5 @@
 export enum PageEnum {
-  TrendingMovies = 'trending/movies',
-  TrendingTV = 'trending/tv',
+  Trending = '/trending',
+  TrendingMovies = '/trending/movies',
+  TrendingTV = '/trending/tv',
 }
