@@ -8,5 +8,11 @@ interface LinkRouterProps extends LinkProps {
 }
 
 export const LinkRouter = (props: LinkRouterProps) => {
-  return <Link {...props} component={RouterLink as any} />;
+  return (
+    <Link
+      {...props}
+      component={RouterLink as any}
+      sx={{ display: 'flex', alignItems: 'center' }}
+    />
+  );
 };
