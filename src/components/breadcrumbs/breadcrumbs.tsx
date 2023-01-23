@@ -13,8 +13,8 @@ export const AppBreadcrumbs = () => {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
-  console.log('pathnames :>> ', pathnames);
-  console.log('breadcrumbNameMap :>> ', breadcrumbNameMap);
+  // console.log('pathnames :>> ', pathnames);
+  // console.log('breadcrumbNameMap :>> ', breadcrumbNameMap);
 
   return (
     <>
