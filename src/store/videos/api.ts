@@ -13,7 +13,7 @@ const videosAPI = emptySplitApi.injectEndpoints({
         url: `/${mediaType}/${mediaId}/videos?api_key=${API_KEY}`,
         method: 'get',
       }),
-      providesTags: ['Videos'],
+      // providesTags: ['Videos'],
     }),
   }),
   overrideExisting: false,

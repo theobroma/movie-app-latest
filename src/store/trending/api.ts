@@ -1,37 +1,33 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-import { API_URL, API_KEY } from '@/api/connection';
+import { API_KEY } from '@/api/connection';
 import { TimeWindowsEnum } from '@/enums/time-windows.enum';
+import { emptySplitApi } from '@/store/emptySplitApi';
 
-import { moviedbBaseQuery } from './axiosBaseQuery';
+// export const { useTrendingTVQuery, useTrendingMoviesQuery } = trendingAPI;
 
-export const trendingAPI = createApi({
-  baseQuery: moviedbBaseQuery({
-    baseUrl: `${API_URL}`,
-  }),
-  tagTypes: ['TrendingTVs', 'TrendingMovies'],
+const trendingAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     trendingTV: builder.query<
       any,
       { page: number | void; timeWindows: TimeWindowsEnum; isoCode: string }
     >({
       query: ({ page, timeWindows, isoCode }) => ({
-        url: `/trending/tv/week?page=${page}&time_window=${timeWindows}&api_key=${API_KEY}&language=${isoCode}`,
+        url: `/trending/tv/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${isoCode}`,
         method: 'get',
       }),
-      providesTags: ['TrendingTVs'],
+      // providesTags: ['TrendingTVs'],
     }),
     trendingMovies: builder.query<
       any,
       { page: number | void; timeWindows: TimeWindowsEnum; isoCode: string }
     >({
       query: ({ page, timeWindows, isoCode }) => ({
-        url: `/trending/movie/week?page=${page}&time_window=${timeWindows}&api_key=${API_KEY}&language=${isoCode}`,
+        url: `/trending/movie/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${isoCode}`,
         method: 'get',
       }),
-      providesTags: ['TrendingMovies'],
+      // providesTags: ['TrendingMovies'],
     }),
   }),
+  overrideExisting: false,
 });
 
 export const { useTrendingTVQuery, useTrendingMoviesQuery } = trendingAPI;

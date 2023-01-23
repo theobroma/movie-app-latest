@@ -7,6 +7,6 @@ import { API_URL } from '@/api/connection';
 // initialize an empty api service that we'll inject endpoints into later as needed
 export const emptySplitApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: `${API_URL}` }),
-  tagTypes: ['Videos'],
+  //   tagTypes: ['Videos', 'TrendingTVs', 'TrendingMovies'],
   endpoints: () => ({}),
 });
