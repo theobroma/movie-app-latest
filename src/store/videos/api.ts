@@ -8,6 +8,7 @@ export const videosAPI = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${API_URL}`,
   }),
+  tagTypes: ['Videos'],
   endpoints: (builder) => ({
     videos: builder.query<
       TrailersResponseType,
@@ -17,6 +18,7 @@ export const videosAPI = createApi({
         url: `/${mediaType}/${mediaId}/videos?api_key=${API_KEY}`,
         method: 'get',
       }),
+      providesTags: ['Videos'],
     }),
   }),
 });

@@ -9,6 +9,7 @@ export const trendingAPI = createApi({
   baseQuery: moviedbBaseQuery({
     baseUrl: `${API_URL}`,
   }),
+  tagTypes: ['TrendingTVs', 'TrendingMovies'],
   endpoints: (builder) => ({
     trendingTV: builder.query<
       any,
@@ -18,6 +19,7 @@ export const trendingAPI = createApi({
         url: `/trending/tv/week?page=${page}&time_window=${timeWindows}&api_key=${API_KEY}&language=${isoCode}`,
         method: 'get',
       }),
+      providesTags: ['TrendingTVs'],
     }),
     trendingMovies: builder.query<
       any,
@@ -27,6 +29,7 @@ export const trendingAPI = createApi({
         url: `/trending/movie/week?page=${page}&time_window=${timeWindows}&api_key=${API_KEY}&language=${isoCode}`,
         method: 'get',
       }),
+      providesTags: ['TrendingMovies'],
     }),
   }),
 });
