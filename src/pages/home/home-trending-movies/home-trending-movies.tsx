@@ -25,7 +25,7 @@ export const HomeTrendingMovies = () => {
   const trendingMovies =
     moviesData?.results.slice(0, 6) || Array(6).fill('none'); // for skeletons;
 
-  console.log('trendingMovies', trendingMovies);
+  // console.log('trendingMovies', trendingMovies);
 
   return (
     <Grid container spacing={2} sx={{ mt: '16px' }}>

@@ -29,7 +29,7 @@ export const HomeTrendingTVShows = () => {
   const trendingTVShows =
     moviesData?.results.slice(0, 6) || Array(6).fill('none');
 
-  console.log('trendingTVShows', trendingTVShows);
+  // console.log('trendingTVShows', trendingTVShows);
 
   return (
     <Grid container spacing={2} sx={{ mt: '16px' }}>

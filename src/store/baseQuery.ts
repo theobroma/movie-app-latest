@@ -14,6 +14,11 @@ export const baseQuery =
         method,
         data,
       });
+
+      // console.log('url :>> ', url);
+      // const splittedUrl = url.split('?')[0];
+      // console.log('splittedUrl :>> ', splittedUrl);
+
       // ZOD validation
       try {
         // TVResponseSchema.parse(res.data);

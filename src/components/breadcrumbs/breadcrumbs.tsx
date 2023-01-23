@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+// https://mui.com/material-ui/react-breadcrumbs/
+// https://hackernoon.com/implement-a-dynamic-breadcrumb-in-reactnextjs
 import { useLocation } from 'react-router-dom';
 
 import HomeIcon from '@mui/icons-material/Home';
