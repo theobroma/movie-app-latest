@@ -3,15 +3,12 @@ import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
-// import { similarAPI } from '@/features/similar-media/store/api';
-
 import { similarSlice } from '@/features/similar-media/store/slice';
 
 import { detailsSlice } from './details/slice';
-import { trendingAPI } from './trending/api';
+import { emptySplitApi } from './emptySplitApi';
 import { trendingSlice } from './trending/slice';
 import { uiSlice } from './ui/slice';
-import { videosAPI } from './videos/api';
 // import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
 
 const logger = createLogger({
@@ -25,9 +22,7 @@ const reducers = {
   [trendingSlice.name]: trendingSlice.reducer,
   [uiSlice.name]: uiSlice.reducer,
   // API
-  // [similarAPI.reducerPath]: similarAPI.reducer,
-  [trendingAPI.reducerPath]: trendingAPI.reducer,
-  [videosAPI.reducerPath]: videosAPI.reducer,
+  [emptySplitApi.reducerPath]: emptySplitApi.reducer,
 };
 
 const combinedReducer = combineReducers<typeof reducers>(reducers);
@@ -43,12 +38,7 @@ export const rootReducer: Reducer<RootState> = (state, action) => {
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([
-      logger,
-      // similarAPI.middleware,
-      // trendingAPI.middleware,
-      videosAPI.middleware,
-    ]),
+    getDefaultMiddleware().concat([logger, emptySplitApi.middleware]),
   // devTools: process.env.NODE_ENV === 'development',
   devTools: true,
 });

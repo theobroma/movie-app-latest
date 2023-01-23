@@ -1,14 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-import { API_KEY, API_URL } from '@/api/connection';
+import { API_KEY } from '@/api/connection';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { emptySplitApi } from '@/store/emptySplitApi';
 import { TrailersResponseType } from '@/types';
 
-export const videosAPI = createApi({
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${API_URL}`,
-  }),
-  tagTypes: ['Videos'],
+const videosAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     videos: builder.query<
       TrailersResponseType,
@@ -21,6 +16,7 @@ export const videosAPI = createApi({
       providesTags: ['Videos'],
     }),
   }),
+  overrideExisting: false,
 });
 
 export const { useVideosQuery } = videosAPI;
