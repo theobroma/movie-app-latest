@@ -1,16 +1,16 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 import { Container, Box, Typography, Grid, Alert, Stack } from '@mui/material';
 
 import { AppError } from '@/atoms/AppError/AppError';
 import { MediaCard } from '@/components/MediaCard/MediaCard';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { similarMediaSelector } from '@/features/similar-media/store/selectors';
-import { getSimilarMediaTC } from '@/features/similar-media/store/slice';
+import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
+// import { similarMediaSelector } from '@/features/similar-media/store/selectors';
+// import { getSimilarMediaTC } from '@/features/similar-media/store/slice';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { languageISOSelector } from '@/store/ui/selectors';
-// import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
 
 interface Props {
   mediaId: string;
@@ -18,34 +18,35 @@ interface Props {
 }
 
 export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
-  // const {
-  //   data,
-  //   // error,
-  //   isError,
-  //   isLoading,
-  //   // isFetching,
-  // } = useSimilarMediaQuery({ mediaId, mediaType });
-
-  // console.log('data :>> ', data);
   const dispatch = useAppDispatch();
-  const {
-    data: { results },
-    error,
-    isError,
-    isLoading,
-    isSuccess,
-  } = useAppSelector(similarMediaSelector);
   // just for useEffect refetch if changed
   const langISOCode = useAppSelector(languageISOSelector);
+  const {
+    data: similarMediaData,
+    error,
+    isError,
+    isSuccess,
+    isLoading,
+    // isFetching,
+  } = useSimilarMediaQuery({ mediaId, mediaType });
 
-  useEffect(() => {
-    if (mediaId && mediaType) {
-      dispatch(getSimilarMediaTC({ mediaId, mediaType }));
-    }
-  }, [dispatch, mediaId, mediaType, langISOCode]);
+  // const {
+  //   data: { results },
+  //   error,
+  //   isError,
+  //   isLoading,
+  //   isSuccess,
+  // } = useAppSelector(similarMediaSelector);
+
+  // useEffect(() => {
+  //   if (mediaId && mediaType) {
+  //     dispatch(getSimilarMediaTC({ mediaId, mediaType }));
+  //   }
+  // }, [dispatch, mediaId, mediaType, langISOCode]);
 
   // Slice just first 6
-  const similarMedia = results?.slice(0, 6) || Array(6).fill('none'); // for skeletons;
+  const similarMedia =
+    similarMediaData?.results?.slice(0, 6) || Array(6).fill('none'); // for skeletons;
 
   return (
     <Container maxWidth="lg">

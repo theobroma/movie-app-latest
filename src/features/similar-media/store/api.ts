@@ -1,14 +1,7 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-
-import { API_URL } from '@/api/connection';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { emptySplitApi } from '@/store/emptySplitApi';
 
-import { baseQuery } from './baseQuery';
-
-export const similarAPI = createApi({
-  baseQuery: baseQuery({
-    baseUrl: `${API_URL}`,
-  }),
+const similarAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     similarMedia: builder.query<
       any,
@@ -20,6 +13,7 @@ export const similarAPI = createApi({
       }),
     }),
   }),
+  overrideExisting: false,
 });
 
 export const { useSimilarMediaQuery } = similarAPI;

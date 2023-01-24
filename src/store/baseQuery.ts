@@ -18,6 +18,10 @@ export const baseQuery =
       // console.log('url :>> ', url);
       // const splittedUrl = url.split('?')[0];
       // console.log('splittedUrl :>> ', splittedUrl);
+      // const asPathNestedRoutes = splittedUrl
+      //   .split('/')
+      //   .filter((v: any) => v.length > 0);
+      // console.log('asPathNestedRoutes :>> ', asPathNestedRoutes);
 
       // ZOD validation
       try {

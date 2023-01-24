@@ -2,8 +2,6 @@ import { API_KEY } from '@/api/connection';
 import { TimeWindowsEnum } from '@/enums/time-windows.enum';
 import { emptySplitApi } from '@/store/emptySplitApi';
 
-// export const { useTrendingTVQuery, useTrendingMoviesQuery } = trendingAPI;
-
 const trendingAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     trendingTV: builder.query<
