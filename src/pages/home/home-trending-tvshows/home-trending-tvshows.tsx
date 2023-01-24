@@ -7,13 +7,13 @@ import { MediaCardTV } from '@/components/MediaCard/MediaCardTV/MediaCardTV';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingTVQuery } from '@/store/trending/api';
 import { timeWindowsSelector } from '@/store/trending/selectors';
-import { languageISOSelector } from '@/store/ui/selectors';
+import { localeSelector } from '@/store/ui/selectors';
 
 import { HomeTrendingTvshowsLinks } from './home-trending-tvshows-links/home-trending-tvshows-links';
 
 export const HomeTrendingTVShows = () => {
   const timeWindows = useAppSelector(timeWindowsSelector);
-  const langISOCode = useAppSelector(languageISOSelector);
+  const locale = useAppSelector(localeSelector);
   const {
     data: moviesData,
     // error,
@@ -22,7 +22,7 @@ export const HomeTrendingTVShows = () => {
     // isFetching,
   } = useTrendingTVQuery({
     page: 1,
-    isoCode: langISOCode,
+    isoCode: locale,
     timeWindows,
   });
   // Slice just first 6

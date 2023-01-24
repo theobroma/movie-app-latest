@@ -9,6 +9,6 @@ export const languageSelector = (state: RootState) => {
   return state.ui.language;
 };
 
-export const languageISOSelector = (state: RootState) => {
+export const localeSelector = (state: RootState) => {
   return alpha2iso(state.ui.language);
 };

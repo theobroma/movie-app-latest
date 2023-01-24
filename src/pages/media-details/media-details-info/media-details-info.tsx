@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { useDetailsMediaQuery } from '@/store/details/api';
 // import { mediaDetailsSelector } from '@/store/details/selectors';
 // import { getMediaDetailsTC } from '@/store/details/slice';
-import { languageISOSelector } from '@/store/ui/selectors';
+import { localeSelector } from '@/store/ui/selectors';
 
 import { MediaDetailsInfoDataSkeleton } from './media-details-info-data-skeleton/media-details-info-data-skeleton';
 import { MediaDetailsInfoData } from './media-details-info-data/media-details-info-data';
@@ -20,7 +20,7 @@ export const MediaDetailsInfo = () => {
   const { classes } = useStyles();
   const dispatch = useAppDispatch();
   // just for useEffect refetch if changed
-  const langISOCode = useAppSelector(languageISOSelector);
+  const locale = useAppSelector(localeSelector);
   const { mediaId, mediaType } = useParams<
     keyof MediaDetailsRouteParams
   >() as MediaDetailsRouteParams;
@@ -46,7 +46,7 @@ export const MediaDetailsInfo = () => {
     // isSuccess,
     isLoading,
     // isFetching,
-  } = useDetailsMediaQuery({ mediaId, mediaType, isoCode: langISOCode });
+  } = useDetailsMediaQuery({ mediaId, mediaType, isoCode: locale });
 
   const mediaTitle =
     mediaDetailsData?.title ||

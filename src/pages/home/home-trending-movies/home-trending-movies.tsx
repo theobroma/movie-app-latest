@@ -7,20 +7,20 @@ import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/Medi
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingMoviesQuery } from '@/store/trending/api';
 import { timeWindowsSelector } from '@/store/trending/selectors';
-import { languageISOSelector } from '@/store/ui/selectors';
+import { localeSelector } from '@/store/ui/selectors';
 
 import { HomeTrendingMoviesLinks } from './home-trending-movies-links/home-trending-movies-links';
 
 export const HomeTrendingMovies = () => {
   const timeWindows = useAppSelector(timeWindowsSelector);
-  const langISOCode = useAppSelector(languageISOSelector);
+  const locale = useAppSelector(localeSelector);
   const {
     data: moviesData,
     // error,
     isError,
     isLoading,
     // isFetching,
-  } = useTrendingMoviesQuery({ page: 1, isoCode: langISOCode, timeWindows });
+  } = useTrendingMoviesQuery({ page: 1, isoCode: locale, timeWindows });
   // Slice just first 6
   const trendingMovies =
     moviesData?.results.slice(0, 6) || Array(6).fill('none'); // for skeletons;

@@ -10,7 +10,7 @@ import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
 // import { similarMediaSelector } from '@/features/similar-media/store/selectors';
 // import { getSimilarMediaTC } from '@/features/similar-media/store/slice';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
-import { languageISOSelector } from '@/store/ui/selectors';
+import { localeSelector } from '@/store/ui/selectors';
 
 interface Props {
   mediaId: string;
@@ -20,7 +20,7 @@ interface Props {
 export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   const dispatch = useAppDispatch();
   // just for useEffect refetch if changed
-  const langISOCode = useAppSelector(languageISOSelector);
+  const locale = useAppSelector(localeSelector);
   const {
     data: similarMediaData,
     error,
@@ -42,7 +42,7 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
   //   if (mediaId && mediaType) {
   //     dispatch(getSimilarMediaTC({ mediaId, mediaType }));
   //   }
-  // }, [dispatch, mediaId, mediaType, langISOCode]);
+  // }, [dispatch, mediaId, mediaType, locale]);
 
   // Slice just first 6
   const similarMedia =
