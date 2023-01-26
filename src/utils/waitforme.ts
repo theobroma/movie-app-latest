@@ -1,8 +1,7 @@
 // usefull for delay in thunk creators
-export function waitForMe(milisec: number) {
-  return new Promise((resolve) => {
+export const waitForMe = (milisec: number) =>
+  new Promise((resolve) => {
     setTimeout(() => {
       resolve('');
     }, milisec);
   });
-}
