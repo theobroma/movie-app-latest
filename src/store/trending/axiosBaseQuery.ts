@@ -4,7 +4,7 @@ import { AxiosError, AxiosRequestConfig } from 'axios';
 import { axiosInstance } from '@/api/connection';
 import type { RootState } from '@/store/configureStore';
 // import { MoviesResponseSchema, TVResponseSchema } from '@/types';
-import { language2Locale } from '@/utils/alpha2iso';
+import { language2locale } from '@/utils/language2locale';
 import { waitForMe } from '@/utils/waitforme';
 
 // const axiosBaseQuery =

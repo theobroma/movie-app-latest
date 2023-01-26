@@ -1,5 +1,5 @@
 import { RootState } from '@/store/configureStore';
-import { language2Locale } from '@/utils/alpha2iso';
+import { language2locale } from '@/utils/language2locale';
 
 export const themeSelector = (state: RootState) => {
   return state.ui.theme;
@@ -10,5 +10,5 @@ export const languageSelector = (state: RootState) => {
 };
 
 export const localeSelector = (state: RootState) => {
-  return language2Locale(state.ui.language);
+  return language2locale(state.ui.language);
 };
