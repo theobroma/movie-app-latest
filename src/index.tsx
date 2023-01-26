@@ -3,8 +3,10 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
+import { App } from '@/app/index';
+
 import { SnackBarProvider } from './components/SnackBar/SnackBarProvider';
-import { AppContainer } from './routes/AppContainer';
+// import { AppContainer } from './routes/AppContainer';
 import * as serviceWorker from './serviceWorker';
 import { store } from './store/configureStore';
 import { AppThemeProvider } from './themes/theme';
@@ -23,7 +25,8 @@ root.render(
     <Provider store={store}>
       <AppThemeProvider>
         <SnackBarProvider>
-          <AppContainer />
+          {/* <AppContainer /> */}
+          <App />
         </SnackBarProvider>
       </AppThemeProvider>
     </Provider>
