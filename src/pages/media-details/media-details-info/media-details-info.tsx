@@ -44,8 +44,8 @@ export const MediaDetailsInfo = () => {
     // error,
     // isError,
     // isSuccess,
-    isLoading,
-    // isFetching,
+    // isLoading,
+    isFetching,
   } = useDetailsMediaQuery({ mediaId, mediaType, locale });
 
   const mediaTitle =
@@ -59,7 +59,7 @@ export const MediaDetailsInfo = () => {
     <Box style={{ position: 'relative' }}>
       <div className={classes.backdrop}>
         {/* no backdrop test http://localhost:3000/details/movie/857983 */}
-        {!!mediaDetailsData?.backdropPath && (
+        {!isFetching && !!mediaDetailsData?.backdropPath && (
           <img
             className={classes.backdropImage}
             src={`${backdropBase}/${mediaDetailsData.backdropPath}`}
@@ -69,7 +69,7 @@ export const MediaDetailsInfo = () => {
       </div>
       <Container maxWidth="lg">
         <Box py={3}>
-          {!isLoading ? (
+          {!isFetching ? (
             <MediaDetailsInfoData
               media={mediaDetailsData}
               // trailerKey={trailerKey}
