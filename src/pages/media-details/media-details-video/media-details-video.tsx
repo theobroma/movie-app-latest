@@ -20,7 +20,7 @@ export const MediaDetailsVideo = () => {
     // isFetching,
   } = useVideosQuery({ mediaId, mediaType });
 
-  const trailerKey = data?.results[0].key;
+  const trailerKey = data?.results[0]?.key;
 
   return (
     <Container maxWidth="lg">
