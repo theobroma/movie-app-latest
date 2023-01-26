@@ -20,7 +20,7 @@ export const HomeTrendingMovies = () => {
     isError,
     isLoading,
     // isFetching,
-  } = useTrendingMoviesQuery({ page: 1, isoCode: locale, timeWindows });
+  } = useTrendingMoviesQuery({ page: 1, locale, timeWindows });
   // Slice just first 6
   const trendingMovies =
     moviesData?.results.slice(0, 6) || Array(6).fill('none'); // for skeletons;

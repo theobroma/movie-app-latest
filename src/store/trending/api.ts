@@ -7,20 +7,20 @@ const trendingAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     trendingTV: builder.query<
       any,
-      { page: number | void; timeWindows: TimeWindowsEnum; isoCode: LocaleEnum }
+      { page: number; timeWindows: TimeWindowsEnum; locale: LocaleEnum }
     >({
-      query: ({ page, timeWindows, isoCode }) => ({
-        url: `/trending/tv/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${isoCode}`,
+      query: ({ page, timeWindows, locale }) => ({
+        url: `/trending/tv/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${locale}`,
         method: 'get',
       }),
       // providesTags: ['TrendingTVs'],
     }),
     trendingMovies: builder.query<
       any,
-      { page: number | void; timeWindows: TimeWindowsEnum; isoCode: LocaleEnum }
+      { page: number; timeWindows: TimeWindowsEnum; locale: LocaleEnum }
     >({
-      query: ({ page, timeWindows, isoCode }) => ({
-        url: `/trending/movie/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${isoCode}`,
+      query: ({ page, timeWindows, locale }) => ({
+        url: `/trending/movie/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${locale}`,
         method: 'get',
       }),
       // providesTags: ['TrendingMovies'],

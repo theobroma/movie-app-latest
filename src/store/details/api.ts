@@ -6,10 +6,10 @@ const detailsAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     detailsMedia: builder.query<
       any,
-      { mediaType: MediaTypeEnum; mediaId: string; isoCode: LocaleEnum }
+      { mediaType: MediaTypeEnum; mediaId: string; locale: LocaleEnum }
     >({
-      query: ({ mediaType, mediaId, isoCode }) => ({
-        url: `/${mediaType}/${mediaId}?language=${isoCode}`,
+      query: ({ mediaType, mediaId, locale }) => ({
+        url: `/${mediaType}/${mediaId}?language=${locale}`,
         method: 'get',
       }),
       // providesTags: ['DetailsMedia'],

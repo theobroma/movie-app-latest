@@ -37,7 +37,7 @@ export const MediaDetailsInfo = () => {
   //   if (mediaId && mediaType) {
   //     dispatch(getMediaDetailsTC({ mediaId, mediaType }));
   //   }
-  // }, [dispatch, mediaId, mediaType, langISOCode]);
+  // }, [dispatch, mediaId, mediaType,locale]);
 
   const {
     data: mediaDetailsData,
@@ -46,7 +46,7 @@ export const MediaDetailsInfo = () => {
     // isSuccess,
     isLoading,
     // isFetching,
-  } = useDetailsMediaQuery({ mediaId, mediaType, isoCode: locale });
+  } = useDetailsMediaQuery({ mediaId, mediaType, locale });
 
   const mediaTitle =
     mediaDetailsData?.title ||

@@ -22,7 +22,7 @@ export const HomeTrendingTVShows = () => {
     // isFetching,
   } = useTrendingTVQuery({
     page: 1,
-    isoCode: locale,
+    locale,
     timeWindows,
   });
   // Slice just first 6
