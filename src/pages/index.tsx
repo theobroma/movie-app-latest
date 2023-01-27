@@ -4,9 +4,7 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 
 const MIN_LAZY_DELAY = 300;
 
-const AppLayout = lazy(() =>
-  pMinDelay(import('@/routes/AppLayout'), MIN_LAZY_DELAY),
-);
+const AppLayout = lazy(() => pMinDelay(import('./app-layout'), MIN_LAZY_DELAY));
 const HomePage = lazy(() =>
   pMinDelay(import('@/pages/home/home.page'), MIN_LAZY_DELAY),
 );
