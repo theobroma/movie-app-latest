@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-import { PersistentDrawerLeft } from '@/components/AppBar/Drawer';
-import { Footer } from '@/components/Footer/Footer';
+import { PersistentDrawerLeft } from '@/widgets/AppBar/Drawer';
+import { Footer } from '@/widgets/Footer/Footer';
 // import ComponentWithProblem from '../@components/WDYR/ComponentWithProblem';
 
 const AppLayout = () => (
