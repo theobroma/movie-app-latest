@@ -17,7 +17,7 @@ describe('counter reducer sync actions', () => {
   });
 
   it('should handle setLanguage', () => {
-    const newLanguage = 'en' as LanguageEnum;
+    const newLanguage = LanguageEnum.EN;
     const actual = uiReducer(uiInitialState, setLanguageAC(newLanguage));
     expect(actual.language).toEqual(newLanguage);
   });

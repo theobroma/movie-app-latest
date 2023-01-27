@@ -5,6 +5,7 @@ import { red } from '@mui/material/colors';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { ThemeEnum } from '@/enums/theme.enum';
 import { useAppSelector } from '@/store/configureStore';
 import { themeSelector } from '@/store/ui/selectors';
 
@@ -91,10 +92,10 @@ const PINK_BLUE_GREY_THEME = {
 };
 
 const themeMap = {
-  light: LIGHT_THEME,
-  dark: DARK_THEME,
-  deepPurpleAmber: DEEP_PURPLE_AMBER_THEME,
-  pinkBlueGrey: PINK_BLUE_GREY_THEME,
+  [ThemeEnum.Light]: LIGHT_THEME,
+  [ThemeEnum.Dark]: DARK_THEME,
+  [ThemeEnum.DeepPurpleAmber]: DEEP_PURPLE_AMBER_THEME,
+  [ThemeEnum.PinkBlueGreyTheme]: PINK_BLUE_GREY_THEME,
 };
 
 export const AppThemeProvider = ({ children }: PropsWithChildren) => {
