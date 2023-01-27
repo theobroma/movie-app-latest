@@ -99,10 +99,8 @@ const themeMap = {
 };
 
 const AppThemeProvider = ({ children }: PropsWithChildren) => {
-  // FIXME:
-  // const currentTheme = useAppSelector(themeSelector);
-  // const theme = createTheme(themeMap[currentTheme]);
-  const theme = createTheme(themeMap[ThemeEnum.Light]);
+  const currentTheme = useAppSelector(themeSelector);
+  const theme = createTheme(themeMap[currentTheme]);
 
   return (
     <ThemeProvider theme={theme}>

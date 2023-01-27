@@ -6,8 +6,8 @@ import { withStore } from './with-store';
 import { withTheme } from './with-theme';
 
 export const withProviders = compose(
-  withRouter,
-  withSnackbar,
-  withTheme,
   withStore,
+  withTheme,
+  withSnackbar,
+  withRouter,
 );
