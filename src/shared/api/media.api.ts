@@ -1,3 +1,4 @@
+//! This API's use only in createAsyncThunk's
 import { axiosInstance } from './connection';
 
 export const moviesAPI = {

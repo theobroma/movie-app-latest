@@ -1,5 +1,4 @@
 // https://redux-toolkit.js.org/rtk-query/usage/code-splitting
-// Or from '@reduxjs/toolkit/query' if not using the auto-generated hooks
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import { API_URL } from '@/shared/api/connection';

@@ -1,6 +1,6 @@
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { API_KEY } from '@/shared/api/connection';
-import { emptySplitApi } from '@/store/emptySplitApi';
+import { emptySplitApi } from '@/shared/api/emptySplitApi';
 import { TrailersResponseType } from '@/types';
 
 const videosAPI = emptySplitApi.injectEndpoints({

@@ -1,7 +1,7 @@
 import { LocaleEnum } from '@/enums/locale.enum';
 import { TimeWindowsEnum } from '@/enums/time-windows.enum';
 import { API_KEY } from '@/shared/api/connection';
-import { emptySplitApi } from '@/store/emptySplitApi';
+import { emptySplitApi } from '@/shared/api/emptySplitApi';
 
 const trendingAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({

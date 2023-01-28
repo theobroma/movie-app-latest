@@ -1,5 +1,5 @@
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { emptySplitApi } from '@/store/emptySplitApi';
+import { emptySplitApi } from '@/shared/api/emptySplitApi';
 
 const similarAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({

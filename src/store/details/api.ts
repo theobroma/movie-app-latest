@@ -1,6 +1,6 @@
 import { LocaleEnum } from '@/enums/locale.enum';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { emptySplitApi } from '@/store/emptySplitApi';
+import { emptySplitApi } from '@/shared/api/emptySplitApi';
 
 const detailsAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({

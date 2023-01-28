@@ -4,9 +4,9 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
 import { similarSlice } from '@/features/similar-media/store/slice';
+import { emptySplitApi } from '@/shared/api/emptySplitApi';
 
 import { detailsSlice } from './details/slice';
-import { emptySplitApi } from './emptySplitApi';
 import { trendingSlice } from './trending/slice';
 import { uiSlice } from './ui/slice';
 // import { RESET_STATE_ACTION_TYPE } from './actions/resetState';
