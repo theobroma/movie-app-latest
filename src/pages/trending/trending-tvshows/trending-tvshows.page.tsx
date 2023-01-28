@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 
-import { AppPagination } from '@/components/AppPagination/AppPagination';
+import { AppPagination } from '@/shared/uikit/AppPagination/AppPagination';
 
 const TrendingTvshowsPage = () => (
   <Container maxWidth="lg">

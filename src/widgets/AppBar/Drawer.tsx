@@ -12,8 +12,8 @@ import { useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import { AppBreadcrumbs } from '@/components/breadcrumbs/breadcrumbs';
 import { BackToTop } from '@/shared/uikit/BackToTop/BackToTop';
+import { AppBreadcrumbs } from '@/shared/uikit/breadcrumbs/breadcrumbs';
 import { HideOnScroll } from '@/shared/uikit/HideOnScroll/HideOnScroll';
 
 import { AppBar, DrawerHeader, drawerWidth, Main } from './Drawer.styled';
