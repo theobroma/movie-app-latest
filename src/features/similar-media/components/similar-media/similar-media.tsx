@@ -3,10 +3,10 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { Container, Box, Typography, Grid, Alert, Stack } from '@mui/material';
 
-import { AppError } from '@/atoms/AppError/AppError';
 import { MediaCard } from '@/components/MediaCard/MediaCard';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
+import { AppError } from '@/shared/uikit/AppError/AppError';
 // import { similarMediaSelector } from '@/features/similar-media/store/selectors';
 // import { getSimilarMediaTC } from '@/features/similar-media/store/slice';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';

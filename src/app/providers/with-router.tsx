@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import { QueryParamProvider } from 'use-query-params';
 // import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 
-import { PageLoader } from '@/atoms/page-loader/page-loader';
+import { PageLoader } from '@/shared/uikit/page-loader/page-loader';
 
 export const withRouter = (component: () => React.ReactNode) => () =>
   (
