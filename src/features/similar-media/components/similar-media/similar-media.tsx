@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { Container, Box, Typography, Grid, Alert, Stack } from '@mui/material';
 
-import { MediaCard } from '@/components/MediaCard/MediaCard';
+import { MediaCard } from '@/entities/media/ui/MediaCard/MediaCard';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
 import { AppError } from '@/shared/uikit/AppError/AppError';

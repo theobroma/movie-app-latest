@@ -2,8 +2,8 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { Grid } from '@mui/material';
 
-import { MediaCardMovie } from '@/components/MediaCard/MediaCardMovie/MediaCardMovie';
-import { MediaCardSkeleton } from '@/components/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
+import { MediaCardMovie } from '@/entities/media/ui/MediaCard/MediaCardMovie/MediaCardMovie';
+import { MediaCardSkeleton } from '@/entities/media/ui/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingMoviesQuery } from '@/store/trending/api';
 import { timeWindowsSelector } from '@/store/trending/selectors';

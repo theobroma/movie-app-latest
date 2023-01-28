@@ -1,4 +1,4 @@
-import { MediaCardBase } from '@/components/MediaCard/MediaCardBase/MediaCardBase';
+import { MediaCardBase } from '@/entities/media/ui/MediaCard/MediaCardBase/MediaCardBase';
 import { TVEntityType } from '@/types';
 
 interface Props {
