@@ -5,7 +5,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 
-import { moviesAPI } from '@/api/media.api';
+import { moviesAPI } from '@/shared/api/media.api';
 import { waitForMe } from '@/utils/waitforme';
 
 const detailsInitialState = {

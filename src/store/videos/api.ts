@@ -1,5 +1,5 @@
-import { API_KEY } from '@/api/connection';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { API_KEY } from '@/shared/api/connection';
 import { emptySplitApi } from '@/store/emptySplitApi';
 import { TrailersResponseType } from '@/types';
 

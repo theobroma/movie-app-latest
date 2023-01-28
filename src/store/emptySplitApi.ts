@@ -2,7 +2,7 @@
 // Or from '@reduxjs/toolkit/query' if not using the auto-generated hooks
 import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { API_URL } from '@/api/connection';
+import { API_URL } from '@/shared/api/connection';
 
 import { baseQuery } from './baseQuery';
 

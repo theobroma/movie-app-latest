@@ -1,7 +1,7 @@
 import { BaseQueryFn } from '@reduxjs/toolkit/query/react';
 import { AxiosError } from 'axios';
 
-import { axiosInstance } from '@/api/connection';
+import { axiosInstance } from '@/shared/api/connection';
 import { waitForMe } from '@/utils/waitforme';
 
 export const baseQuery =

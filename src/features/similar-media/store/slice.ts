@@ -5,8 +5,8 @@ import {
   AnyAction,
 } from '@reduxjs/toolkit';
 
-import { moviesAPI } from '@/api/media.api';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { moviesAPI } from '@/shared/api/media.api';
 import { SimilarTVResponseSchema, SimilarMoviesResponseSchema } from '@/types';
 import { waitForMe } from '@/utils/waitforme';
 
