@@ -1,10 +1,6 @@
 module.exports = {
   extends: ['airbnb-typescript-prettier'],
-  plugins: [
-    'eslint-plugin-import-helpers',
-    'no-relative-import-paths',
-    'tss-unused-classes',
-  ],
+  plugins: ['eslint-plugin-import-helpers', 'no-relative-import-paths'],
   parserOptions: {
     project: './tsconfig.json',
     sourceType: 'module',
@@ -95,7 +91,5 @@ module.exports = {
     'react/react-in-jsx-scope': 0, // Since React 18 "react-jsx"
     'react/require-default-props': 0, // Since we do not use prop-types
     'react/state-in-constructor': 0,
-
-    'tss-unused-classes/unused-classes': 'warn', // just for MUI with TSS
   },
 };
