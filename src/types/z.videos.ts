@@ -9,7 +9,7 @@ const TrailerSchema = z.object({
   size: z.number(),
   type: z.string(),
   official: z.boolean(),
-  published_at: z.string(),
+  publishedAt: z.string(),
   id: z.string(),
 });
 

@@ -3,7 +3,15 @@ import { AxiosError } from 'axios';
 import { fromZodError } from 'zod-validation-error';
 
 import { axiosInstance } from '@/shared/api/connection';
-import { DetailsMovieSchema, DetailsTVSchema } from '@/types';
+import {
+  DetailsMovieSchema,
+  DetailsTVSchema,
+  MoviesResponseSchema,
+  SimilarMoviesResponseSchema,
+  SimilarTVResponseSchema,
+  TVResponseSchema,
+  TrailersResponseSchema,
+} from '@/types';
 import { waitForMe } from '@/utils/waitforme';
 
 export const baseQuery =
@@ -28,16 +36,66 @@ export const baseQuery =
 
       // ZOD validation
       try {
-        console.log('res.data :>> ', res.data);
-        // TVResponseSchema.parse(res.data);
-        // MoviesResponseSchema.parse(res.data);
-        // DetailsTVSchema.parse(res1.data);
-        // if (param.mediaType === MEDIA_TYPE.TV) {
-        //   DetailsTVSchema.parse(res1.data);
-        // }
-        // if (asPathNestedRoutes[0] === 'movie') {
-        //   DetailsMovieSchema.parse(res.data);
-        // }
+        if (
+          asPathNestedRoutes[0] === 'trending' &&
+          asPathNestedRoutes[1] === 'tv'
+        ) {
+          console.log('TVResponseSchema Trending:>> ');
+          TVResponseSchema.parse(res.data);
+        }
+        // ============================================
+        if (
+          asPathNestedRoutes[0] === 'trending' &&
+          asPathNestedRoutes[1] === 'movie'
+        ) {
+          console.log('MoviesResponseSchema Trending:>> ');
+          MoviesResponseSchema.parse(res.data);
+        }
+        // ============================================
+        if (
+          asPathNestedRoutes[0] === 'movie' &&
+          typeof asPathNestedRoutes[1] !== 'undefined' &&
+          typeof asPathNestedRoutes[2] === 'undefined'
+        ) {
+          console.log('DetailsMovieSchema :>> ');
+          DetailsMovieSchema.parse(res.data);
+        }
+        // ============================================
+        if (
+          asPathNestedRoutes[0] === 'tv' &&
+          typeof asPathNestedRoutes[1] !== 'undefined' &&
+          typeof asPathNestedRoutes[2] === 'undefined'
+        ) {
+          console.log('DetailsTVSchema :>> ');
+          DetailsTVSchema.parse(res.data);
+        }
+        // ============================================
+        if (
+          (asPathNestedRoutes[0] === 'movie' ||
+            asPathNestedRoutes[0] === 'tv') &&
+          asPathNestedRoutes[2] === 'videos'
+        ) {
+          console.log('TrailersResponseSchema :>> ');
+          TrailersResponseSchema.parse(res.data);
+        }
+        // ============================================
+        if (
+          asPathNestedRoutes[0] === 'tv' &&
+          asPathNestedRoutes[2] === 'similar'
+        ) {
+          console.log('SimilarTVResponseSchema :>> ');
+          SimilarTVResponseSchema.parse(res.data);
+        }
+        // ============================================
+        if (
+          asPathNestedRoutes[0] === 'movie' &&
+          asPathNestedRoutes[2] === 'similar'
+        ) {
+          console.log('SimilarMoviesResponseSchema :>> ');
+          SimilarMoviesResponseSchema.parse(res.data);
+        }
+        // ============================================
+        // console.log('res.data :>> ', res.data);
       } catch (error: any) {
         // console.log(error);
         const validationError = fromZodError(error);
