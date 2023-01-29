@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Box, Container } from '@mui/material';
 
+import { MediaInfoBase } from '@/entities/media/ui/MediaInfo/MediaInfoBase/MediaInfoBase';
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { useDetailsMediaQuery } from '@/store/details/api';
@@ -11,7 +12,6 @@ import { useDetailsMediaQuery } from '@/store/details/api';
 import { localeSelector } from '@/store/ui/selectors';
 
 import { MediaDetailsInfoDataSkeleton } from './media-details-info-data-skeleton/media-details-info-data-skeleton';
-import { MediaDetailsInfoData } from './media-details-info-data/media-details-info-data';
 import { useStyles } from './media-details-info.styles';
 
 const backdropBase = 'https://image.tmdb.org/t/p/original';
@@ -70,8 +70,10 @@ export const MediaDetailsInfo = () => {
       <Container maxWidth="lg">
         <Box py={3}>
           {!isFetching ? (
-            <MediaDetailsInfoData
-              media={mediaDetailsData}
+            <MediaInfoBase
+              posterPath={mediaDetailsData.posterPath}
+              mediaTitle={mediaTitle}
+              // media={mediaDetailsData}
               // trailerKey={trailerKey}
               // credits={credits}
               // onFavourite={handleOnFavourite}
