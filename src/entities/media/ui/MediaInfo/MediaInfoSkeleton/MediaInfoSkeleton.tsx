@@ -2,9 +2,9 @@ import { nanoid } from '@reduxjs/toolkit';
 
 import { Grid, Rating, Skeleton } from '@mui/material';
 
-import { useStyles } from './media-details-info-data-skeleton.styles';
+import { useStyles } from './MediaInfoSkeleton.styles';
 
-export const MediaDetailsInfoDataSkeleton = () => {
+export const MediaInfoSkeleton = () => {
   const { classes } = useStyles();
 
   const subtitle = (width: number) => (
