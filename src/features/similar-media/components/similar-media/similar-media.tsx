@@ -26,8 +26,8 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
     error,
     isError,
     isSuccess,
-    isLoading,
-    // isFetching,
+    // isLoading,
+    isFetching,
   } = useSimilarMediaQuery({ mediaId, mediaType });
 
   // const {
@@ -63,7 +63,7 @@ export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
               <Grid item xs={12} sm={4} md={3} lg={2} key={nanoid()}>
                 <MediaCard
                   media={media}
-                  isLoading={isLoading}
+                  isLoading={isFetching}
                   parentMediaType={mediaType}
                   // idx={idx}
                 />
