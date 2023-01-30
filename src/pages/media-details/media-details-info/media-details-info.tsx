@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Box, Container } from '@mui/material';
 
 import { MediaInfoBase } from '@/entities/media/ui/MediaInfo/MediaInfoBase/MediaInfoBase';
+import { MediaInfoMovie } from '@/entities/media/ui/MediaInfo/MediaInfoMovie/MediaInfoMovie';
 import { MediaInfoSkeleton } from '@/entities/media/ui/MediaInfo/MediaInfoSkeleton/MediaInfoSkeleton';
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
@@ -70,9 +71,8 @@ export const MediaDetailsInfo = () => {
       <Container maxWidth="lg">
         <Box py={3}>
           {!isFetching ? (
-            <MediaInfoBase
-              posterPath={mediaDetailsData.posterPath}
-              mediaTitle={mediaTitle}
+            <MediaInfoMovie
+              details={mediaDetailsData}
               // media={mediaDetailsData}
               // trailerKey={trailerKey}
               // credits={credits}
