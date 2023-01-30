@@ -5,7 +5,7 @@ import { Grid, Typography } from '@mui/material';
 import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
-import { ProductionCountryType } from '@/types';
+import { GenreType, ProductionCountryType } from '@/types';
 
 import { useStyles } from './MediaInfoBase.styles';
 
@@ -14,6 +14,7 @@ interface Props {
   mediaTitle: any;
   productionCountries: ProductionCountryType[];
   mediaReleaseDate: any;
+  genres: GenreType[];
 }
 
 export const MediaInfoBase = ({
@@ -21,6 +22,7 @@ export const MediaInfoBase = ({
   mediaTitle = 'title',
   productionCountries,
   mediaReleaseDate,
+  genres,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -53,6 +55,13 @@ export const MediaInfoBase = ({
         <div className={classes.releaseDate}>
           {releaseDate}&nbsp;({i18nProductionCountries})
         </div>
+        <ul className={classes.genreList}>
+          {genres?.map((genre) => (
+            <li className={classes.genre} key={genre.id}>
+              {genre.name}
+            </li>
+          ))}
+        </ul>
       </Grid>
     </Grid>
   );

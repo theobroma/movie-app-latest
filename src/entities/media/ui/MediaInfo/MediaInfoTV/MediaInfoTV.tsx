@@ -13,6 +13,7 @@ export const MediaInfoTV = ({ details }: Props) => {
     posterPath,
     productionCountries,
     firstAirDate,
+    genres,
   } = details;
 
   //   const mediaType = movieMediaType || parentMediaType || '';
@@ -28,6 +29,7 @@ export const MediaInfoTV = ({ details }: Props) => {
       mediaTitle={tvTitle}
       productionCountries={productionCountries}
       mediaReleaseDate={firstAirDate}
+      genres={genres}
     />
   );
 };
