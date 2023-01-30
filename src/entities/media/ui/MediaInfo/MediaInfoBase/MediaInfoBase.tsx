@@ -1,18 +1,16 @@
 import { Grid, Typography } from '@mui/material';
 
+import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 import { ProductionCountryType } from '@/types';
 
 import { useStyles } from './MediaInfoBase.styles';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const countries = require('i18n-iso-countries');
-
 interface Props {
   posterPath: any;
   mediaTitle: any;
-  productionCountries: any;
+  productionCountries: ProductionCountryType[];
 }
 
 export const MediaInfoBase = ({
@@ -23,14 +21,10 @@ export const MediaInfoBase = ({
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
 
-  const i18nProductionCountries = productionCountries
-    ?.map((item: ProductionCountryType) => {
-      return countries.getName(item.iso_3166_1, currentLanguage, {
-        // select: 'official',
-        select: 'alias',
-      });
-    })
-    .join(', ');
+  const i18nProductionCountries = i18nCountriesConvert(
+    productionCountries,
+    currentLanguage,
+  );
 
   console.log('i18nProductionCountries :>> ', i18nProductionCountries);
 

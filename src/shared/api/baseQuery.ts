@@ -17,7 +17,7 @@ export const baseQuery =
         data,
       });
 
-      ZodSchemasValidation(url, res);
+      // ZodSchemasValidation(url, res);
 
       return { data: res.data };
     } catch (axiosError) {
