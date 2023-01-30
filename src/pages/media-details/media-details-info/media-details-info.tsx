@@ -1,11 +1,13 @@
+/* eslint-disable no-nested-ternary */
 // import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Box, Container } from '@mui/material';
 
-import { MediaInfoBase } from '@/entities/media/ui/MediaInfo/MediaInfoBase/MediaInfoBase';
 import { MediaInfoMovie } from '@/entities/media/ui/MediaInfo/MediaInfoMovie/MediaInfoMovie';
 import { MediaInfoSkeleton } from '@/entities/media/ui/MediaInfo/MediaInfoSkeleton/MediaInfoSkeleton';
+import { MediaInfoTV } from '@/entities/media/ui/MediaInfo/MediaInfoTV/MediaInfoTV';
+import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { useDetailsMediaQuery } from '@/store/details/api';
@@ -70,7 +72,9 @@ export const MediaDetailsInfo = () => {
       </div>
       <Container maxWidth="lg">
         <Box py={3}>
-          {!isFetching ? (
+          {isFetching ? (
+            <MediaInfoSkeleton />
+          ) : mediaType === MediaTypeEnum.Movie ? (
             <MediaInfoMovie
               details={mediaDetailsData}
               // media={mediaDetailsData}
@@ -80,19 +84,15 @@ export const MediaDetailsInfo = () => {
               // isFavorite={isFavorite}
             />
           ) : (
-            <MediaInfoSkeleton />
-          )}
-          {/* {!isLoading ? (
-            <MovieInfo
-              movie={movieDetailsData}
-              trailerKey={trailerKey}
-              credits={credits}
-              onFavourite={handleOnFavourite}
-              isFavorite={isFavorite}
+            <MediaInfoTV
+              details={mediaDetailsData}
+              // media={mediaDetailsData}
+              // trailerKey={trailerKey}
+              // credits={credits}
+              // onFavourite={handleOnFavourite}
+              // isFavorite={isFavorite}
             />
-          ) : (
-            <MovieInfoSkeleton />
-          )} */}
+          )}
         </Box>
       </Container>
     </Box>
