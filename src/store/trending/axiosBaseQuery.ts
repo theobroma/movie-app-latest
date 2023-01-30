@@ -2,10 +2,10 @@ import { BaseQueryFn } from '@reduxjs/toolkit/query/react';
 import { AxiosError, AxiosRequestConfig } from 'axios';
 
 import { axiosInstance } from '@/shared/api/connection';
+import { language2locale } from '@/shared/utils/language2locale';
+import { waitForMe } from '@/shared/utils/waitforme';
 import type { RootState } from '@/store/configureStore';
 // import { MoviesResponseSchema, TVResponseSchema } from '@/types';
-import { language2locale } from '@/utils/language2locale';
-import { waitForMe } from '@/utils/waitforme';
 
 // const axiosBaseQuery =
 //   (): BaseQueryFn<any> =>

@@ -1,5 +1,5 @@
+import { language2locale } from '@/shared/utils/language2locale';
 import { RootState } from '@/store/configureStore';
-import { language2locale } from '@/utils/language2locale';
 
 export const themeSelector = (state: RootState) => {
   return state.ui.theme;

@@ -7,8 +7,8 @@ import {
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { moviesAPI } from '@/shared/api/media.api';
+import { waitForMe } from '@/shared/utils/waitforme';
 import { SimilarTVResponseSchema, SimilarMoviesResponseSchema } from '@/types';
-import { waitForMe } from '@/utils/waitforme';
 
 const similarInitialState = {
   data: [] as any,

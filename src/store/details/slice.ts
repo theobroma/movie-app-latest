@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import { moviesAPI } from '@/shared/api/media.api';
-import { waitForMe } from '@/utils/waitforme';
+import { waitForMe } from '@/shared/utils/waitforme';
 
 const detailsInitialState = {
   data: {} as any,
