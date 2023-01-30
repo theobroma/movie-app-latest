@@ -7,7 +7,7 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 
-import { useNonInitialEffect } from '@/hooks/useNonInitialEffect';
+import { useNonInitialEffect } from '@/shared/hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { themeSelector } from '@/store/ui/selectors';
 import { setThemeAC } from '@/store/ui/slice';

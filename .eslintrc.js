@@ -53,7 +53,7 @@ module.exports = {
         groups: [
           'module',
           '/^@mui/',
-          '/^@/(app|entities|enums|features|hooks|pages|shared|store|types|widgets/)/',
+          '/^@/(app|entities|enums|features|pages|shared|store|types|widgets/)/',
           ['parent', 'sibling', 'index'],
         ],
         alphabetize: { order: 'asc', ignoreCase: true },

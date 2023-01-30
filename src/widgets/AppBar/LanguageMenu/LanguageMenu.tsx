@@ -7,7 +7,7 @@ import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import TranslateIcon from '@mui/icons-material/Translate';
 import { Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 
-import { useNonInitialEffect } from '@/hooks/useNonInitialEffect';
+import { useNonInitialEffect } from '@/shared/hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 import { setLanguageAC } from '@/store/ui/slice';
