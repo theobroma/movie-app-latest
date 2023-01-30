@@ -1,14 +1,35 @@
 import { Grid, Typography } from '@mui/material';
 
+import { useAppSelector } from '@/store/configureStore';
+import { languageSelector } from '@/store/ui/selectors';
+import { ProductionCountryType } from '@/types';
+
 import { useStyles } from './MediaInfoBase.styles';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const countries = require('i18n-iso-countries');
 
 interface Props {
   posterPath: any;
   mediaTitle: any;
+  productionCountries: any;
 }
 
-export const MediaInfoBase = ({ posterPath, mediaTitle = 'title' }: Props) => {
+export const MediaInfoBase = ({
+  posterPath,
+  mediaTitle = 'title',
+  productionCountries,
+}: Props) => {
   const { classes } = useStyles();
+  const currentLanguage = useAppSelector(languageSelector);
+
+  const i18nProductionCountries = productionCountries
+    ?.map((item: ProductionCountryType) => {
+      return countries.getName(item.iso_3166_1, currentLanguage, {
+        select: 'official',
+      });
+    })
+    .join(', ');
 
   return (
     <Grid container spacing={3}>
