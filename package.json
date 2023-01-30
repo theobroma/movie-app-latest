@@ -25,6 +25,7 @@
     "axios": "^1.2.6",
     "axios-case-converter": "^0.11.1",
     "compose-function": "^3.0.3",
+    "dayjs": "^1.11.7",
     "i18n-iso-countries": "^7.5.0",
     "notistack": "^2.0.8",
     "p-min-delay": "^4.0.2",

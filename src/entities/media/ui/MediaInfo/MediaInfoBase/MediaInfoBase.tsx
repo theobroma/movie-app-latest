@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import { Grid, Typography } from '@mui/material';
 
 import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
@@ -11,12 +13,14 @@ interface Props {
   posterPath: any;
   mediaTitle: any;
   productionCountries: ProductionCountryType[];
+  mediaReleaseDate: any;
 }
 
 export const MediaInfoBase = ({
   posterPath,
   mediaTitle = 'title',
   productionCountries,
+  mediaReleaseDate,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -26,7 +30,8 @@ export const MediaInfoBase = ({
     currentLanguage,
   );
 
-  console.log('i18nProductionCountries :>> ', i18nProductionCountries);
+  const releaseDate = dayjs(mediaReleaseDate).format('DD/MM/YYYY');
+  const releaseYear = dayjs(mediaReleaseDate).format('YYYY');
 
   return (
     <Grid container spacing={3}>
@@ -41,12 +46,13 @@ export const MediaInfoBase = ({
         )}
       </Grid>
       <Grid item md={8} style={{ color: 'white' }}>
-        <Typography variant="h4" style={{ fontWeight: 'bold' }} component="h1">
-          {mediaTitle}{' '}
-          {/* <span className={classes.titleDate}>
-            ({dayjs(mediaReleaseDate).format('YYYY')})
-          </span> */}
+        <Typography variant="h4" component="h1" style={{ fontWeight: 'bold' }}>
+          {mediaTitle}&nbsp;
+          <span className={classes.titleDate}>({releaseYear})</span>
         </Typography>
+        <div className={classes.releaseDate}>
+          {releaseDate}&nbsp;({i18nProductionCountries})
+        </div>
       </Grid>
     </Grid>
   );

@@ -6,7 +6,14 @@ interface Props {
 }
 
 export const MediaInfoMovie = ({ details }: Props) => {
-  const { id, title, originalTitle, posterPath, productionCountries } = details;
+  const {
+    id,
+    title,
+    originalTitle,
+    posterPath,
+    productionCountries,
+    releaseDate,
+  } = details;
 
   //   const mediaType = movieMediaType || parentMediaType || '';
   const movieTitle = title || originalTitle || 'title';
@@ -20,6 +27,7 @@ export const MediaInfoMovie = ({ details }: Props) => {
       posterPath={posterPath}
       mediaTitle={movieTitle}
       productionCountries={productionCountries}
+      mediaReleaseDate={releaseDate}
     />
   );
 };
