@@ -7,12 +7,6 @@ import { App } from '@/app/index';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
-// Open Source fonts
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
 const container = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(container);
 root.render(
