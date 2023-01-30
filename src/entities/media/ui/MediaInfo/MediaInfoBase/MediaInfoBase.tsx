@@ -26,10 +26,13 @@ export const MediaInfoBase = ({
   const i18nProductionCountries = productionCountries
     ?.map((item: ProductionCountryType) => {
       return countries.getName(item.iso_3166_1, currentLanguage, {
-        select: 'official',
+        // select: 'official',
+        select: 'alias',
       });
     })
     .join(', ');
+
+  console.log('i18nProductionCountries :>> ', i18nProductionCountries);
 
   return (
     <Grid container spacing={3}>
