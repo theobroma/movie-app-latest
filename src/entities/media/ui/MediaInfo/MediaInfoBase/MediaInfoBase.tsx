@@ -2,6 +2,8 @@ import dayjs from 'dayjs';
 
 import { Grid, Typography } from '@mui/material';
 
+import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { ToggleFavourite } from '@/features/toggle-favourite/ui';
 import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
@@ -10,6 +12,8 @@ import { GenreType, ProductionCountryType } from '@/types';
 import { useStyles } from './MediaInfoBase.styles';
 
 interface Props {
+  mediaType: MediaTypeEnum;
+  mediaId: number;
   posterPath: any;
   mediaTitle: any;
   productionCountries: ProductionCountryType[];
@@ -18,6 +22,8 @@ interface Props {
 }
 
 export const MediaInfoBase = ({
+  mediaType,
+  mediaId,
   posterPath,
   mediaTitle = 'title',
   productionCountries,
@@ -62,6 +68,12 @@ export const MediaInfoBase = ({
             </li>
           ))}
         </ul>
+        {/* Rating */}
+        <div className={classes.vote}>
+          {/* <Rating value={mediaVote / 2} readOnly /> */}
+          {/* <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span> */}
+          <ToggleFavourite mediaType={mediaType} mediaId={mediaId} />
+        </div>
       </Grid>
     </Grid>
   );

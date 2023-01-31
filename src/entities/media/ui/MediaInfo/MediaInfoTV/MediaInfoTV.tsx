@@ -1,4 +1,5 @@
 import { MediaInfoBase } from '@/entities/media/ui/MediaInfo/MediaInfoBase/MediaInfoBase';
+import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { DetailsTVType } from '@/types';
 
 interface Props {
@@ -25,6 +26,8 @@ export const MediaInfoTV = ({ details }: Props) => {
 
   return (
     <MediaInfoBase
+      mediaType={MediaTypeEnum.TV}
+      mediaId={id}
       posterPath={posterPath}
       mediaTitle={tvTitle}
       productionCountries={productionCountries}
