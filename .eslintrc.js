@@ -1,6 +1,10 @@
 module.exports = {
   extends: ['airbnb-typescript-prettier'],
-  plugins: ['eslint-plugin-import-helpers', 'no-relative-import-paths'],
+  plugins: [
+    'eslint-plugin-import-helpers',
+    'hooks',
+    'no-relative-import-paths',
+  ],
   parserOptions: {
     project: './tsconfig.json',
     sourceType: 'module',
@@ -76,6 +80,25 @@ module.exports = {
     'no-restricted-exports': 0, // Nothing to restrict.
     'no-underscore-dangle': 0,
 
+    'hooks/sort': [
+      2,
+      {
+        groups: [
+          // 'useReducer',
+          // 'useContext',
+          // 'useDispatch',
+          'useAppDispatch',
+          'useSnackbar',
+          'useStyles',
+          'useState',
+          'useRef',
+          // 'useSelector',
+          'useAppSelector',
+          'useCallback',
+          'useEffect',
+        ],
+      },
+    ],
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
     'react/function-component-definition': [

@@ -20,8 +20,8 @@ import { useStyles } from './media-details-info.styles';
 const backdropBase = 'https://image.tmdb.org/t/p/original';
 
 export const MediaDetailsInfo = () => {
-  const { classes } = useStyles();
   const dispatch = useAppDispatch();
+  const { classes } = useStyles();
   // just for useEffect refetch if changed
   const locale = useAppSelector(localeSelector);
   const { mediaId, mediaType } = useParams<
