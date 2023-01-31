@@ -8,6 +8,7 @@ import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 import { GenreType, ProductionCountryType } from '@/types';
+import { CrewList } from '@/widgets/crew-list/crew-list';
 
 import { useStyles } from './MediaInfoBase.styles';
 
@@ -74,6 +75,7 @@ export const MediaInfoBase = ({
           {/* <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span> */}
           <ToggleFavourite mediaType={mediaType} mediaId={mediaId} />
         </div>
+        <CrewList mediaType={mediaType} mediaId={mediaId} />
       </Grid>
     </Grid>
   );
