@@ -10,7 +10,7 @@ export const favouritesSlice = createSlice({
   initialState: favouritesInitialState,
   reducers: {
     toggleMediaFavoriteAC(state, action) {
-      const { id, mediaType } = action.payload;
+      const { mediaId, mediaType } = action.payload;
       console.log('action.payload :>> ', action.payload);
       //   const index = state.favoriteMediaIds.findIndex(
       //     (element) => element.id === id && element.mediaType === mediaType,
@@ -32,4 +32,4 @@ export const favouritesSlice = createSlice({
   },
 });
 
-// export const { setThemeAC, setLanguageAC } = favouritesSlice.actions;
+export const { toggleMediaFavoriteAC } = favouritesSlice.actions;
