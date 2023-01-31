@@ -8,7 +8,10 @@ import {
   favouritesTVSelector,
   favouritesMoviesSelector,
 } from '@/features/favourites/store/selectors';
-import { toggleMediaFavoriteAC } from '@/features/favourites/store/slice';
+import {
+  toggleFavouriteMovieAC,
+  toggleFavouriteTVshowAC,
+} from '@/features/favourites/store/slice';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 
 interface Props {
@@ -23,15 +26,19 @@ export const ToggleFavourite = ({ mediaType, mediaId }: Props) => {
   const favouritesMovies = useAppSelector(favouritesMoviesSelector);
   const favouritesMedia =
     mediaType === MediaTypeEnum.Movie ? favouritesMovies : favouritesTV;
-  //   const isFavorite = true;
-  const isFavorite = checkIfFavorite(favouritesMedia, mediaId);
+  const isFavorite = favouritesMedia.includes(mediaId);
 
   const handleOnFavourite = () => {
-    dispatch(toggleMediaFavoriteAC({ mediaId, mediaType }));
+    if (mediaType === MediaTypeEnum.Movie) {
+      dispatch(toggleFavouriteMovieAC({ mediaId }));
+    }
+    if (mediaType === MediaTypeEnum.TV) {
+      dispatch(toggleFavouriteTVshowAC({ mediaId }));
+    }
     if (!isFavorite) {
       enqueueSnackbar('Added to favourites', { variant: 'success' });
     } else {
-      enqueueSnackbar('Removed from favourites', { variant: 'success' });
+      enqueueSnackbar('Removed from favourites', { variant: 'info' });
     }
   };
 
@@ -51,10 +58,4 @@ export const ToggleFavourite = ({ mediaType, mediaId }: Props) => {
       </Button>
     </Tooltip>
   );
-};
-
-const checkIfFavorite = (arr: Array<number>, mediaId: number) => {
-  const index = arr.findIndex((element) => element === mediaId);
-
-  return index !== -1;
 };

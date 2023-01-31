@@ -1,35 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const favouritesInitialState = {
-  tvshows: [100088] as Array<number>,
-  movies: [877703] as Array<number>,
+  tvshows: [] as Array<number>,
+  movies: [] as Array<number>,
 };
 
 export const favouritesSlice = createSlice({
   name: 'favourites',
   initialState: favouritesInitialState,
   reducers: {
-    toggleMediaFavoriteAC(state, action) {
-      const { mediaId, mediaType } = action.payload;
-      console.log('action.payload :>> ', action.payload);
-      //   const index = state.favoriteMediaIds.findIndex(
-      //     (element) => element.id === id && element.mediaType === mediaType,
-      //   );
-      //   const isFavorite = index !== -1;
-
-      //   if (isFavorite) {
-      //     state.favoriteMediaIds.splice(index, 1);
-      //   } else {
-      //     state.favoriteMediaIds.push({ id, mediaType });
-      //   }
+    toggleFavouriteMovieAC(state, action) {
+      const { mediaId } = action.payload;
+      if (state.movies.includes(mediaId)) {
+        state.movies = state.movies.filter((el) => el !== mediaId);
+      } else {
+        state.movies.push(mediaId);
+      }
     },
-    // setThemeAC(state, action) {
-    //   state.theme = action.payload;
-    // },
-    // setLanguageAC(state, action) {
-    //   state.language = action.payload;
-    // },
+    toggleFavouriteTVshowAC(state, action) {
+      const { mediaId } = action.payload;
+      if (state.tvshows.includes(mediaId)) {
+        state.tvshows = state.tvshows.filter((el) => el !== mediaId);
+      } else {
+        state.tvshows.push(mediaId);
+      }
+    },
   },
 });
 
-export const { toggleMediaFavoriteAC } = favouritesSlice.actions;
+export const { toggleFavouriteMovieAC, toggleFavouriteTVshowAC } =
+  favouritesSlice.actions;
