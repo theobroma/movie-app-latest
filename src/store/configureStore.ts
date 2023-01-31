@@ -3,6 +3,7 @@ import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 
+import { favouritesSlice } from '@/features/favourites/store/slice';
 import { similarSlice } from '@/features/similar-media/store/slice';
 import { emptySplitApi } from '@/shared/api/emptySplitApi';
 
@@ -18,6 +19,7 @@ const logger = createLogger({
 const reducers = {
   // Slices
   [detailsSlice.name]: detailsSlice.reducer,
+  [favouritesSlice.name]: favouritesSlice.reducer,
   [similarSlice.name]: similarSlice.reducer,
   [trendingSlice.name]: trendingSlice.reducer,
   [uiSlice.name]: uiSlice.reducer,
