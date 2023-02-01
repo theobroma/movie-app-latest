@@ -15,6 +15,7 @@ export const MediaInfoMovie = ({ details }: Props) => {
     productionCountries,
     releaseDate,
     genres,
+    overview,
   } = details;
 
   //   const mediaType = movieMediaType || parentMediaType || '';
@@ -33,6 +34,7 @@ export const MediaInfoMovie = ({ details }: Props) => {
       productionCountries={productionCountries}
       mediaReleaseDate={releaseDate}
       genres={genres}
+      overview={overview}
     />
   );
 };

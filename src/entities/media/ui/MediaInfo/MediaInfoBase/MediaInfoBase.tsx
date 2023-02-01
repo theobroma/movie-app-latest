@@ -20,6 +20,7 @@ interface Props {
   productionCountries: ProductionCountryType[];
   mediaReleaseDate: any;
   genres: GenreType[];
+  overview: any;
 }
 
 export const MediaInfoBase = ({
@@ -30,6 +31,7 @@ export const MediaInfoBase = ({
   productionCountries,
   mediaReleaseDate,
   genres,
+  overview,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -75,6 +77,12 @@ export const MediaInfoBase = ({
           {/* <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span> */}
           <ToggleFavourite mediaType={mediaType} mediaId={mediaId} />
         </div>
+        {!!overview && (
+          <>
+            <h3 className={classes.subtitle}>Overview</h3>
+            <Typography variant="body1">{overview}</Typography>
+          </>
+        )}
         <CrewList mediaType={mediaType} mediaId={mediaId} />
       </Grid>
     </Grid>
