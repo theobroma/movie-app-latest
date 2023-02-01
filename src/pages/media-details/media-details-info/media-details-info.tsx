@@ -49,7 +49,7 @@ export const MediaDetailsInfo = () => {
     // isSuccess,
     // isLoading,
     isFetching,
-  } = useDetailsMediaQuery({ mediaId, mediaType, locale });
+  } = useDetailsMediaQuery({ mediaId: Number(mediaId), mediaType, locale });
 
   const mediaTitle =
     mediaDetailsData?.title ||
