@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { Grid, Rating, Typography } from '@mui/material';
+import { Box, Grid, Rating, Typography } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { ToggleFavourite } from '@/features/toggle-favourite/ui';
@@ -23,6 +23,7 @@ interface Props {
   overview: any;
   voteAverage: any;
   tagline: any;
+  runtime?: any;
 }
 
 export const MediaInfoBase = ({
@@ -36,6 +37,7 @@ export const MediaInfoBase = ({
   overview,
   voteAverage,
   tagline,
+  runtime,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -86,6 +88,14 @@ export const MediaInfoBase = ({
           <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span>
           <ToggleFavourite mediaType={mediaType} mediaId={mediaId} />
         </div>
+        <Box sx={{ mt: 2 }}>
+          {!!runtime && (
+            <Typography component="div" sx={{ mr: 2 }}>
+              <b>Duration: &nbsp;:&nbsp;</b>
+              {`${runtime} min.`}
+            </Typography>
+          )}
+        </Box>
         {!!tagline && (
           <Typography variant="body1" className={classes.tagline}>
             {tagline}
