@@ -54,7 +54,7 @@ export const ToggleFavourite = ({ mediaType, mediaId }: Props) => {
         color="secondary"
         aria-label="like"
       >
-        <FavoriteIcon style={{ color: isFavorite ? 'white' : 'secondary' }} />
+        <FavoriteIcon style={{ color: isFavorite ? 'white' : 'inherit' }} />
       </Button>
     </Tooltip>
   );

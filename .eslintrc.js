@@ -88,6 +88,7 @@ module.exports = {
           // 'useContext',
           // 'useDispatch',
           'useAppDispatch',
+          'useNavigate',
           'useSnackbar',
           'useStyles',
           'useState',
