@@ -16,6 +16,7 @@ export const MediaInfoTV = ({ details }: Props) => {
     firstAirDate,
     genres,
     overview,
+    voteAverage,
   } = details;
 
   //   const mediaType = movieMediaType || parentMediaType || '';
@@ -35,6 +36,7 @@ export const MediaInfoTV = ({ details }: Props) => {
       mediaReleaseDate={firstAirDate}
       genres={genres}
       overview={overview}
+      voteAverage={voteAverage}
     />
   );
 };

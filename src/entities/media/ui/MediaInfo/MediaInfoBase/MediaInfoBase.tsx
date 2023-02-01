@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { Grid, Typography } from '@mui/material';
+import { Grid, Rating, Typography } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { ToggleFavourite } from '@/features/toggle-favourite/ui';
@@ -21,6 +21,7 @@ interface Props {
   mediaReleaseDate: any;
   genres: GenreType[];
   overview: any;
+  voteAverage: any;
 }
 
 export const MediaInfoBase = ({
@@ -32,6 +33,7 @@ export const MediaInfoBase = ({
   mediaReleaseDate,
   genres,
   overview,
+  voteAverage,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -43,6 +45,8 @@ export const MediaInfoBase = ({
 
   const releaseDate = dayjs(mediaReleaseDate).format('DD/MM/YYYY');
   const releaseYear = dayjs(mediaReleaseDate).format('YYYY');
+  // 2 digits after comma
+  const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10;
 
   return (
     <Grid container spacing={3}>
@@ -73,8 +77,8 @@ export const MediaInfoBase = ({
         </ul>
         {/* Rating */}
         <div className={classes.vote}>
-          {/* <Rating value={mediaVote / 2} readOnly /> */}
-          {/* <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span> */}
+          <Rating value={mediaVote / 2} readOnly />
+          <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span>
           <ToggleFavourite mediaType={mediaType} mediaId={mediaId} />
         </div>
         {!!overview && (
