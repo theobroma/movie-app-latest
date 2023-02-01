@@ -1,12 +1,13 @@
 import { LocaleEnum } from '@/enums/locale.enum';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { emptySplitApi } from '@/shared/api/emptySplitApi';
+import { CreditsResponseType } from '@/types';
 
 const creditsAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     creditsMedia: builder.query<
-      any,
-      { mediaType: MediaTypeEnum; mediaId: string; locale: LocaleEnum }
+      CreditsResponseType,
+      { mediaType: MediaTypeEnum; mediaId: number; locale: LocaleEnum }
     >({
       query: ({ mediaType, mediaId, locale }) => ({
         url: `/${mediaType}/${mediaId}/credits?language=${locale}`,
