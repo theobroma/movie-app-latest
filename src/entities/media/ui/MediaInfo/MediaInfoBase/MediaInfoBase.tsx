@@ -4,6 +4,7 @@ import { Box, Grid, Rating, Typography } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { ToggleFavourite } from '@/features/toggle-favourite/ui';
+import { numberWithCommas } from '@/shared/utils/formatter';
 import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
@@ -23,7 +24,8 @@ interface Props {
   overview: any;
   voteAverage: any;
   tagline: any;
-  runtime?: any;
+  runtime?: any; // just for  movies
+  budget?: any; // just for  movies
 }
 
 export const MediaInfoBase = ({
@@ -38,6 +40,7 @@ export const MediaInfoBase = ({
   voteAverage,
   tagline,
   runtime,
+  budget,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -91,8 +94,14 @@ export const MediaInfoBase = ({
         <Box sx={{ mt: 2 }}>
           {!!runtime && (
             <Typography component="div" sx={{ mr: 2 }}>
-              <b>Duration: &nbsp;:&nbsp;</b>
+              <b>Duration&nbsp;:&nbsp;</b>
               {`${runtime} min.`}
+            </Typography>
+          )}
+          {!!budget && (
+            <Typography component="div">
+              <b>Budget&nbsp;:&nbsp;</b>
+              {`$${numberWithCommas(budget)}`}
             </Typography>
           )}
         </Box>
