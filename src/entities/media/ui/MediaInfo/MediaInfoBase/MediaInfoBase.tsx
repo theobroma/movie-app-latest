@@ -22,6 +22,7 @@ interface Props {
   genres: GenreType[];
   overview: any;
   voteAverage: any;
+  tagline: any;
 }
 
 export const MediaInfoBase = ({
@@ -34,6 +35,7 @@ export const MediaInfoBase = ({
   genres,
   overview,
   voteAverage,
+  tagline,
 }: Props) => {
   const { classes } = useStyles();
   const currentLanguage = useAppSelector(languageSelector);
@@ -66,7 +68,10 @@ export const MediaInfoBase = ({
           <span className={classes.titleDate}>({releaseYear})</span>
         </Typography>
         <div className={classes.releaseDate}>
-          {releaseDate}&nbsp;({i18nProductionCountries})
+          {releaseDate}&nbsp;
+          {i18nProductionCountries.length > 0 && (
+            <>({i18nProductionCountries})</>
+          )}
         </div>
         <ul className={classes.genreList}>
           {genres?.map((genre) => (
@@ -81,6 +86,11 @@ export const MediaInfoBase = ({
           <span style={{ margin: '2px 0px 0 6px' }}>{mediaVote}/10</span>
           <ToggleFavourite mediaType={mediaType} mediaId={mediaId} />
         </div>
+        {!!tagline && (
+          <Typography variant="body1" className={classes.tagline}>
+            {tagline}
+          </Typography>
+        )}
         {!!overview && (
           <>
             <h3 className={classes.subtitle}>Overview</h3>

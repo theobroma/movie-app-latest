@@ -17,6 +17,7 @@ export const MediaInfoMovie = ({ details }: Props) => {
     genres,
     overview,
     voteAverage,
+    tagline,
   } = details;
 
   //   const mediaType = movieMediaType || parentMediaType || '';
@@ -37,6 +38,7 @@ export const MediaInfoMovie = ({ details }: Props) => {
       genres={genres}
       overview={overview}
       voteAverage={voteAverage}
+      tagline={tagline}
     />
   );
 };
