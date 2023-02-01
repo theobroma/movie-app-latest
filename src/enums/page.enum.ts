@@ -5,6 +5,7 @@ export enum PageEnum {
   Details = '/details',
   DetailsMovies = '/details/movie',
   DetailsTV = '/details/tv',
+  Favourites = '/favourites',
   FavouritesMovies = '/favourites/movies',
   FavouritesTV = '/favourites/tv',
 }

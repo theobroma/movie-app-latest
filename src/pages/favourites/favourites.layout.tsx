@@ -1,19 +1,19 @@
 import { Outlet } from 'react-router-dom';
 
-import { Container, Grid } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 
 import { FavouritesTabs } from './favourites-tabs/favourites-tabs';
 
 const FavouritesLayout = () => (
   <Container maxWidth="lg">
     <Grid container spacing={3}>
-      {/* TABS */}
       <Grid item xs={12}>
         <FavouritesTabs />
       </Grid>
-      {/* CONTENT */}
-      <Outlet />
     </Grid>
+    <Box sx={{ mt: 3 }}>
+      <Outlet />
+    </Box>
   </Container>
 );
 

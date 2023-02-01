@@ -1,9 +1,7 @@
-import { Container } from '@mui/material';
-
 const FavouritesTvshowsPage = () => (
-  <Container maxWidth="lg">
+  <div>
     <span>FavouritesTvshowsPage</span>
-  </Container>
+  </div>
 );
 
 // eslint-disable-next-line import/no-default-export

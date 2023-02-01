@@ -7,4 +7,7 @@ export const breadcrumbNameMap: { [key: string]: string } = {
   [PageEnum.Details]: 'Details',
   [PageEnum.DetailsMovies]: 'Movies',
   [PageEnum.DetailsTV]: 'TV Shows',
+  [PageEnum.Favourites]: 'Favourites',
+  [PageEnum.FavouritesMovies]: 'Movies',
+  [PageEnum.FavouritesTV]: 'TV Shows',
 };
