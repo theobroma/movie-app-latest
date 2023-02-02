@@ -4,6 +4,7 @@ import { Grid } from '@mui/material';
 
 import { MediaCardSkeleton } from '@/entities/media/ui/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { MediaCardTV } from '@/entities/media/ui/MediaCard/MediaCardTV/MediaCardTV';
+import { isEmptyArray } from '@/shared/utils/is-data';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingTVQuery } from '@/store/trending/api';
 import { timeWindowsSelector } from '@/store/trending/selectors';
@@ -16,33 +17,31 @@ export const HomeTrendingTVShows = () => {
     data: tvData,
     // error,
     isError,
-    isLoading,
-    // isFetching,
+    // isLoading,
+    isFetching,
   } = useTrendingTVQuery({
     page: 1,
     timeWindows,
   });
   // Slice just first 6
-  const trendingTVShows = tvData?.results.slice(0, 6) || Array(6).fill('none');
+  const trendingTVShows = tvData?.results.slice(0, 6);
+  const skeletons = Array(6).fill('none');
 
   return (
     <Grid container spacing={2} sx={{ mt: '16px' }}>
       <HomeTrendingTvshowsLinks />
       {!isError &&
-        trendingTVShows.length > 0 &&
-        trendingTVShows.map((tvshow: any) => (
+        !isFetching &&
+        isEmptyArray(trendingTVShows) &&
+        trendingTVShows?.map((tvshow) => (
           <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
-            {isLoading ? (
-              <MediaCardSkeleton />
-            ) : (
-              <MediaCardTV tvshow={tvshow} />
-            )}
-            {/* DON'T delete. usefull for skeleton debug */}
-            {/* {idx % 2 === 0 ? (
-              <MediaCardTV tvshow={tvshow} />
-            ) : (
-              <MediaCardSkeleton />
-            )} */}
+            <MediaCardTV tvshow={tvshow} />
+          </Grid>
+        ))}
+      {isFetching &&
+        skeletons.map(() => (
+          <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
+            <MediaCardSkeleton />
           </Grid>
         ))}
     </Grid>
