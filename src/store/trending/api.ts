@@ -1,26 +1,25 @@
-import { LocaleEnum } from '@/enums/locale.enum';
 import { TimeWindowsEnum } from '@/enums/time-windows.enum';
-import { API_KEY } from '@/shared/api/connection';
 import { emptySplitApi } from '@/shared/api/emptySplitApi';
+import { TVResponseType, MoviesResponseType } from '@/types';
 
 const trendingAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     trendingTV: builder.query<
-      any,
-      { page: number; timeWindows: TimeWindowsEnum; locale: LocaleEnum }
+      TVResponseType,
+      { page: number; timeWindows: TimeWindowsEnum }
     >({
-      query: ({ page, timeWindows, locale }) => ({
-        url: `/trending/tv/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${locale}`,
+      query: ({ page, timeWindows }) => ({
+        url: `/trending/tv/${timeWindows}?page=${page}`,
         method: 'get',
       }),
       // providesTags: ['TrendingTVs'],
     }),
     trendingMovies: builder.query<
-      any,
-      { page: number; timeWindows: TimeWindowsEnum; locale: LocaleEnum }
+      MoviesResponseType,
+      { page: number; timeWindows: TimeWindowsEnum }
     >({
-      query: ({ page, timeWindows, locale }) => ({
-        url: `/trending/movie/${timeWindows}?page=${page}&api_key=${API_KEY}&language=${locale}`,
+      query: ({ page, timeWindows }) => ({
+        url: `/trending/movie/${timeWindows}?page=${page}`,
         method: 'get',
       }),
       // providesTags: ['TrendingMovies'],
