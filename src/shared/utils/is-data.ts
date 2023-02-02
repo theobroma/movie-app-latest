@@ -11,4 +11,4 @@ export const isNumber = (value?: any): value is number =>
   typeof value === 'number' && !Number.isNaN(value);
 
 export const isEmptyArray = (arr?: any) =>
-  Array.isArray(arr) && arr?.length > 0;
+  Array.isArray(arr) && arr?.length === 0;

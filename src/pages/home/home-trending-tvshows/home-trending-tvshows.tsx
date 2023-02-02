@@ -1,9 +1,10 @@
 import { nanoid } from '@reduxjs/toolkit';
 
-import { Grid } from '@mui/material';
+import { Alert, Grid, Stack } from '@mui/material';
 
 import { MediaCardSkeleton } from '@/entities/media/ui/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { MediaCardTV } from '@/entities/media/ui/MediaCard/MediaCardTV/MediaCardTV';
+import { AppError } from '@/shared/uikit/AppError/AppError';
 import { isEmptyArray } from '@/shared/utils/is-data';
 import { useAppSelector } from '@/store/configureStore';
 import { useTrendingTVQuery } from '@/store/trending/api';
@@ -15,9 +16,9 @@ export const HomeTrendingTVShows = () => {
   const timeWindows = useAppSelector(timeWindowsSelector);
   const {
     data: tvData,
-    // error,
+    error,
     isError,
-    // isLoading,
+    isSuccess,
     isFetching,
   } = useTrendingTVQuery({
     page: 1,
@@ -32,7 +33,7 @@ export const HomeTrendingTVShows = () => {
       <HomeTrendingTvshowsLinks />
       {!isError &&
         !isFetching &&
-        isEmptyArray(trendingTVShows) &&
+        !isEmptyArray(trendingTVShows) &&
         trendingTVShows?.map((tvshow) => (
           <Grid item xs={6} sm={4} md={4} lg={2} key={nanoid()}>
             <MediaCardTV tvshow={tvshow} />
@@ -44,6 +45,20 @@ export const HomeTrendingTVShows = () => {
             <MediaCardSkeleton />
           </Grid>
         ))}
+      {/* no results */}
+      {isSuccess && isEmptyArray(trendingTVShows) && (
+        <Grid item xs={12}>
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert severity="warning">There is no data</Alert>
+          </Stack>
+        </Grid>
+      )}
+      {/* error */}
+      {isError && (
+        <Grid item xs={12}>
+          <AppError error={error} />
+        </Grid>
+      )}
     </Grid>
   );
 };
