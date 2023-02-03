@@ -1,5 +1,4 @@
 import { nanoid } from '@reduxjs/toolkit';
-// import { useEffect } from 'react';
 
 import { Container, Box, Typography, Grid, Alert, Stack } from '@mui/material';
 
@@ -7,10 +6,6 @@ import { MediaCard } from '@/entities/media/ui/MediaCard/MediaCard';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
 import { AppError } from '@/shared/uikit/AppError/AppError';
-// import { similarMediaSelector } from '@/features/similar-media/store/selectors';
-// import { getSimilarMediaTC } from '@/features/similar-media/store/slice';
-import { useAppDispatch, useAppSelector } from '@/store/configureStore';
-import { localeSelector } from '@/store/ui/selectors';
 
 interface Props {
   mediaId: string;
@@ -18,31 +13,13 @@ interface Props {
 }
 
 export const SimilarMedia = ({ mediaId, mediaType }: Props) => {
-  const dispatch = useAppDispatch();
-  // just for useEffect refetch if changed
-  const locale = useAppSelector(localeSelector);
   const {
     data: similarMediaData,
     error,
     isError,
     isSuccess,
-    // isLoading,
     isFetching,
   } = useSimilarMediaQuery({ mediaId, mediaType });
-
-  // const {
-  //   data: { results },
-  //   error,
-  //   isError,
-  //   isLoading,
-  //   isSuccess,
-  // } = useAppSelector(similarMediaSelector);
-
-  // useEffect(() => {
-  //   if (mediaId && mediaType) {
-  //     dispatch(getSimilarMediaTC({ mediaId, mediaType }));
-  //   }
-  // }, [dispatch, mediaId, mediaType, locale]);
 
   // Slice just first 6
   const similarMedia =

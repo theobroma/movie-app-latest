@@ -20,20 +20,6 @@ export const MediaDetailsInfo = () => {
     keyof MediaDetailsRouteParams
   >() as MediaDetailsRouteParams;
 
-  // const {
-  //   data: mediaDetailsData,
-  //   error,
-  //   isError,
-  //   isLoading,
-  //   isSuccess,
-  // } = useAppSelector(mediaDetailsSelector);
-
-  // useEffect(() => {
-  //   if (mediaId && mediaType) {
-  //     dispatch(getMediaDetailsTC({ mediaId, mediaType }));
-  //   }
-  // }, [dispatch, mediaId, mediaType,locale]);
-
   const { data: mediaDetailsData, isFetching } = useDetailsMediaQuery({
     mediaId: Number(mediaId),
     mediaType,
