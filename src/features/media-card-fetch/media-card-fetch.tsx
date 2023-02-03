@@ -1,8 +1,6 @@
 import { MediaCard } from '@/entities/media/ui/MediaCard/MediaCard';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { useAppSelector } from '@/store/configureStore';
 import { useDetailsMediaQuery } from '@/store/details/api';
-import { localeSelector } from '@/store/ui/selectors';
 
 interface Props {
   mediaId: number;
@@ -10,16 +8,7 @@ interface Props {
 }
 
 export const MediaCardFetch = ({ mediaId, mediaType }: Props) => {
-  const locale = useAppSelector(localeSelector);
-
-  const {
-    data,
-    // error,
-    // isError,
-    // isSuccess,
-    // isLoading,
-    isFetching,
-  } = useDetailsMediaQuery({ mediaId, mediaType, locale });
+  const { data, isFetching } = useDetailsMediaQuery({ mediaId, mediaType });
 
   return (
     <MediaCard

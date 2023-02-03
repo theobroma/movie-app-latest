@@ -1,5 +1,4 @@
 /* eslint-disable no-nested-ternary */
-// import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Box, Container } from '@mui/material';
@@ -9,21 +8,14 @@ import { MediaInfoSkeleton } from '@/entities/media/ui/MediaInfo/MediaInfoSkelet
 import { MediaInfoTV } from '@/entities/media/ui/MediaInfo/MediaInfoTV/MediaInfoTV';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
-import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { useDetailsMediaQuery } from '@/store/details/api';
-// import { mediaDetailsSelector } from '@/store/details/selectors';
-// import { getMediaDetailsTC } from '@/store/details/slice';
-import { localeSelector } from '@/store/ui/selectors';
 
 import { useStyles } from './media-details-info.styles';
 
 const backdropBase = 'https://image.tmdb.org/t/p/original';
 
 export const MediaDetailsInfo = () => {
-  const dispatch = useAppDispatch();
   const { classes } = useStyles();
-  // just for useEffect refetch if changed
-  const locale = useAppSelector(localeSelector);
   const { mediaId, mediaType } = useParams<
     keyof MediaDetailsRouteParams
   >() as MediaDetailsRouteParams;
@@ -42,14 +34,10 @@ export const MediaDetailsInfo = () => {
   //   }
   // }, [dispatch, mediaId, mediaType,locale]);
 
-  const {
-    data: mediaDetailsData,
-    // error,
-    // isError,
-    // isSuccess,
-    // isLoading,
-    isFetching,
-  } = useDetailsMediaQuery({ mediaId: Number(mediaId), mediaType, locale });
+  const { data: mediaDetailsData, isFetching } = useDetailsMediaQuery({
+    mediaId: Number(mediaId),
+    mediaType,
+  });
 
   const mediaTitle =
     mediaDetailsData?.title ||
@@ -75,23 +63,9 @@ export const MediaDetailsInfo = () => {
           {isFetching ? (
             <MediaInfoSkeleton />
           ) : mediaType === MediaTypeEnum.Movie ? (
-            <MediaInfoMovie
-              details={mediaDetailsData}
-              // media={mediaDetailsData}
-              // trailerKey={trailerKey}
-              // credits={credits}
-              // onFavourite={handleOnFavourite}
-              // isFavorite={isFavorite}
-            />
+            <MediaInfoMovie details={mediaDetailsData} />
           ) : (
-            <MediaInfoTV
-              details={mediaDetailsData}
-              // media={mediaDetailsData}
-              // trailerKey={trailerKey}
-              // credits={credits}
-              // onFavourite={handleOnFavourite}
-              // isFavorite={isFavorite}
-            />
+            <MediaInfoTV details={mediaDetailsData} />
           )}
         </Box>
       </Container>
