@@ -8,7 +8,7 @@ const trendingAPI = emptySplitApi.injectEndpoints({
       TVResponseType,
       { page: number; timeWindows: TimeWindowsEnum }
     >({
-      query: ({ page, timeWindows }) => ({
+      query: ({ page = 1, timeWindows = TimeWindowsEnum.Week }) => ({
         url: `/trending/tv/${timeWindows}?page=${page}`,
         method: 'get',
       }),
@@ -18,7 +18,7 @@ const trendingAPI = emptySplitApi.injectEndpoints({
       MoviesResponseType,
       { page: number; timeWindows: TimeWindowsEnum }
     >({
-      query: ({ page, timeWindows }) => ({
+      query: ({ page = 1, timeWindows = TimeWindowsEnum.Week }) => ({
         url: `/trending/movie/${timeWindows}?page=${page}`,
         method: 'get',
       }),

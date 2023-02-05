@@ -62,7 +62,7 @@ export const NestedList = () => {
         <ListItemIcon>
           <FavoriteIcon />
         </ListItemIcon>
-        <ListItemText primary="Trending" />
+        <ListItemText primary="Favourites" />
         {isOpen2 ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={isOpen2} timeout="auto" unmountOnExit>
