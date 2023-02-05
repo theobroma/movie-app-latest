@@ -1,11 +1,10 @@
 // https://mui.com/material-ui/react-pagination/#router-integration
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { Container } from '@mui/material';
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { AppPagination } from '@/shared/uikit/AppPagination/AppPagination';
 import { useTrendingTVQuery } from '@/store/trending/api';
 import { MediaList } from '@/widgets/media-list/media-list';
 
@@ -35,16 +34,10 @@ const TrendingTvshowsPage = () => {
         isSuccess={isSuccess}
         error={error}
       />
-      <Pagination
+      <AppPagination
         page={page}
         count={tvData?.totalPages}
-        renderItem={(item) => (
-          <PaginationItem
-            component={Link}
-            to={`/trending/tv${item.page === 1 ? '' : `?page=${item.page}`}`}
-            {...item}
-          />
-        )}
+        relativeBaseUrl="/trending/tv"
       />
     </Container>
   );

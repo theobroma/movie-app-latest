@@ -1,11 +1,10 @@
 // https://mui.com/material-ui/react-pagination/#router-integration
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { Container } from '@mui/material';
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { AppPagination } from '@/shared/uikit/AppPagination/AppPagination';
 import { useTrendingMoviesQuery } from '@/store/trending/api';
 import { MediaList } from '@/widgets/media-list/media-list';
 
@@ -26,7 +25,7 @@ const TrendingMoviesPage = () => {
 
   return (
     <Container maxWidth="lg">
-      <span>TrendingTvshowsPage</span>
+      <span>TrendingMoviesPage</span>
       <MediaList
         mediaData={moviesData}
         mediaType={MediaTypeEnum.Movie}
@@ -35,18 +34,10 @@ const TrendingMoviesPage = () => {
         isSuccess={isSuccess}
         error={error}
       />
-      <Pagination
+      <AppPagination
         page={page}
         count={moviesData?.totalPages}
-        renderItem={(item) => (
-          <PaginationItem
-            component={Link}
-            to={`/trending/movies${
-              item.page === 1 ? '' : `?page=${item.page}`
-            }`}
-            {...item}
-          />
-        )}
+        relativeBaseUrl="/trending/movies"
       />
     </Container>
   );
