@@ -11,7 +11,7 @@ interface Props {
   //   media: MovieEntityType | TVEntityType;
   media: any;
   isLoading: boolean;
-  parentMediaType: string; // crutch for similar movies
+  parentMediaType: MediaTypeEnum; // crutch for similar movies
   idx?: number; // for skeleton debug
 }
 
