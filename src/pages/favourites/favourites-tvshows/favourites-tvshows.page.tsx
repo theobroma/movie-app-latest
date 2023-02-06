@@ -3,9 +3,9 @@ import { nanoid } from '@reduxjs/toolkit';
 import { Grid } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { favouritesTVSelector } from '@/features/favourites/store/selectors';
 import { MediaCardFetch } from '@/features/media-card-fetch/media-card-fetch';
 import { useAppSelector } from '@/store/configureStore';
+import { favouritesTVSelector } from '@/store/favourites/selectors';
 
 const FavouritesTvshowsPage = () => {
   const favouritesTV = useAppSelector(favouritesTVSelector);

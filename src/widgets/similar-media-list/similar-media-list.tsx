@@ -1,7 +1,7 @@
 import { Container, Box, Typography } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { useSimilarMediaQuery } from '@/features/similar-media/store/api';
+import { useSimilarMediaQuery } from '@/store/similar/api';
 import { MediaList } from '@/widgets/media-list/media-list';
 
 interface Props {

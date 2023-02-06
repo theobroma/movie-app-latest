@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { Box, Grid, Rating, Typography } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { ToggleFavourite } from '@/features/toggle-favourite/ui';
+import { ToggleFavourite } from '@/features/toggle-favourite/toggle-favourite';
 import { numberWithCommas } from '@/shared/utils/formatter';
 import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';

@@ -4,15 +4,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Tooltip, Button } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import {
   favouritesTVSelector,
   favouritesMoviesSelector,
-} from '@/features/favourites/store/selectors';
+} from '@/store/favourites/selectors';
 import {
   toggleFavouriteMovieAC,
   toggleFavouriteTVshowAC,
-} from '@/features/favourites/store/slice';
-import { useAppDispatch, useAppSelector } from '@/store/configureStore';
+} from '@/store/favourites/slice';
 
 interface Props {
   mediaType: MediaTypeEnum;

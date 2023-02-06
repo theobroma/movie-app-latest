@@ -4,8 +4,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Tooltip, IconButton, Badge } from '@mui/material';
 
 import { PageEnum } from '@/enums/page.enum';
-import { favouritesCountSelector } from '@/features/favourites/store/selectors';
 import { useAppSelector } from '@/store/configureStore';
+import { favouritesCountSelector } from '@/store/favourites/selectors';
 
 export const FavouritesBadge = () => {
   const navigate = useNavigate();
