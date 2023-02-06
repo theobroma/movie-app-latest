@@ -25,9 +25,9 @@ export const MediaCard = ({
     {isLoading ? (
       <MediaCardSkeleton />
     ) : parentMediaType === MediaTypeEnum.Movie ? (
-      <MediaCardMovie movie={media} parentMediaType={parentMediaType} />
+      <MediaCardMovie movie={media} />
     ) : (
-      <MediaCardTV tvshow={media} parentMediaType={parentMediaType} />
+      <MediaCardTV tvshow={media} />
     )}
     {/* for skeleton debug */}
     {/* {idx % 2 === 0 ? <MediaCardMovie movie={movie} /> : <MediaCardSkeleton />} */}

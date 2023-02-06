@@ -1,15 +1,14 @@
 import { MediaCardBase } from '@/entities/media/ui/MediaCard/MediaCardBase/MediaCardBase';
+import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { MovieEntityType } from '@/types';
 
 interface Props {
   movie: MovieEntityType;
-  parentMediaType?: string; // crutch for similar movies
 }
 
-export const MediaCardMovie = ({ movie, parentMediaType }: Props) => {
+export const MediaCardMovie = ({ movie }: Props) => {
   const {
     id,
-    mediaType: movieMediaType,
     title,
     originalTitle,
     originalLanguage,
@@ -18,7 +17,6 @@ export const MediaCardMovie = ({ movie, parentMediaType }: Props) => {
     posterPath,
   } = movie;
 
-  const mediaType = movieMediaType || parentMediaType || '';
   const movieTitle = title || originalTitle || 'title';
   const movieOriginalTitle = originalTitle || 'title';
   const movieReleaseYear = releaseDate.split('-')[0];
@@ -26,7 +24,7 @@ export const MediaCardMovie = ({ movie, parentMediaType }: Props) => {
   return (
     <MediaCardBase
       id={id}
-      mediaType={mediaType}
+      mediaType={MediaTypeEnum.Movie}
       originalLanguage={originalLanguage}
       originalTitle={movieOriginalTitle}
       posterPath={posterPath}

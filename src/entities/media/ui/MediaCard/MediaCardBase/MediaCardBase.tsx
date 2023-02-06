@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 import { MovieEntityType } from '@/types';
@@ -14,7 +15,7 @@ const posterUnavailable =
 
 interface Props {
   id: MovieEntityType['id'];
-  mediaType: MovieEntityType['mediaType'];
+  mediaType: MediaTypeEnum;
   originalLanguage: MovieEntityType['originalLanguage'];
   originalTitle: MovieEntityType['originalTitle'];
   posterPath: MovieEntityType['posterPath'];
