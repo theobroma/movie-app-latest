@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Grid, Typography, Box } from '@mui/material';
 
 import { CastCard } from '@/entities/cast/cast-card/cast-card';
+import { groupBy } from '@/shared/utils/arrays';
 import { useCreditsMediaQuery } from '@/store/credits/api';
 import { MediaDetailsRouteParams } from '@/types';
 
@@ -22,6 +23,31 @@ export const CastPersons = () => {
 
   const castCount = credits?.cast?.length || 0;
   const crewCount = credits?.crew?.length || 0;
+  const groupedCrew = groupBy(credits?.crew || [], 'department');
+
+  const CrewBlock = Object.keys(groupedCrew).map((key) => {
+    return (
+      <Box mb={5} key={nanoid()}>
+        <Typography
+          className={classes.departmentTitle}
+          component="h3"
+          variant="h4"
+        >
+          {groupedCrew[key][0].department}
+        </Typography>
+        {groupedCrew[key].map((person) => (
+          <Box mb={3} key={nanoid()}>
+            <CastCard
+              profilePath={person.profilePath}
+              name={person.name}
+              gender={person.gender}
+              role={person.job}
+            />
+          </Box>
+        ))}
+      </Box>
+    );
+  });
 
   return (
     <Grid container spacing={3}>
@@ -46,7 +72,7 @@ export const CastPersons = () => {
           Series Crew&nbsp;
           <span className={classes.count}>{crewCount}</span>
         </Typography>
-        {credits?.crew?.map((person) => (
+        {/* {credits?.crew?.map((person) => (
           <Box mb={3} key={nanoid()}>
             <CastCard
               profilePath={person.profilePath}
@@ -55,8 +81,8 @@ export const CastPersons = () => {
               role={person.job}
             />
           </Box>
-        ))}
-        {/* {CrewBlock} */}
+        ))} */}
+        {CrewBlock}
       </Grid>
     </Grid>
   );
