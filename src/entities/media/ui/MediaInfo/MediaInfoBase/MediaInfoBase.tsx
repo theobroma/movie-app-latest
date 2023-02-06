@@ -106,15 +106,17 @@ export const MediaInfoBase = ({
           )}
         </Box>
         {!!tagline && (
-          <Typography variant="body1" className={classes.tagline}>
-            {tagline}
-          </Typography>
+          <Box>
+            <Typography variant="body1" className={classes.tagline}>
+              {tagline}
+            </Typography>
+          </Box>
         )}
         {!!overview && (
-          <>
+          <Box>
             <h3 className={classes.subtitle}>Overview</h3>
             <Typography variant="body1">{overview}</Typography>
-          </>
+          </Box>
         )}
         <CrewList mediaType={mediaType} mediaId={mediaId} />
       </Grid>
