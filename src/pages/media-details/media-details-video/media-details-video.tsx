@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { Box, Container, Grid } from '@mui/material';
 
-import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useVideosQuery } from '@/store/videos/api';
+import { MediaDetailsRouteParams } from '@/types';
 
 import { MediaDetailsVideoSkeleton } from './media-details-video-skeleton/media-details-video-skeleton';
 

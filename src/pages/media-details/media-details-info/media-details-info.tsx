@@ -7,8 +7,8 @@ import { MediaInfoMovie } from '@/entities/media/ui/MediaInfo/MediaInfoMovie/Med
 import { MediaInfoSkeleton } from '@/entities/media/ui/MediaInfo/MediaInfoSkeleton/MediaInfoSkeleton';
 import { MediaInfoTV } from '@/entities/media/ui/MediaInfo/MediaInfoTV/MediaInfoTV';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
 import { useDetailsMediaQuery } from '@/store/details/api';
+import { MediaDetailsRouteParams } from '@/types';
 
 import { useStyles } from './media-details-info.styles';
 

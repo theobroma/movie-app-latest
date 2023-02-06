@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
+import { MediaDetailsRouteParams } from '@/types';
 import { SimilarMediaList } from '@/widgets/similar-media-list/similar-media-list';
 
 export const MediaDetailsSimilar = () => {
