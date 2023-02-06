@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import { SimilarMedia } from '@/features/similar-media/components/similar-media/similar-media';
 import { MediaDetailsRouteParams } from '@/pages/media-details/media-details.interface';
+import { SimilarMediaList } from '@/widgets/similar-media-list/similar-media-list';
 
 export const MediaDetailsSimilar = () => {
   const { mediaId, mediaType } = useParams<
     keyof MediaDetailsRouteParams
   >() as MediaDetailsRouteParams;
 
-  return <SimilarMedia mediaId={mediaId} mediaType={mediaType} />;
+  return <SimilarMediaList mediaId={mediaId} mediaType={mediaType} />;
 };

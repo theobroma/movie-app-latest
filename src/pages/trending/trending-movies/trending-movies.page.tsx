@@ -1,4 +1,3 @@
-// https://mui.com/material-ui/react-pagination/#router-integration
 import { useLocation } from 'react-router-dom';
 
 import { Container } from '@mui/material';
