@@ -1,4 +1,7 @@
-import { MediaCard } from '@/entities/media/ui/MediaCard/MediaCard';
+/* eslint-disable no-nested-ternary */
+import { MediaCardMovie } from '@/entities/media/ui/MediaCard/MediaCardMovie/MediaCardMovie';
+import { MediaCardSkeleton } from '@/entities/media/ui/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
+import { MediaCardTV } from '@/entities/media/ui/MediaCard/MediaCardTV/MediaCardTV';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { useDetailsMediaQuery } from '@/store/details/api';
 
@@ -11,10 +14,14 @@ export const MediaCardFetch = ({ mediaId, mediaType }: Props) => {
   const { data, isFetching } = useDetailsMediaQuery({ mediaId, mediaType });
 
   return (
-    <MediaCard
-      media={data}
-      isLoading={isFetching}
-      parentMediaType={mediaType}
-    />
+    <>
+      {isFetching ? (
+        <MediaCardSkeleton />
+      ) : mediaType === MediaTypeEnum.Movie ? (
+        <MediaCardMovie movie={data} />
+      ) : (
+        <MediaCardTV tvshow={data} />
+      )}
+    </>
   );
 };
