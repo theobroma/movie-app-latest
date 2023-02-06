@@ -4,6 +4,10 @@ import { Box, Grid, Rating, Typography } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { ToggleFavourite } from '@/features/toggle-favourite/toggle-favourite';
+import {
+  POSTER_ORIGINAL_BASE,
+  POSTER_UNAVAILABLE,
+} from '@/shared/utils/constants';
 import { numberWithCommas } from '@/shared/utils/formatter';
 import { i18nCountriesConvert } from '@/shared/utils/i18nCountriesConvert';
 import { useAppSelector } from '@/store/configureStore';
@@ -54,18 +58,19 @@ export const MediaInfoBase = ({
   const releaseYear = dayjs(mediaReleaseDate).format('YYYY');
   // 2 digits after comma
   const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10;
+  const mediaPoster = posterPath
+    ? `${POSTER_ORIGINAL_BASE}${posterPath}`
+    : POSTER_UNAVAILABLE;
 
   return (
     <Grid container spacing={3}>
       {/* poster */}
       <Grid item md={3}>
-        {!!posterPath && (
-          <img
-            className={classes.poster}
-            src={`https://image.tmdb.org/t/p/original/${posterPath}`}
-            alt={`Poster of ${mediaTitle}`}
-          />
-        )}
+        <img
+          className={classes.poster}
+          src={mediaPoster}
+          alt={`Poster of ${mediaTitle}`}
+        />
       </Grid>
       <Grid item md={8} style={{ color: 'white' }}>
         <Typography variant="h4" component="h1" style={{ fontWeight: 'bold' }}>

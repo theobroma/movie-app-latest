@@ -3,15 +3,12 @@ import { Link } from 'react-router-dom';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
+import { POSTER_300_BASE, POSTER_UNAVAILABLE } from '@/shared/utils/constants';
 import { useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 import { MovieEntityType } from '@/types';
 
 import { StyledBadge, useStyles } from './MediaCardBase.styles';
-
-const posterBase = 'https://image.tmdb.org/t/p/w300';
-const posterUnavailable =
-  'https://www.movienewz.com/img/films/poster-holder.jpg';
 
 interface Props {
   id: MovieEntityType['id'];
@@ -38,8 +35,8 @@ export const MediaCardBase = ({
   const currentLanguage = useAppSelector(languageSelector);
   const mediaVote = Math.round((voteAverage + Number.EPSILON) * 10) / 10; // 2 digits after comma
   const mediaPoster = posterPath
-    ? `${posterBase}${posterPath}`
-    : posterUnavailable;
+    ? `${POSTER_300_BASE}${posterPath}`
+    : POSTER_UNAVAILABLE;
   const shouldRenderOriginalTitle = originalLanguage !== currentLanguage;
 
   return (
