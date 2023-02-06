@@ -20,9 +20,6 @@ const TrendingTvshowsPage = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
-const MediaDetailsPage = lazy(() =>
-  pMinDelay(import('@/pages/media-details/media-details.page'), MIN_LAZY_DELAY),
-);
 const FavouritesLayout = lazy(() =>
   pMinDelay(import('./favourites/favourites.layout'), MIN_LAZY_DELAY),
 );
@@ -38,6 +35,12 @@ const FavouritesTvshowsPage = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
+const MediaDetailsPage = lazy(() =>
+  pMinDelay(import('@/pages/media-details/media-details.page'), MIN_LAZY_DELAY),
+);
+const CastPage = lazy(() =>
+  pMinDelay(import('@/pages/cast/cast.page'), MIN_LAZY_DELAY),
+);
 
 export const Routing = () => (
   <Routes>
@@ -47,6 +50,7 @@ export const Routing = () => (
         path="/details/:mediaType/:mediaId"
         element={<MediaDetailsPage />}
       />
+      <Route path="/details/:mediaType/:mediaId/cast" element={<CastPage />} />
       {/* Trending */}
       <Route path="trending" element={<Outlet />}>
         <Route path="movies" element={<TrendingMoviesPage />} />
