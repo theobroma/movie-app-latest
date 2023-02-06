@@ -4,7 +4,6 @@ import { CastPersons } from './cast-persons/cast-persons';
 
 const CastPage = () => (
   <Container maxWidth="lg">
-    <span>CastPage</span>
     <CastPersons />
   </Container>
 );

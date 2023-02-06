@@ -1,5 +1,5 @@
 export const IMG_BASE_URL = 'https://www.themoviedb.org';
-export const PERSON_IMG_BASE_URL = `${IMG_BASE_URL}/t/p/w66_and_h66_face}`;
+export const PERSON_IMG_BASE_URL = `${IMG_BASE_URL}/t/p/w66_and_h66_face`;
 
 export const POSTER_300_BASE = 'https://image.tmdb.org/t/p/w300';
 export const POSTER_ORIGINAL_BASE = 'https://image.tmdb.org/t/p/original';
