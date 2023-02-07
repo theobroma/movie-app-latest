@@ -78,6 +78,22 @@ module.exports = {
       { allowSameFolder: true, rootDir: 'src', prefix: '@' },
     ],
     'no-restricted-exports': 0, // Nothing to restrict.
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'console',
+            importNames: ['error'],
+          },
+          {
+            name: 'tss-react/mui',
+            importNames: ['useStyles'],
+            message: 'Use useStyles imported from local file *.styles',
+          },
+        ],
+      },
+    ],
     'no-underscore-dangle': 0,
 
     'hooks/sort': [
