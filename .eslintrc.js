@@ -92,6 +92,12 @@ module.exports = {
             message: 'Use useStyles imported from local file *.styles',
           },
         ],
+        patterns: [
+          {
+            group: ['@/types/*'],
+            message: 'Please use import from index "@/types" instead',
+          },
+        ],
       },
     ],
     'no-underscore-dangle': 0,
