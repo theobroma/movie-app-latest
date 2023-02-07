@@ -3,7 +3,10 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Container, Box, Typography, Link } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { POSTER_HEADER_BASE } from '@/shared/utils/constants';
+import {
+  POSTER_HEADER_BASE,
+  POSTER_UNAVAILABLE,
+} from '@/shared/utils/constants';
 
 import { useStyles } from './details-header-base.styles';
 
@@ -24,6 +27,10 @@ export const DetailsHeaderBase = ({
 }: Props) => {
   const { classes } = useStyles();
 
+  const mediaPoster = posterPath
+    ? `${POSTER_HEADER_BASE}${posterPath}`
+    : POSTER_UNAVAILABLE;
+
   return (
     <div className={classes.root}>
       <Container maxWidth="lg">
@@ -37,7 +44,7 @@ export const DetailsHeaderBase = ({
             >
               <img
                 className={classes.mediaFigure}
-                src={`${POSTER_HEADER_BASE}${posterPath}`}
+                src={mediaPoster}
                 alt={mediaTitle}
                 width="58"
                 height="87"
