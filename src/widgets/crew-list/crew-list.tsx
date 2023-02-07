@@ -1,6 +1,7 @@
 import { nanoid } from '@reduxjs/toolkit';
+import { Link as RouterLink } from 'react-router-dom';
 
-import { Grid, Typography } from '@mui/material';
+import { Typography, Link, Grid, Box } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
 import { useCreditsMediaQuery } from '@/store/credits/api';
@@ -15,7 +16,14 @@ interface Props {
 export const CrewList = ({ mediaType, mediaId }: Props) => {
   const { classes } = useStyles();
 
-  const { data: credits } = useCreditsMediaQuery({ mediaId, mediaType });
+  const {
+    data: credits,
+    isFetching,
+    isSuccess,
+  } = useCreditsMediaQuery({
+    mediaId,
+    mediaType,
+  });
 
   return (
     <Grid container spacing={3} component="ul" className={classes.crewList}>
@@ -36,6 +44,19 @@ export const CrewList = ({ mediaType, mediaId }: Props) => {
           </Typography>
         </Grid>
       ))}
+      {!isFetching && isSuccess && (
+        <Grid item xs={12}>
+          <Box>
+            <Link
+              component={RouterLink}
+              to={`/details/${mediaType}/${mediaId}/cast`}
+              className={classes.link}
+            >
+              Full Cast & Crew
+            </Link>
+          </Box>
+        </Grid>
+      )}
     </Grid>
   );
 };
