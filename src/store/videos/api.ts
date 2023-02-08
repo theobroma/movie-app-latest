@@ -1,5 +1,4 @@
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { API_KEY } from '@/shared/api/connection';
 import { emptySplitApi } from '@/shared/api/emptySplitApi';
 import { TrailersResponseType } from '@/types';
 
@@ -10,7 +9,7 @@ const videosAPI = emptySplitApi.injectEndpoints({
       { mediaType: MediaTypeEnum; mediaId: number }
     >({
       query: ({ mediaType, mediaId }) => ({
-        url: `/${mediaType}/${mediaId}/videos?api_key=${API_KEY}`,
+        url: `/${mediaType}/${mediaId}/videos`,
         method: 'get',
       }),
       // providesTags: ['Videos'],

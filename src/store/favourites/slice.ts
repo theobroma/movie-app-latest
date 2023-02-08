@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const favouritesInitialState = {
   tvshows: [213241, 100088] as Array<number>,
-  movies: [615777, 505642, 415539] as Array<number>,
+  movies: [615777, 505642, 76600, 415539] as Array<number>,
 };
 
 export const favouritesSlice = createSlice({
