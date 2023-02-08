@@ -7,7 +7,7 @@ const videosAPI = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     videos: builder.query<
       TrailersResponseType,
-      { mediaType: MediaTypeEnum; mediaId: string }
+      { mediaType: MediaTypeEnum; mediaId: number }
     >({
       query: ({ mediaType, mediaId }) => ({
         url: `/${mediaType}/${mediaId}/videos?api_key=${API_KEY}`,
