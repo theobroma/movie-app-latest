@@ -3,22 +3,24 @@ import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 
-import { TimeWindowsEnum } from '@/enums/time-windows.enum';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { timeWindowsSelector } from '@/store/trending/selectors';
 import { setTimeWindowsAC } from '@/store/trending/slice';
 
 interface Props {
-  tabKeys: Array<string>;
+  groupedVideos: any;
 }
 
-export const VideosTabs = ({ tabKeys }: Props) => {
+export const VideosTabs = ({ groupedVideos }: Props) => {
   const dispatch = useAppDispatch();
   const timeWindows = useAppSelector(timeWindowsSelector);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     dispatch(setTimeWindowsAC(newValue));
   };
+
+  console.log('groupedVideos', groupedVideos);
+  const tabKeys = Object.keys(groupedVideos);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -34,7 +36,10 @@ export const VideosTabs = ({ tabKeys }: Props) => {
             label={
               <Box sx={{ display: 'flex' }}>
                 <Box>{tab}</Box>
-                <Badge badgeContent={4} color="primary" />
+                <Badge
+                  badgeContent={groupedVideos[tab].length}
+                  color="primary"
+                />
               </Box>
             }
             value={tab}

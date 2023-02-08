@@ -25,13 +25,13 @@ export const VideosContent = () => {
 
   const groupedVideos = groupBy(data?.results || [], 'type');
 
-  console.log('groupedVideos', groupedVideos);
-  const videoKeys = Object.keys(groupedVideos);
+  //   console.log('groupedVideos', groupedVideos);
+  //   const videoKeys = Object.keys(groupedVideos);
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        <VideosTabs tabKeys={videoKeys} />
+        <VideosTabs groupedVideos={groupedVideos} />
       </Grid>
       <Grid item xs={12} sm={6} key={nanoid()}>
         {/* {credits?.cast?.map((person) => (
