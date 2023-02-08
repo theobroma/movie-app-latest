@@ -7,6 +7,8 @@ import { Badge } from '@mui/material';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 
+import { VideosItem } from '@/pages/videos/videos-content/videos-item/videos-item';
+
 interface Props {
   groupedVideos: any;
 }
@@ -45,9 +47,16 @@ export const VideosTabs = ({ groupedVideos }: Props) => {
               ))}
             </TabList>
           </Box>
-          {tabKeys.map((tab, idx: number) => (
-            <TabPanel value={tab}>{idx}</TabPanel>
-          ))}
+          {tabKeys.map((tab, idx: number) => {
+            const filteredVideos = groupedVideos[tab];
+            return (
+              <TabPanel value={tab}>
+                {filteredVideos.map((video: any) => (
+                  <VideosItem video={video} />
+                ))}
+              </TabPanel>
+            );
+          })}
         </TabContext>
       )}
     </Box>
