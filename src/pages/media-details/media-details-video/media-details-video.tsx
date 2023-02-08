@@ -1,15 +1,18 @@
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
-import { useParams } from 'react-router-dom';
+import { useParams, Link as RouterLink } from 'react-router-dom';
 
-import { Box, Container, Grid } from '@mui/material';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { Box, Container, Grid, Link } from '@mui/material';
 
 import { useVideosQuery } from '@/store/videos/api';
 import { MediaDetailsRouteParams } from '@/types';
 
 import { MediaDetailsVideoSkeleton } from './media-details-video-skeleton/media-details-video-skeleton';
+import { useStyles } from './media-details-video.styles';
 
 export const MediaDetailsVideo = () => {
+  const { classes } = useStyles();
   const { mediaId, mediaType } = useParams<
     keyof MediaDetailsRouteParams
   >() as MediaDetailsRouteParams;
@@ -42,8 +45,21 @@ export const MediaDetailsVideo = () => {
             )}
           </Box>
         </Grid>
-        <Grid item xs={12} md={3}>
-          {/* TODO: add link to more videos */}
+        <Grid
+          item
+          xs={12}
+          md={3}
+          sx={{ display: 'flex', alignItems: 'center' }}
+        >
+          <Link
+            className={classes.videoLink}
+            component={RouterLink}
+            to={`/details/${mediaType}/${mediaId}/videos`}
+            variant="body2"
+          >
+            View More &nbsp;
+            <ArrowRightAltIcon />
+          </Link>
         </Grid>
       </Grid>
     </Container>

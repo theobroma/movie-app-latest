@@ -41,6 +41,9 @@ const MediaDetailsPage = lazy(() =>
 const CastPage = lazy(() =>
   pMinDelay(import('@/pages/cast/cast.page'), MIN_LAZY_DELAY),
 );
+const VideosPage = lazy(() =>
+  pMinDelay(import('@/pages/videos/videos.page'), MIN_LAZY_DELAY),
+);
 
 export const Routing = () => (
   <Routes>
@@ -51,6 +54,10 @@ export const Routing = () => (
         element={<MediaDetailsPage />}
       />
       <Route path="/details/:mediaType/:mediaId/cast" element={<CastPage />} />
+      <Route
+        path="/details/:mediaType/:mediaId/videos"
+        element={<VideosPage />}
+      />
       {/* Trending */}
       <Route path="trending" element={<Outlet />}>
         <Route path="movies" element={<TrendingMoviesPage />} />
