@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 
 // import ComponentWithProblem from '@/entities/media/ui/WDYR/ComponentWithProblem';
-import { PersistentDrawerLeft } from '@/widgets/AppBar/Drawer';
-import { Footer } from '@/widgets/Footer/Footer';
+import { PersistentDrawerLeft } from '@/widgets/app-bar/app-bar';
+import { Footer } from '@/widgets/footer/footer';
 
 const AppLayout = () => (
   <div className="HolyGrail">

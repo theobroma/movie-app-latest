@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 
-import { Footer } from './Footer';
+import { Footer } from './footer';
 
 describe('Layout/Footer', () => {
   it('should have github link', () => {

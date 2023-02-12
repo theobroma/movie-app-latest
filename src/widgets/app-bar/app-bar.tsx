@@ -17,10 +17,10 @@ import { BackToTop } from '@/shared/uikit/back-to-top/back-to-top';
 import { AppBreadcrumbs } from '@/shared/uikit/breadcrumbs/breadcrumbs';
 import { HideOnScroll } from '@/shared/uikit/hide-on-scroll/hide-on-scroll';
 
-import { AppBar, DrawerHeader, drawerWidth, Main } from './Drawer.styled';
-import { LanguageMenu } from './LanguageMenu/LanguageMenu';
-import { NestedList } from './NestedList/NestedList';
-import { ThemeMenu } from './ThemeMenu/ThemeMenu';
+import { AppBar, DrawerHeader, drawerWidth, Main } from './app-bar.styled';
+import { LanguageMenu } from './language-menu/language-menu';
+import { NestedList } from './nested-list/nested-list';
+import { ThemeMenu } from './theme-menu/theme-menu';
 
 export const PersistentDrawerLeft = ({ children }: PropsWithChildren) => {
   const theme = useTheme();

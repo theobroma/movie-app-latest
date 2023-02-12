@@ -2,24 +2,24 @@ import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 import * as React from 'react';
 
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import TranslateIcon from '@mui/icons-material/Translate';
 import { Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 
 import { useNonInitialEffect } from '@/shared/hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
-import { languageSelector } from '@/store/ui/selectors';
-import { setLanguageAC } from '@/store/ui/slice';
+import { themeSelector } from '@/store/ui/selectors';
+import { setThemeAC } from '@/store/ui/slice';
 import { BaseOptionInterface } from '@/types';
 
-import { languageMenuOptions } from './LanguageMenu.options';
+import { themeOptions } from './theme-menu.options';
 
-export const LanguageMenu = () => {
+export const ThemeMenu = () => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const currentLanguage = useAppSelector(languageSelector);
+  const currentTheme = useAppSelector(themeSelector);
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -27,7 +27,7 @@ export const LanguageMenu = () => {
     event: React.MouseEvent<HTMLElement>,
     value: BaseOptionInterface['value'],
   ) => {
-    dispatch(setLanguageAC(value));
+    dispatch(setThemeAC(value));
     setAnchorEl(null);
   };
 
@@ -40,13 +40,13 @@ export const LanguageMenu = () => {
   };
 
   useNonInitialEffect(() => {
-    const labelText = languageMenuOptions.find(
-      ({ value }) => value === currentLanguage,
+    const labelText = themeOptions.find(
+      ({ value }) => value === currentTheme,
     )?.label;
-    enqueueSnackbar(`Language changed to ${labelText}`, {
+    enqueueSnackbar(`Theme changed to ${labelText}`, {
       variant: 'warning',
     });
-  }, [enqueueSnackbar, currentLanguage]);
+  }, [enqueueSnackbar, currentTheme]);
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -65,13 +65,13 @@ export const LanguageMenu = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {languageMenuOptions.map((option) => (
+      {themeOptions.map((option) => (
         <MenuItem
           key={option.value}
-          selected={option.value === currentLanguage}
+          selected={option.value === currentTheme}
           onClick={(event) => handleMenuItemClick(event, option.value)}
         >
-          {option.value === currentLanguage ? (
+          {option.value === currentTheme ? (
             <RadioButtonCheckedIcon
               fontSize="small"
               color="primary"
@@ -91,17 +91,17 @@ export const LanguageMenu = () => {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Tooltip title="Select a language">
+      <Tooltip title="Select a theme">
         <IconButton
           size="large"
           edge="end"
-          aria-label="language"
+          aria-label="theme"
           aria-controls={menuId}
           aria-haspopup="true"
           onClick={handleProfileMenuOpen}
           color="inherit"
         >
-          <TranslateIcon />
+          <FormatColorFillIcon />
         </IconButton>
       </Tooltip>
       {renderMenu}

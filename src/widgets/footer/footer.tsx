@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import { Box, Stack, Typography } from '@mui/material';
 
-import { SocialLink } from './SocialLink/SocialLink';
+import { SocialLink } from './social-link/social-link';
 
 export const Footer = () => (
   <Box component="footer" sx={{ py: 5, bgcolor: 'primary.main' }}>
