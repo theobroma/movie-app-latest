@@ -1,13 +1,13 @@
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 import * as React from 'react';
+import { useUpdateEffect } from 'usehooks-ts';
 
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import TranslateIcon from '@mui/icons-material/Translate';
 import { Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 
-import { useNonInitialEffect } from '@/shared/hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { languageSelector } from '@/store/ui/selectors';
 import { setLanguageAC } from '@/store/ui/slice';
@@ -39,7 +39,7 @@ export const LanguageMenu = () => {
     setAnchorEl(null);
   };
 
-  useNonInitialEffect(() => {
+  useUpdateEffect(() => {
     const labelText = languageMenuOptions.find(
       ({ value }) => value === currentLanguage,
     )?.label;

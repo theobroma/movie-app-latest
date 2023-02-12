@@ -1,13 +1,13 @@
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 import * as React from 'react';
+import { useUpdateEffect } from 'usehooks-ts';
 
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { Box, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 
-import { useNonInitialEffect } from '@/shared/hooks/useNonInitialEffect';
 import { useAppDispatch, useAppSelector } from '@/store/configureStore';
 import { themeSelector } from '@/store/ui/selectors';
 import { setThemeAC } from '@/store/ui/slice';
@@ -39,7 +39,7 @@ export const ThemeMenu = () => {
     setAnchorEl(null);
   };
 
-  useNonInitialEffect(() => {
+  useUpdateEffect(() => {
     const labelText = themeOptions.find(
       ({ value }) => value === currentTheme,
     )?.label;
