@@ -6,7 +6,7 @@ import { MediaCardMovie } from '@/entities/media/ui/MediaCard/MediaCardMovie/Med
 import { MediaCardSkeleton } from '@/entities/media/ui/MediaCard/MediaCardSkeleton/MediaCardSkeleton';
 import { MediaCardTV } from '@/entities/media/ui/MediaCard/MediaCardTV/MediaCardTV';
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { AppError } from '@/shared/uikit/AppError/AppError';
+import { AppError } from '@/shared/uikit/app-error/app-error';
 import { isEmptyArray } from '@/shared/utils/is-data';
 
 interface Props {

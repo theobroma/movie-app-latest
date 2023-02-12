@@ -13,9 +13,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import { FavouritesBadge } from '@/features/favourites-badge/favourites-badge';
-import { BackToTop } from '@/shared/uikit/BackToTop/BackToTop';
+import { BackToTop } from '@/shared/uikit/back-to-top/back-to-top';
 import { AppBreadcrumbs } from '@/shared/uikit/breadcrumbs/breadcrumbs';
-import { HideOnScroll } from '@/shared/uikit/HideOnScroll/HideOnScroll';
+import { HideOnScroll } from '@/shared/uikit/hide-on-scroll/hide-on-scroll';
 
 import { AppBar, DrawerHeader, drawerWidth, Main } from './Drawer.styled';
 import { LanguageMenu } from './LanguageMenu/LanguageMenu';

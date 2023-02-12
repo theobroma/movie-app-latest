@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Container } from '@mui/material';
 
 import { MediaTypeEnum } from '@/enums/media-type.enum';
-import { AppPagination } from '@/shared/uikit/AppPagination/AppPagination';
+import { AppPagination } from '@/shared/uikit/app-pagination/app-pagination';
 import { useTrendingTVQuery } from '@/store/trending/api';
 import { MediaList } from '@/widgets/media-list/media-list';
 
