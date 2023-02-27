@@ -13,10 +13,16 @@ Search, See primary information, See trailers of different movies.
 Register your API Key at
 [https://www.themoviedb.org/](https://www.themoviedb.org/)
 
-## :fire: Built With
+## ⭐️ Built With
 
 This project was built using these technologies.
 
-- [React.js v18](https://ru.reactjs.org/)
+- [React.js v18](https://reactjs.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org)
 - [Material UI v5](https://mui.com/)
+
+## ✨ Features
+
+- 🌈 RTK Query: management of cached data.
+- 💅 Skeletons: display a placeholder preview of content before the data gets loaded to reduce load-time frustration.
+- 🚀 [FSD](https://feature-sliced.design/): architectural methodology for scaffolding front-end applications.
