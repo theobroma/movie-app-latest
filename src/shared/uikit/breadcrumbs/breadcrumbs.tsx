@@ -21,7 +21,7 @@ export const AppBreadcrumbs = () => {
   return (
     <>
       <Divider />
-      <Box sx={{ py: 1 }}>
+      <Box sx={{ py: 1, backgroundColor: '#f9f9fb' }}>
         <Container maxWidth="lg">
           <Breadcrumbs aria-label="breadcrumb">
             <LinkRouter underline="hover" color="inherit" to="/">

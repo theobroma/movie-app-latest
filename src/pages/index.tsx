@@ -44,6 +44,9 @@ const CastPage = lazy(() =>
 const VideosPage = lazy(() =>
   pMinDelay(import('@/pages/videos/videos.page'), MIN_LAZY_DELAY),
 );
+const SearchPage = lazy(() =>
+  pMinDelay(import('@/pages/search/search.page'), MIN_LAZY_DELAY),
+);
 
 export const Routing = () => (
   <Routes>
@@ -70,6 +73,7 @@ export const Routing = () => (
         <Route path="tv" element={<FavouritesTvshowsPage />} />
         <Route index element={<div>Click any tab.</div>} />
       </Route>
+      <Route path="/search" element={<SearchPage />} />
       <Route path="*" element={<div>Not Found</div>} />
     </Route>
   </Routes>
