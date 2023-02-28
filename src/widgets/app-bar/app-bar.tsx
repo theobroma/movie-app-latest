@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -18,6 +19,7 @@ import { AppBreadcrumbs } from '@/shared/uikit/breadcrumbs/breadcrumbs';
 import { HideOnScroll } from '@/shared/uikit/hide-on-scroll/hide-on-scroll';
 
 import { AppBar, DrawerHeader, drawerWidth, Main } from './app-bar.styled';
+import { AppSearch } from './app-search/app-search';
 import { LanguageMenu } from './language-menu/language-menu';
 import { NestedList } from './nested-list/nested-list';
 import { ThemeMenu } from './theme-menu/theme-menu';
@@ -25,6 +27,7 @@ import { ThemeMenu } from './theme-menu/theme-menu';
 export const PersistentDrawerLeft = ({ children }: PropsWithChildren) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [shouldShowSearch, setShouldShowSearch] = useState(false);
 
   const handleDrawerOpen = () => {
     setIsOpen(true);
@@ -62,9 +65,16 @@ export const PersistentDrawerLeft = ({ children }: PropsWithChildren) => {
             <Box sx={{ flexGrow: 1 }} />
             {/* Menus */}
             <FavouritesBadge />
+            <IconButton
+              onClick={() => setShouldShowSearch(!shouldShowSearch)}
+              color="inherit"
+            >
+              <SearchIcon />
+            </IconButton>
             <LanguageMenu />
             <ThemeMenu />
           </Toolbar>
+          {!!shouldShowSearch && <AppSearch />}
         </AppBar>
       </HideOnScroll>
       <BackToTop />
