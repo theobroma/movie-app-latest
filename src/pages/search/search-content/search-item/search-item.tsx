@@ -23,14 +23,14 @@ export const SearchItem = ({ data }: Props) => {
     <Box pb={3}>
       <Paper elevation={3}>
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={1}>
             <img
               className={classes.poster}
               src={mediaPoster}
               alt={originalTitle}
             />
           </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={11}>
             <Box p={3}>
               <Box component="span">{originalTitle}</Box>
               <br />

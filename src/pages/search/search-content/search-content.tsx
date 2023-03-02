@@ -26,7 +26,7 @@ export const SearchContent = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={6} key={nanoid()}>
+      <Grid item xs={12} key={nanoid()}>
         {moviesData.map((item) => (
           <Box mb={3} key={nanoid()}>
             {/* TODO: tmp just movies */}
