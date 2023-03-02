@@ -1,5 +1,5 @@
 import { PropsWithChildren, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -13,6 +13,7 @@ import { useTheme } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+import { PageEnum } from '@/enums/page.enum';
 import { FavouritesBadge } from '@/features/favourites-badge/favourites-badge';
 import { BackToTop } from '@/shared/uikit/back-to-top/back-to-top';
 import { AppBreadcrumbs } from '@/shared/uikit/breadcrumbs/breadcrumbs';
@@ -26,6 +27,7 @@ import { ThemeMenu } from './theme-menu/theme-menu';
 
 export const PersistentDrawerLeft = ({ children }: PropsWithChildren) => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [shouldShowSearch, setShouldShowSearch] = useState(false);
 
@@ -66,7 +68,8 @@ export const PersistentDrawerLeft = ({ children }: PropsWithChildren) => {
             {/* Menus */}
             <FavouritesBadge />
             <IconButton
-              onClick={() => setShouldShowSearch(!shouldShowSearch)}
+              // onClick={() => setShouldShowSearch(!shouldShowSearch)}
+              onClick={() => navigate(PageEnum.Search)}
               color="inherit"
             >
               <SearchIcon />

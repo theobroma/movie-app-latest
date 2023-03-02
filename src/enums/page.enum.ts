@@ -8,4 +8,5 @@ export enum PageEnum {
   Favourites = '/favourites',
   FavouritesMovies = '/favourites/movies',
   FavouritesTV = '/favourites/tv',
+  Search = '/search',
 }
