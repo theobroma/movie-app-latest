@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import * as React from 'react';
+// https://stackoverflow.com/questions/72502994/rtk-query-run-query-only-after-user-stops-typing-in-search-field
+import React, { useState } from 'react';
 import { useDebounce } from 'usehooks-ts';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,9 +11,20 @@ import {
   OutlinedInput,
 } from '@mui/material';
 
+import { SearchContent } from '@/pages/search/search-content/search-content';
+import { useSearchQuery } from '@/store/search/api';
+
 export const SearchInput = () => {
   const [searchVal, setSearchVal] = useState('');
-  const debouncedSearchTerm = useDebounce(searchVal, 300);
+  const debouncedSearchTerm = useDebounce(searchVal, 500);
+
+  const {
+    data,
+    // error,
+    // isError,
+    // isLoading,
+    isFetching,
+  } = useSearchQuery({ searchText: debouncedSearchTerm });
 
   const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(event.currentTarget.value.trim());
@@ -36,12 +47,10 @@ export const SearchInput = () => {
           }
         />
       </FormControl>
-
-      {/* {searchData.length > 0 && (
-        <div className={classes.outputWrap}>
-          <SearchOutput searchData={searchData} onClick={onPlaceClick} />
-        </div>
-      )} */}
+      {/* RESULTS */}
+      <Box pt={5}>
+        <SearchContent data={data} isFetching={isFetching} />
+      </Box>
     </Box>
   );
 };

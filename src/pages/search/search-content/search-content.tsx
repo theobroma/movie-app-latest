@@ -8,15 +8,12 @@ import { useSearchQuery } from '@/store/search/api';
 
 import { SearchItem } from './search-item/search-item';
 
-export const SearchContent = () => {
-  const {
-    data,
-    // error,
-    // isError,
-    // isLoading,
-    isFetching,
-  } = useSearchQuery({ searchText: 'terminator' });
+interface Props {
+  data: any;
+  isFetching: any;
+}
 
+export const SearchContent = ({ data, isFetching }: Props) => {
   const groupedData = groupBy(data?.results || [], 'mediaType');
   const moviesData = groupedData[MediaTypeEnum.Movie] || [];
 
