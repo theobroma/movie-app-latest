@@ -1,4 +1,4 @@
-// import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 import { Box, Paper, Grid } from '@mui/material';
 
@@ -14,7 +14,7 @@ interface Props {
 
 export const SearchItem = ({ data }: Props) => {
   const { classes } = useStyles();
-  const { posterPath, originalTitle } = data;
+  const { posterPath, originalTitle, overview, releaseDate } = data;
   const mediaPoster = posterPath
     ? `${POSTER_300_BASE}${posterPath}`
     : POSTER_UNAVAILABLE;
@@ -32,12 +32,15 @@ export const SearchItem = ({ data }: Props) => {
           </Grid>
           <Grid item xs={11}>
             <Box p={3}>
-              <Box component="span">{originalTitle}</Box>
+              <Box component="span" className={classes.name}>
+                {originalTitle}
+              </Box>
               <br />
-              {/* {video.type} */}
-              &nbsp;-&nbsp;
-              {/* {video.published_at} */}
-              {/* {dayjs(video.published_at).format('DD MMMM YYYY')} */}
+              <Box component="span" className={classes.releaseDate}>
+                {dayjs(releaseDate).format('DD MMMM YYYY')}
+              </Box>
+              <br />
+              <Box mt={2}>{overview}</Box>
             </Box>
           </Grid>
         </Grid>

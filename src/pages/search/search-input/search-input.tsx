@@ -15,7 +15,7 @@ import { SearchContent } from '@/pages/search/search-content/search-content';
 import { useSearchQuery } from '@/store/search/api';
 
 export const SearchInput = () => {
-  const [searchVal, setSearchVal] = useState('');
+  const [searchVal, setSearchVal] = useState('terminator');
   const debouncedSearchTerm = useDebounce(searchVal, 500);
 
   const {
