@@ -24,10 +24,13 @@ export const SearchInput = () => {
     // isError,
     // isLoading,
     isFetching,
-  } = useSearchQuery({ searchText: debouncedSearchTerm });
+  } = useSearchQuery(
+    { searchText: debouncedSearchTerm },
+    { skip: debouncedSearchTerm === '' },
+  );
 
   const handleChange = () => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchVal(event.currentTarget.value.trim());
+    setSearchVal(event.currentTarget.value);
   };
 
   return (
