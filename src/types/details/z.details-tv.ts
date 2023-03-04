@@ -7,6 +7,18 @@ import {
   SpokenLanguagesSchema,
 } from './z.details-shared';
 
+export const SeasonSchema = z.object({
+  airDate: z.string(),
+  episodeCount: z.number(),
+  id: z.number(),
+  name: z.string(),
+  overview: z.string(),
+  posterPath: z.string(),
+  seasonNumber: z.number(),
+});
+
+export type SeasonType = z.infer<typeof SeasonSchema>;
+
 export const DetailsTVSchema = z.object({
   adult: z.boolean(),
   backdropPath: z.string(),
@@ -72,17 +84,7 @@ export const DetailsTVSchema = z.object({
   posterPath: z.string(),
   productionCompanies: ProductionCompaniesSchema,
   productionCountries: ProductionCountriesSchema,
-  seasons: z.array(
-    z.object({
-      airDate: z.string(),
-      episodeCount: z.number(),
-      id: z.number(),
-      name: z.string(),
-      overview: z.string(),
-      posterPath: z.string(),
-      seasonNumber: z.number(),
-    }),
-  ),
+  seasons: z.array(SeasonSchema),
   spokenLanguages: SpokenLanguagesSchema,
   status: z.string(),
   tagline: z.string(),
