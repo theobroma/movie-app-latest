@@ -16,11 +16,11 @@ export const SeasonsCard = ({ season }: Props) => {
   const {
     airDate,
     episodeCount,
-    id,
+    // id,
     name,
     overview,
     posterPath,
-    seasonNumber,
+    // seasonNumber,
   } = season;
   const mediaPoster = posterPath
     ? `${POSTER_300_BASE}${posterPath}`
@@ -36,11 +36,16 @@ export const SeasonsCard = ({ season }: Props) => {
           <Grid item xs={11}>
             <Box p={3}>
               <Box component="span" className={classes.name}>
-                {name}
+                {name}&nbsp;
+              </Box>
+              <Box component="span" className={classes.episodes}>
+                {dayjs(airDate).format('YYYY')}&nbsp;|&nbsp;
+                {episodeCount}
+                &nbsp;Episodes
               </Box>
               <br />
               <Box component="span" className={classes.releaseDate}>
-                {dayjs(airDate).format('DD MMMM YYYY')}
+                Premiered on&nbsp;{dayjs(airDate).format('DD MMM YYYY')}.
               </Box>
               <br />
               <Box mt={2}>{overview}</Box>
