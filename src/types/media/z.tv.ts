@@ -12,7 +12,7 @@ export const TVEntitySchema = z.object({
   originalName: z.string(),
   overview: z.string(),
   popularity: z.number(),
-  posterPath: z.string(),
+  posterPath: z.string().nullable(),
   voteAverage: z.number(),
   voteCount: z.number(),
 });

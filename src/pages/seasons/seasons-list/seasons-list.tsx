@@ -17,8 +17,6 @@ export const SeasonsList = () => {
     mediaType,
   });
 
-  console.log('mediaDetailsData.seasons :>> ', mediaDetailsData?.seasons);
-
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} key={nanoid()}>

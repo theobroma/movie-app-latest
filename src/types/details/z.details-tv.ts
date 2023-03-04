@@ -19,6 +19,21 @@ export const SeasonSchema = z.object({
 
 export type SeasonType = z.infer<typeof SeasonSchema>;
 
+export const EpisodeSchema = z.object({
+  airDate: z.string(),
+  episodeNumber: z.number(),
+  id: z.number(),
+  name: z.string(),
+  overview: z.string(),
+  productionCode: z.string(),
+  seasonNumber: z.number(),
+  stillPath: z.string().nullable(),
+  voteAverage: z.number(),
+  voteCount: z.number(),
+});
+
+export type EpisodeType = z.infer<typeof EpisodeSchema>;
+
 export const DetailsTVSchema = z.object({
   adult: z.boolean(),
   backdropPath: z.string(),
@@ -39,33 +54,9 @@ export const DetailsTVSchema = z.object({
   inProduction: z.boolean(),
   languages: z.array(z.string()),
   lastAirDate: z.string(),
-  lastEpisodeToAir: z.object({
-    airDate: z.string(),
-    episodeNumber: z.number(),
-    id: z.number(),
-    name: z.string(),
-    overview: z.string(),
-    productionCode: z.string(),
-    seasonNumber: z.number(),
-    stillPath: z.string().nullable(),
-    voteAverage: z.number(),
-    voteCount: z.number(),
-  }),
+  lastEpisodeToAir: EpisodeSchema,
   name: z.string(),
-  nextEpisodeToAir: z
-    .object({
-      airDate: z.string(),
-      episodeNumber: z.number(),
-      id: z.number(),
-      name: z.string(),
-      overview: z.string(),
-      productionCode: z.string(),
-      seasonNumber: z.number(),
-      stillPath: z.null().nullable(),
-      voteAverage: z.number(),
-      voteCount: z.number(),
-    })
-    .nullable(),
+  nextEpisodeToAir: EpisodeSchema.nullable(),
   networks: z.array(
     z.object({
       name: z.string(),
