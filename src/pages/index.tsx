@@ -8,6 +8,23 @@ const AppLayout = lazy(() => pMinDelay(import('./app.layout'), MIN_LAZY_DELAY));
 const HomePage = lazy(() =>
   pMinDelay(import('@/pages/home/home.page'), MIN_LAZY_DELAY),
 );
+const SearchPage = lazy(() =>
+  pMinDelay(import('@/pages/search/search.page'), MIN_LAZY_DELAY),
+);
+/* Details */
+const MediaDetailsPage = lazy(() =>
+  pMinDelay(import('@/pages/media-details/media-details.page'), MIN_LAZY_DELAY),
+);
+const CastPage = lazy(() =>
+  pMinDelay(import('@/pages/cast/cast.page'), MIN_LAZY_DELAY),
+);
+const VideosPage = lazy(() =>
+  pMinDelay(import('@/pages/videos/videos.page'), MIN_LAZY_DELAY),
+);
+const SeasonsPage = lazy(() =>
+  pMinDelay(import('@/pages/seasons/seasons.page'), MIN_LAZY_DELAY),
+);
+/* Trending */
 const TrendingMoviesPage = lazy(() =>
   pMinDelay(
     import('@/pages/trending/trending-movies/trending-movies.page'),
@@ -20,6 +37,7 @@ const TrendingTvshowsPage = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
+/* Favourites */
 const FavouritesLayout = lazy(() =>
   pMinDelay(import('./favourites/favourites.layout'), MIN_LAZY_DELAY),
 );
@@ -35,23 +53,13 @@ const FavouritesTvshowsPage = lazy(() =>
     MIN_LAZY_DELAY,
   ),
 );
-const MediaDetailsPage = lazy(() =>
-  pMinDelay(import('@/pages/media-details/media-details.page'), MIN_LAZY_DELAY),
-);
-const CastPage = lazy(() =>
-  pMinDelay(import('@/pages/cast/cast.page'), MIN_LAZY_DELAY),
-);
-const VideosPage = lazy(() =>
-  pMinDelay(import('@/pages/videos/videos.page'), MIN_LAZY_DELAY),
-);
-const SearchPage = lazy(() =>
-  pMinDelay(import('@/pages/search/search.page'), MIN_LAZY_DELAY),
-);
 
 export const Routing = () => (
   <Routes>
     <Route path="/" element={<AppLayout />}>
       <Route index element={<HomePage />} />
+      <Route path="/search" element={<SearchPage />} />
+      {/* Details */}
       <Route
         path="/details/:mediaType/:mediaId"
         element={<MediaDetailsPage />}
@@ -60,6 +68,10 @@ export const Routing = () => (
       <Route
         path="/details/:mediaType/:mediaId/videos"
         element={<VideosPage />}
+      />
+      <Route
+        path="/details/:mediaType/:mediaId/seasons"
+        element={<SeasonsPage />}
       />
       {/* Trending */}
       <Route path="trending" element={<Outlet />}>
@@ -73,7 +85,6 @@ export const Routing = () => (
         <Route path="tv" element={<FavouritesTvshowsPage />} />
         <Route index element={<div>Click any tab.</div>} />
       </Route>
-      <Route path="/search" element={<SearchPage />} />
       <Route path="*" element={<div>Not Found</div>} />
     </Route>
   </Routes>
