@@ -3,6 +3,32 @@
   "version": "0.1.0",
   "private": false,
   "license": "ISC",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,yml,json,css,scss,md}",
+    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
+    "serve": "serve -s build",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -37,32 +63,6 @@
     "usehooks-ts": "^2.9.1",
     "zod": "^3.21.4",
     "zod-validation-error": "^1.0.1"
-  },
-  "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,yml,json,css,scss,md}",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
-    "serve": "serve -s build",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@types/compose-function": "^0.0.30",
