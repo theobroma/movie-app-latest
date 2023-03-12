@@ -1,5 +1,6 @@
 // example - https://github.com/theobroma/rtk-query-toptal-example/blob/41ea72e4ad62ff6ec4a1e2a8f84b17301f7577e0/src/shared/redux/store.ts
 import { combineReducers, configureStore, Reducer } from '@reduxjs/toolkit';
+// eslint-disable-next-line no-restricted-imports
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 

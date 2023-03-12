@@ -91,6 +91,12 @@ module.exports = {
             importNames: ['useStyles'],
             message: 'Use useStyles imported from local file *.styles',
           },
+          {
+            name: 'react-redux',
+            importNames: ['useSelector', 'useDispatch'],
+            message:
+              'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
+          },
         ],
         patterns: [
           {
