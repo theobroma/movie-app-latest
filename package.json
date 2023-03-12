@@ -1,7 +1,6 @@
 {
   "name": "movie-app-latest",
   "version": "0.1.0",
-  "private": false,
   "license": "ISC",
   "scripts": {
     "start": "react-app-rewired start",
@@ -83,5 +82,8 @@
     "prettier": "^2.8.4",
     "react-app-alias": "^2.2.2",
     "react-app-rewired": "^2.2.1"
+  },
+  "engines": {
+    "node": "^18.x"
   }
 }
