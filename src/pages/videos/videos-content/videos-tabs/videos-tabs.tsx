@@ -19,6 +19,7 @@ export const VideosTabs = ({ groupedVideos }: Props) => {
 
   useEffect(() => {
     setValue(tabKeys[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groupedVideos]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -31,8 +32,9 @@ export const VideosTabs = ({ groupedVideos }: Props) => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              {tabKeys.map((tab) => (
+              {tabKeys.map((tab, idx: number) => (
                 <Tab
+                  key={idx}
                   label={
                     <Box sx={{ display: 'flex' }}>
                       <Box>{tab}</Box>
@@ -50,9 +52,9 @@ export const VideosTabs = ({ groupedVideos }: Props) => {
           {tabKeys.map((tab, idx: number) => {
             const filteredVideos = groupedVideos[tab];
             return (
-              <TabPanel value={tab}>
-                {filteredVideos.map((video: any) => (
-                  <VideosItem video={video} />
+              <TabPanel key={idx} value={tab}>
+                {filteredVideos.map((video: any, indx: number) => (
+                  <VideosItem key={indx} video={video} />
                 ))}
               </TabPanel>
             );

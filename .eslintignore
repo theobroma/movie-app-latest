@@ -4,3 +4,4 @@ coverage
 public
 .cache
 config-overrides.js
+serviceWorker.ts
